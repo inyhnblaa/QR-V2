@@ -10,60 +10,65 @@
 <style>
 *{box-sizing:border-box}
 
-/* ===== BODY + BACKGROUND ===== */
+/* ===============================
+   BODY – POSTER MODE (PORTRAIT)
+   =============================== */
 body{
   margin:0;
   min-height:100vh;
   font-family:'Inter',sans-serif;
 
-  /* PORTRAIT DEFAULT */
   background:
     linear-gradient(
-      rgba(143,13,13,0.88),
-      rgba(143,13,13,0.88)
+      rgba(143,13,13,0.90),
+      rgba(143,13,13,0.90)
     ),
     url("uav-ui-portrait.jpg");
 
   background-repeat:no-repeat;
-  background-size:contain;        /* ⬅ PENTING */
-  background-position:top center; /* ⬅ BIAR UI KEATAS */
+  background-size:contain;          /* POSTER UTUH */
+  background-position:top center;
 
   display:flex;
   justify-content:center;
   align-items:flex-start;
 }
 
-/* LANDSCAPE / DESKTOP */
+/* ===============================
+   LANDSCAPE – POSTER MODE (STABIL)
+   =============================== */
 @media (orientation: landscape){
   body{
     background:
       linear-gradient(
-        rgba(143,13,13,0.85),
-        rgba(143,13,13,0.85)
+        rgba(143,13,13,0.88),
+        rgba(143,13,13,0.88)
       ),
       url("uav-ui-landscape.jpg");
 
     background-repeat:no-repeat;
-    background-size:cover;          /* landscape aman cover */
-    background-position:center top; /* fokus ke atas */
+    background-size:contain;        /* JANGAN COVER */
+    background-position:center top;
   }
 }
 
-
-/* ===== CONTAINER ===== */
+/* ===============================
+   CONTAINER – SOLID (NO BLUR)
+   =============================== */
 .container{
   width:100%;
   max-width:420px;
   padding:32px 20px 56px;
-  color:white;
-
-  background:rgba(0,0,0,0.35);
-  backdrop-filter: blur(6px);
-  border-radius:20px;
   margin-top:24px;
+
+  color:white;
+  background:rgba(0,0,0,0.45);   /* SOLID, TAJAM */
+  border-radius:20px;
 }
 
-/* ===== HEADER ===== */
+/* ===============================
+   HEADER
+   =============================== */
 .profile{
   text-align:center;
   margin-bottom:28px;
@@ -85,7 +90,9 @@ body{
   margin-top:6px;
 }
 
-/* ===== MENU ===== */
+/* ===============================
+   MENU
+   =============================== */
 .links{
   display:flex;
   flex-direction:column;
@@ -96,9 +103,11 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
+
   border-radius:999px;
   background:rgba(255,255,255,.14);
   border:1px solid rgba(255,255,255,.4);
+
   color:white;
   text-decoration:none;
   font-weight:600;
@@ -107,7 +116,9 @@ body{
   background:rgba(255,255,255,.25);
 }
 
-/* ===== VIDEO ===== */
+/* ===============================
+   VIDEO
+   =============================== */
 .video-block{
   margin:20px 0 34px;
   border-radius:16px;
@@ -120,7 +131,9 @@ body{
   border:none;
 }
 
-/* ===== SOCIAL ===== */
+/* ===============================
+   SOCIAL
+   =============================== */
 .social{
   display:flex;
   justify-content:center;
