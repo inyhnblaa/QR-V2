@@ -15,49 +15,40 @@ html{
 }
 
 /* ===============================
-   BODY
+   BODY – BACKGROUND REPEAT SCROLL
    =============================== */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
-  background:#8f0d0d;
-}
 
-/* ===============================
-   BACKGROUND – TRUE REPEAT (SMOOTH)
-   =============================== */
-body::before{
-  content:"";
-  position:fixed; /* ⬅ ikut scroll secara natural */
-  inset:0;
-
-  background:
+  background-color:#8f0d0d;
+  background-image:
     linear-gradient(
-      rgba(143,13,13,0.92),
-      rgba(143,13,13,0.92)
+      rgba(143,13,13,0.9),
+      rgba(143,13,13,0.9)
     ),
     url("uav-ui-portrait.jpg");
 
-  background-repeat:repeat-y;   /* ⬅ INI KUNCI BERULANG */
-  background-size:contain;
-  background-position:top center;
+  background-repeat: repeat-y;     /* ⬅ INI KUNCINYA */
+  background-size: contain;        /* BIAR UTUH */
+  background-position: top center; /* RAPI */
 
-  z-index:-1;
+  min-height:100vh;
 }
 
 /* LANDSCAPE */
 @media (orientation: landscape){
-  body::before{
-    background:
+  body{
+    background-image:
       linear-gradient(
-        rgba(143,13,13,0.90),
-        rgba(143,13,13,0.90)
+        rgba(143,13,13,0.9),
+        rgba(143,13,13,0.9)
       ),
       url("uav-ui-landscape.jpg");
 
-    background-repeat:repeat-y;
-    background-size:contain;
-    background-position:center top;
+    background-repeat: repeat-y;
+    background-size: contain;
+    background-position: center top;
   }
 }
 
