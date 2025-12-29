@@ -11,23 +11,22 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 
+/* ================= BACKGROUND ================= */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
 
-  background-color:#8f0d0d;
+  background-color:#7c0f0f;
   background-image:
     linear-gradient(
-      rgba(143,13,13,0.9),
-      rgba(143,13,13,0.9)
+      rgba(124,15,15,0.92),
+      rgba(124,15,15,0.92)
     ),
     url("uav-ui-portrait.jpg");
 
   background-repeat:repeat-y;
   background-size:contain;
   background-position:top center;
-
-  min-height:100vh;
 }
 
 /* Landscape */
@@ -35,37 +34,35 @@ body{
   body{
     background-image:
       linear-gradient(
-        rgba(143,13,13,0.9),
-        rgba(143,13,13,0.9)
+        rgba(124,15,15,0.92),
+        rgba(124,15,15,0.92)
       ),
       url("uav-ui-landscape.jpg");
-
     background-repeat:repeat-y;
     background-size:contain;
-    background-position:center top;
   }
 }
 
-/* Container */
+/* ================= CONTAINER ================= */
 .container{
   width:100%;
   max-width:420px;
   margin:32px auto;
-  padding:28px 20px 60px;
+  padding:28px 20px 56px;
 
+  background:rgba(0,0,0,0.45);
   color:white;
-  background:rgba(0,0,0,0.48);
   border-radius:22px;
 }
 
-/* Header */
+/* ================= HEADER ================= */
 .profile{
   text-align:center;
   margin-bottom:28px;
 }
 .profile img{
-  width:90px;
-  height:90px;
+  width:88px;
+  height:88px;
   border-radius:50%;
   margin-bottom:10px;
 }
@@ -80,12 +77,12 @@ body{
   margin-top:6px;
 }
 
-/* Section */
+/* ================= SECTION ================= */
 .section{
-  margin-bottom:40px;
+  margin-bottom:38px;
 }
 
-/* Menu */
+/* ================= MENU ================= */
 .links{
   display:flex;
   flex-direction:column;
@@ -98,7 +95,7 @@ body{
   justify-content:center;
 
   border-radius:999px;
-  background:rgba(255,255,255,.15);
+  background:rgba(255,255,255,.14);
   border:1px solid rgba(255,255,255,.45);
 
   color:white;
@@ -106,7 +103,7 @@ body{
   font-weight:600;
 }
 
-/* Video */
+/* ================= VIDEO ================= */
 .video-block{
   margin-top:18px;
   border-radius:18px;
@@ -119,23 +116,33 @@ body{
   border:none;
 }
 
-/* Social Icons */
+/* ================= SOCIAL ICONS ================= */
 .social{
   display:flex;
   justify-content:center;
-  gap:28px;
-  margin-top:44px;
+  align-items:center;
+  gap:30px;
+  margin-top:46px;
 }
+
+.social a{
+  width:36px;
+  height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
 .social svg{
   width:26px;
   height:26px;
   fill:#ffffff;
   opacity:.95;
-  transition:transform .2s ease, opacity .2s ease;
 }
-.social a:hover svg{
-  transform:scale(1.12);
-  opacity:1;
+
+/* Optical correction khusus logo X */
+.social a[aria-label="X"] svg{
+  width:24px;
 }
 </style>
 </head>
@@ -144,14 +151,14 @@ body{
 
 <div class="container">
 
-  <!-- Header -->
+  <!-- HEADER -->
   <div class="profile">
     <img src="logo.png" alt="PT Len Industri">
     <h1>@PTLenIndustri</h1>
     <p>PT Len Industri (Persero)</p>
   </div>
 
-  <!-- Section 1 -->
+  <!-- SECTION 1 -->
   <div class="section">
     <div class="links">
       <a class="link" href="#">Menu A</a>
@@ -162,7 +169,7 @@ body{
     </div>
   </div>
 
-  <!-- Section 2 -->
+  <!-- SECTION 2 -->
   <div class="section">
     <div class="links">
       <a class="link" href="#">Menu C</a>
@@ -173,7 +180,7 @@ body{
     </div>
   </div>
 
-  <!-- Section 3 -->
+  <!-- SECTION 3 -->
   <div class="section">
     <div class="links">
       <a class="link" href="#">Menu E</a>
@@ -184,7 +191,7 @@ body{
     </div>
   </div>
 
-  <!-- Section 4 -->
+  <!-- SECTION 4 -->
   <div class="section">
     <div class="links">
       <a class="link" href="#">Menu G</a>
@@ -193,44 +200,47 @@ body{
     </div>
   </div>
 
-  <!-- Social Icons (SVG – same style as photo 1) -->
-<div class="social">
+  <!-- SOCIAL ICONS (FINAL) -->
+  <div class="social">
 
-  <!-- Facebook (Official Brand) -->
-  <a href="https://facebook.com/PTLenIndustri" target="_blank" aria-label="Facebook">
-    <svg viewBox="0 0 24 24">
-      <path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8.1V12h2.4V9.7c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.3h-1.2c-1.2 0-1.5.8-1.5 1.5V12h2.6l-.4 2.9h-2.2v7A10 10 0 0 0 22 12z"/>
-    </svg>
-  </a>
+    <!-- Facebook -->
+    <a href="https://facebook.com/PTLenIndustri" target="_blank" aria-label="Facebook">
+      <svg viewBox="0 0 24 24">
+        <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8.1V12h2.4V9.7c0-2.3 1.4-3.6 3.5-3.6 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.4.7-1.4 1.4V12h2.4l-.4 2.9h-2v7A10 10 0 0 0 22 12z"/>
+      </svg>
+    </a>
 
-  <!-- Instagram (Official Brand) -->
-  <a href="https://instagram.com/PTLenIndustri" target="_blank" aria-label="Instagram">
-    <svg viewBox="0 0 24 24">
-      <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5a4.5 4.5 0 1 0 4.5 4.5A4.5 4.5 0 0 0 12 7.5zm6.1-1.8a1.1 1.1 0 1 0 1.1 1.1 1.1 1.1 0 0 0-1.1-1.1z"/>
-    </svg>
-  </a>
+    <!-- Instagram -->
+    <a href="https://instagram.com/PTLenIndustri" target="_blank" aria-label="Instagram">
+      <svg viewBox="0 0 24 24">
+        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5a4.5 4.5 0 1 0 4.5 4.5A4.5 4.5 0 0 0 12 7.5zm6.1-1.8a1.1 1.1 0 1 0 1.1 1.1 1.1 1.1 0 0 0-1.1-1.1z"/>
+      </svg>
+    </a>
 
-  <!-- X (Twitter) – OFFICIAL BRAND LOGO (EXACT) -->
-  <a href="https://x.com/PTLenIndustri" target="_blank" aria-label="X">
-    <svg viewBox="0 0 1200 1227">
-      <path d="M714.163 519.284L1160.89 0H1055.03L668.53 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L514.491 750.218L843.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/>
-    </svg>
-  </a>
+    <!-- X -->
+    <a href="https://x.com/PTLenIndustri" target="_blank" aria-label="X">
+      <svg viewBox="0 0 1200 1227">
+        <path d="M714.163 519.284L1160.89 0H1055.03L668.53 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L514.491 750.218L843.672 1226.37H1200L714.137 519.284H714.163Z"/>
+      </svg>
+    </a>
 
-  <!-- YouTube (Official Brand) -->
-  <a href="https://youtube.com/@PTLenIndustri" target="_blank" aria-label="YouTube">
-    <svg viewBox="0 0 24 24">
-      <path d="M23 12s0-3.4-.4-5a3.3 3.3 0 0 0-2.3-2.3C18.7 4 12 4 12 4s-6.7 0-8.3.7A3.3 3.3 0 0 0 1.4 7C1 8.6 1 12 1 12s0 3.4.4 5a3.3 3.3 0 0 0 2.3 2.3C5.3 20 12 20 12 20s6.7 0 8.3-.7a3.3 3.3 0 0 0 2.3-2.3c.4-1.6.4-5 .4-5Zm-13 3.5v-7l6 3.5-6 3.5Z"/>
-    </svg>
-  </a>
+    <!-- YouTube -->
+    <a href="https://youtube.com/@PTLenIndustri" target="_blank" aria-label="YouTube">
+      <svg viewBox="0 0 24 24">
+        <path d="M23 12s0-3.4-.4-5a3.3 3.3 0 0 0-2.3-2.3C18.7 4 12 4 12 4s-6.7 0-8.3.7A3.3 3.3 0 0 0 1.4 7C1 8.6 1 12 1 12s0 3.4.4 5a3.3 3.3 0 0 0 2.3 2.3C5.3 20 12 20 12 20s6.7 0 8.3-.7a3.3 3.3 0 0 0 2.3-2.3c.4-1.6.4-5 .4-5Zm-13 3.5v-7l6 3.5-6 3.5Z"/>
+      </svg>
+    </a>
 
-  <!-- Email – OFFICIAL ENVELOPE (SAFE, NO CLIP) -->
-<a href="mailto:info@len.co.id" aria-label="Email">
-  <svg viewBox="0 0 24 24">
-    <path d="M3 6.75A2.75 2.75 0 0 1 5.75 4h12.5A2.75 2.75 0 0 1 21 6.75v10.5A2.75 2.75 0 0 1 18.25 20H5.75A2.75 2.75 0 0 1 3 17.25V6.75zm2.1-.25L12 11.1 18.9 6.5H5.1z"/>
-  </svg>
-</a>
-<div>
+    <!-- Email -->
+    <a href="mailto:info@len.co.id" aria-label="Email">
+      <svg viewBox="0 0 24 24">
+        <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h13A2.5 2.5 0 0 1 21 7.5v9A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5v-9Zm2.4-.5L12 11.2 18.6 7H5.4z"/>
+      </svg>
+    </a>
+
+  </div>
+
+</div>
 
 </body>
 </html>
