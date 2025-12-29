@@ -10,31 +10,26 @@
 <style>
 *{box-sizing:border-box}
 
-/* ===============================
-   BASE
-   =============================== */
 html{
   scroll-behavior:smooth;
 }
 
+/* ===============================
+   BODY
+   =============================== */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
   background:#8f0d0d;
-  position:relative;
-  overflow-x:hidden;
 }
 
 /* ===============================
-   SMOOTH SCROLLING BACKGROUND
+   BACKGROUND – TRUE REPEAT (SMOOTH)
    =============================== */
 body::before{
   content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:320vh; /* ⬅ KUNCI SMOOTH FEEL */
+  position:fixed; /* ⬅ ikut scroll secara natural */
+  inset:0;
 
   background:
     linear-gradient(
@@ -43,18 +38,16 @@ body::before{
     ),
     url("uav-ui-portrait.jpg");
 
-  background-repeat:no-repeat;
+  background-repeat:repeat-y;   /* ⬅ INI KUNCI BERULANG */
   background-size:contain;
   background-position:top center;
 
   z-index:-1;
 }
 
-/* LANDSCAPE VERSION */
+/* LANDSCAPE */
 @media (orientation: landscape){
   body::before{
-    height:320vh;
-
     background:
       linear-gradient(
         rgba(143,13,13,0.90),
@@ -62,14 +55,14 @@ body::before{
       ),
       url("uav-ui-landscape.jpg");
 
-    background-repeat:no-repeat;
+    background-repeat:repeat-y;
     background-size:contain;
     background-position:center top;
   }
 }
 
 /* ===============================
-   MAIN CONTAINER
+   CONTAINER
    =============================== */
 .container{
   width:100%;
@@ -177,14 +170,12 @@ body::before{
 
 <div class="container">
 
-  <!-- HEADER -->
   <div class="profile">
     <img src="logo.png" alt="PT Len Industri">
     <h1>@PTLenIndustri</h1>
     <p>PT Len Industri (Persero)</p>
   </div>
 
-  <!-- SECTION 1 -->
   <div class="section">
     <div class="links">
       <a class="link" href="#">Menu A</a>
@@ -195,7 +186,6 @@ body::before{
     </div>
   </div>
 
-  <!-- SECTION 2 -->
   <div class="section">
     <div class="links">
       <a class="link" href="#">Menu C</a>
@@ -206,7 +196,6 @@ body::before{
     </div>
   </div>
 
-  <!-- SECTION 3 -->
   <div class="section">
     <div class="links">
       <a class="link" href="#">Menu E</a>
@@ -217,7 +206,6 @@ body::before{
     </div>
   </div>
 
-  <!-- SECTION 4 -->
   <div class="section">
     <div class="links">
       <a class="link" href="#">Menu G</a>
@@ -226,7 +214,6 @@ body::before{
     </div>
   </div>
 
-  <!-- SOCIAL -->
   <div class="social">
     <a href="#">🌐</a>
     <a href="#">📷</a>
@@ -239,4 +226,3 @@ body::before{
 
 </body>
 </html>
- 
