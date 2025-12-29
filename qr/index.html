@@ -9,14 +9,8 @@
 
 <style>
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 
-html{
-  scroll-behavior:smooth;
-}
-
-/* ===============================
-   BODY – BACKGROUND REPEAT SCROLL
-   =============================== */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
@@ -29,14 +23,14 @@ body{
     ),
     url("uav-ui-portrait.jpg");
 
-  background-repeat: repeat-y;     /* ⬅ INI KUNCINYA */
-  background-size: contain;        /* BIAR UTUH */
-  background-position: top center; /* RAPI */
+  background-repeat:repeat-y;
+  background-size:contain;
+  background-position:top center;
 
   min-height:100vh;
 }
 
-/* LANDSCAPE */
+/* Landscape */
 @media (orientation: landscape){
   body{
     background-image:
@@ -46,15 +40,13 @@ body{
       ),
       url("uav-ui-landscape.jpg");
 
-    background-repeat: repeat-y;
-    background-size: contain;
-    background-position: center top;
+    background-repeat:repeat-y;
+    background-size:contain;
+    background-position:center top;
   }
 }
 
-/* ===============================
-   CONTAINER
-   =============================== */
+/* Container */
 .container{
   width:100%;
   max-width:420px;
@@ -66,9 +58,7 @@ body{
   border-radius:22px;
 }
 
-/* ===============================
-   HEADER
-   =============================== */
+/* Header */
 .profile{
   text-align:center;
   margin-bottom:28px;
@@ -90,16 +80,12 @@ body{
   margin-top:6px;
 }
 
-/* ===============================
-   SECTION
-   =============================== */
+/* Section */
 .section{
   margin-bottom:40px;
 }
 
-/* ===============================
-   MENU
-   =============================== */
+/* Menu */
 .links{
   display:flex;
   flex-direction:column;
@@ -119,13 +105,8 @@ body{
   text-decoration:none;
   font-weight:600;
 }
-.link:hover{
-  background:rgba(255,255,255,.25);
-}
 
-/* ===============================
-   VIDEO
-   =============================== */
+/* Video */
 .video-block{
   margin-top:18px;
   border-radius:18px;
@@ -138,22 +119,24 @@ body{
   border:none;
 }
 
-/* ===============================
-   SOCIAL
-   =============================== */
+/* Social Icons */
 .social{
   display:flex;
   justify-content:center;
-  gap:22px;
-  margin-top:42px;
-  font-size:18px;
+  gap:28px;
+  margin-top:44px;
 }
-.social a{
-  color:white;
-  text-decoration:none;
-  opacity:.85;
+.social svg{
+  width:26px;
+  height:26px;
+  fill:#ffffff;
+  opacity:.95;
+  transition:transform .2s ease, opacity .2s ease;
 }
-.social a:hover{opacity:1}
+.social a:hover svg{
+  transform:scale(1.12);
+  opacity:1;
+}
 </style>
 </head>
 
@@ -161,12 +144,14 @@ body{
 
 <div class="container">
 
+  <!-- Header -->
   <div class="profile">
     <img src="logo.png" alt="PT Len Industri">
-    <h1>@UAVPTLenIndustri</h1>
+    <h1>@PTLenIndustri</h1>
     <p>PT Len Industri (Persero)</p>
   </div>
 
+  <!-- Section 1 -->
   <div class="section">
     <div class="links">
       <a class="link" href="#">Menu A</a>
@@ -177,6 +162,7 @@ body{
     </div>
   </div>
 
+  <!-- Section 2 -->
   <div class="section">
     <div class="links">
       <a class="link" href="#">Menu C</a>
@@ -187,6 +173,7 @@ body{
     </div>
   </div>
 
+  <!-- Section 3 -->
   <div class="section">
     <div class="links">
       <a class="link" href="#">Menu E</a>
@@ -197,6 +184,7 @@ body{
     </div>
   </div>
 
+  <!-- Section 4 -->
   <div class="section">
     <div class="links">
       <a class="link" href="#">Menu G</a>
@@ -205,12 +193,27 @@ body{
     </div>
   </div>
 
+  <!-- Social Icons (SVG – same style as photo 1) -->
   <div class="social">
-    <a href="#">🌐</a>
-    <a href="#">📷</a>
-    <a href="#">✖</a>
-    <a href="#">▶</a>
-    <a href="#">✉</a>
+    <a href="https://facebook.com/PTLenIndustri" target="_blank" aria-label="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.4V12h2.4V9.7c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.3h-1.2c-1.2 0-1.5.8-1.5 1.5V12h2.6l-.4 2.9h-2.2v7A10 10 0 0 0 22 12z"/></svg>
+    </a>
+
+    <a href="https://instagram.com/PTLenIndustri" target="_blank" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm6-1.8a1.2 1.2 0 1 0 1.2 1.2A1.2 1.2 0 0 0 18 5.2z"/></svg>
+    </a>
+
+    <a href="https://x.com/PTLenIndustri" target="_blank" aria-label="X">
+      <svg viewBox="0 0 24 24"><path d="M18.5 2h3.1l-6.8 7.8L22.5 22h-6.1l-4.8-6-5.2 6H3.3l7.3-8.4L2 2h6.3l4.3 5.4L18.5 2z"/></svg>
+    </a>
+
+    <a href="https://youtube.com/@PTLenIndustri" target="_blank" aria-label="YouTube">
+      <svg viewBox="0 0 24 24"><path d="M23 12c0-2.1-.2-4.3-.5-5.5a3.2 3.2 0 0 0-2.3-2.3C18.6 3.8 12 3.8 12 3.8s-6.6 0-8.2.4A3.2 3.2 0 0 0 1.5 6.5C1.2 7.7 1 9.9 1 12s.2 4.3.5 5.5a3.2 3.2 0 0 0 2.3 2.3c1.6.4 8.2.4 8.2.4s6.6 0 8.2-.4a3.2 3.2 0 0 0 2.3-2.3c.3-1.2.5-3.4.5-5.5zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+    </a>
+
+    <a href="mailto:info@len.co.id" aria-label="Email">
+      <svg viewBox="0 0 24 24"><path d="M2 5h20v14H2V5zm10 7L3.5 6.5h17L12 12z"/></svg>
+    </a>
   </div>
 
 </div>
