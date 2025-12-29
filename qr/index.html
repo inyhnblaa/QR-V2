@@ -78,4 +78,92 @@ body{
   overflow:hidden;
   background:white;
 }
-.vid
+.video-block iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
+}
+
+/* SOCIAL */
+.social{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin-top:36px;
+  font-size:18px;
+}
+.social a{
+  color:white;
+  text-decoration:none;
+  opacity:.85;
+}
+.social a:hover{opacity:1}
+
+/* SCROLL SAFE */
+@media (max-height:700px){
+  body{align-items:flex-start;}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="profile">
+    <img src="logo.png" alt="PT Len Industri">
+    <h1>@PTLenIndustri</h1>
+    <p>PT Len Industri (Persero)</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="links">
+    <a class="link" href="https://www.len.co.id" target="_blank">🌐 Official Website</a>
+    <a class="link" href="company-profile.pdf" target="_blank">📄 Company Profile</a>
+  </div>
+
+  <div class="video-block">
+    <iframe
+      src="https://www.youtube.com/embed/Q6JyLjGvwSE?mute=1"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="links">
+    <a class="link" href="#">🚀 Products & Solutions</a>
+    <a class="link" href="#">🛠 Defense & Aerospace</a>
+  </div>
+
+  <div class="video-block">
+    <iframe
+      src="https://www.youtube.com/embed/Q6JyLjGvwSE?mute=1"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="links">
+    <a class="link" href="#">📰 News & Updates</a>
+    <a class="link" href="#">📊 Investor Relations</a>
+  </div>
+
+  <div class="video-block">
+    <iframe
+      src="https://www.youtube.com/embed/Q6JyLjGvwSE?mute=1"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="social">
+    <a href="https://www.len.co.id">🌐</a>
+    <a href="#">📷</a>
+    <a href="#">✖</a>
+    <a href="https://youtube.com">▶</a>
+    <a href="mailto:info@len.co.id">✉</a>
+  </div>
+
+</div>
+</body>
+</html>
