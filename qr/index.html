@@ -10,24 +10,57 @@
 <style>
 *{box-sizing:border-box}
 
+/* ===== BODY + BACKGROUND ===== */
 body{
   margin:0;
   min-height:100vh;
-  background:#8f0d0d;
   font-family:'Inter',sans-serif;
+
+  /* Default: PORTRAIT */
+  background:
+    linear-gradient(
+      rgba(143,13,13,0.85),
+      rgba(143,13,13,0.85)
+    ),
+    url("uav-ui-portrait.jpg");
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
   display:flex;
   justify-content:center;
   align-items:flex-start;
 }
 
+/* LANDSCAPE / DESKTOP */
+@media (orientation: landscape){
+  body{
+    background:
+      linear-gradient(
+        rgba(143,13,13,0.85),
+        rgba(143,13,13,0.85)
+      ),
+      url("uav-ui-landscape.jpg");
+    background-size:cover;
+    background-position:center;
+  }
+}
+
+/* ===== CONTAINER ===== */
 .container{
   width:100%;
   max-width:420px;
   padding:32px 20px 56px;
   color:white;
+
+  background:rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+  border-radius:20px;
+  margin-top:24px;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 .profile{
   text-align:center;
   margin-bottom:28px;
@@ -49,7 +82,7 @@ body{
   margin-top:6px;
 }
 
-/* MENU */
+/* ===== MENU ===== */
 .links{
   display:flex;
   flex-direction:column;
@@ -61,17 +94,17 @@ body{
   align-items:center;
   justify-content:center;
   border-radius:999px;
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.4);
   color:white;
   text-decoration:none;
   font-weight:600;
 }
 .link:hover{
-  background:rgba(255,255,255,.22);
+  background:rgba(255,255,255,.25);
 }
 
-/* VIDEO */
+/* ===== VIDEO ===== */
 .video-block{
   margin:20px 0 34px;
   border-radius:16px;
@@ -84,7 +117,7 @@ body{
   border:none;
 }
 
-/* SOCIAL */
+/* ===== SOCIAL ===== */
 .social{
   display:flex;
   justify-content:center;
