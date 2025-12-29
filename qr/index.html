@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>PT Len Industri</title>
+<title> UAV PT Len Industri</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
 *{box-sizing:border-box}
 
 /* ===============================
-   BODY – POSTER MODE (PORTRAIT)
+   BODY – BACKGROUND REPEAT MODE
    =============================== */
 body{
   margin:0;
@@ -20,50 +20,48 @@ body{
 
   background:
     linear-gradient(
-      rgba(143,13,13,0.90),
-      rgba(143,13,13,0.90)
+      rgba(143,13,13,0.92),
+      rgba(143,13,13,0.92)
     ),
     url("uav-ui-portrait.jpg");
 
-  background-repeat:no-repeat;
-  background-size:contain;          /* POSTER UTUH */
-  background-position:top center;
+  background-repeat: repeat-y;     /* ⬅ TERULANG SAAT SCROLL */
+  background-size: contain;
+  background-position: top center;
 
   display:flex;
   justify-content:center;
   align-items:flex-start;
 }
 
-/* ===============================
-   LANDSCAPE – POSTER MODE (STABIL)
-   =============================== */
+/* LANDSCAPE */
 @media (orientation: landscape){
   body{
     background:
       linear-gradient(
-        rgba(143,13,13,0.88),
-        rgba(143,13,13,0.88)
+        rgba(143,13,13,0.90),
+        rgba(143,13,13,0.90)
       ),
       url("uav-ui-landscape.jpg");
 
-    background-repeat:no-repeat;
-    background-size:contain;        /* JANGAN COVER */
-    background-position:center top;
+    background-repeat: repeat-y;   /* ⬅ TERULANG */
+    background-size: contain;
+    background-position: center top;
   }
 }
 
 /* ===============================
-   CONTAINER – SOLID (NO BLUR)
+   CONTAINER – STRUCTURED CARD
    =============================== */
 .container{
   width:100%;
   max-width:420px;
-  padding:32px 20px 56px;
-  margin-top:24px;
+  padding:28px 20px 60px;
+  margin:28px 0;
 
   color:white;
-  background:rgba(0,0,0,0.45);   /* SOLID, TAJAM */
-  border-radius:20px;
+  background:rgba(0,0,0,0.48);
+  border-radius:22px;
 }
 
 /* ===============================
@@ -71,13 +69,13 @@ body{
    =============================== */
 .profile{
   text-align:center;
-  margin-bottom:28px;
+  margin-bottom:26px;
 }
 .profile img{
-  width:92px;
-  height:92px;
+  width:90px;
+  height:90px;
   border-radius:50%;
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
 .profile h1{
   font-size:18px;
@@ -88,6 +86,13 @@ body{
   font-size:14px;
   opacity:.85;
   margin-top:6px;
+}
+
+/* ===============================
+   SECTION SPACING (BIAR RAPI)
+   =============================== */
+.section{
+  margin-bottom:36px;
 }
 
 /* ===============================
@@ -105,8 +110,8 @@ body{
   justify-content:center;
 
   border-radius:999px;
-  background:rgba(255,255,255,.14);
-  border:1px solid rgba(255,255,255,.4);
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.45);
 
   color:white;
   text-decoration:none;
@@ -120,8 +125,8 @@ body{
    VIDEO
    =============================== */
 .video-block{
-  margin:20px 0 34px;
-  border-radius:16px;
+  margin-top:18px;
+  border-radius:18px;
   overflow:hidden;
   background:black;
 }
@@ -137,7 +142,7 @@ body{
 .social{
   display:flex;
   justify-content:center;
-  gap:20px;
+  gap:22px;
   margin-top:40px;
   font-size:18px;
 }
@@ -156,51 +161,50 @@ body{
   <!-- HEADER -->
   <div class="profile">
     <img src="logo.png" alt="PT Len Industri">
-    <h1>@PTLenIndustri</h1>
+    <h1>@UAV PTLenIndustri</h1>
     <p>PT Len Industri (Persero)</p>
   </div>
 
   <!-- SECTION 1 -->
-  <div class="links">
-    <a class="link" href="#">Menu A</a>
-    <a class="link" href="#">Menu B</a>
-  </div>
-  <div class="video-block">
-    <iframe
-      src="https://www.youtube.com/embed/Q6JyLjGvwSE"
-      allowfullscreen>
-    </iframe>
+  <div class="section">
+    <div class="links">
+      <a class="link" href="#">Menu A</a>
+      <a class="link" href="#">Menu B</a>
+    </div>
+    <div class="video-block">
+      <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
+    </div>
   </div>
 
   <!-- SECTION 2 -->
-  <div class="links">
-    <a class="link" href="#">Menu C</a>
-    <a class="link" href="#">Menu D</a>
-  </div>
-  <div class="video-block">
-    <iframe
-      src="https://www.youtube.com/embed/JdqL89ZZwFw"
-      allowfullscreen>
-    </iframe>
+  <div class="section">
+    <div class="links">
+      <a class="link" href="#">Menu C</a>
+      <a class="link" href="#">Menu D</a>
+    </div>
+    <div class="video-block">
+      <iframe src="https://www.youtube.com/embed/JdqL89ZZwFw" allowfullscreen></iframe>
+    </div>
   </div>
 
   <!-- SECTION 3 -->
-  <div class="links">
-    <a class="link" href="#">Menu E</a>
-    <a class="link" href="#">Menu F</a>
-  </div>
-  <div class="video-block">
-    <iframe
-      src="https://www.youtube.com/embed/NdhbliYoGhY"
-      allowfullscreen>
-    </iframe>
+  <div class="section">
+    <div class="links">
+      <a class="link" href="#">Menu E</a>
+      <a class="link" href="#">Menu F</a>
+    </div>
+    <div class="video-block">
+      <iframe src="https://www.youtube.com/embed/NdhbliYoGhY" allowfullscreen></iframe>
+    </div>
   </div>
 
   <!-- SECTION 4 (NO VIDEO) -->
-  <div class="links">
-    <a class="link" href="#">Menu G</a>
-    <a class="link" href="#">Menu H</a>
-    <a class="link" href="#">Menu I</a>
+  <div class="section">
+    <div class="links">
+      <a class="link" href="#">Menu G</a>
+      <a class="link" href="#">Menu H</a>
+      <a class="link" href="#">Menu I</a>
+    </div>
   </div>
 
   <!-- SOCIAL -->
