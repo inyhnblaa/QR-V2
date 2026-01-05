@@ -2,97 +2,90 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>PT Len Industri | UAV Showcase</title>
+<title>Pusat Pengembangan UAV</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-/* FONT AMURO – KHUSUS AUTACS */
+/* ================= FONT AMURO (KHUSUS AUTACS) ================= */
 @font-face{
-  font-family: 'Amuro';
-  src: url('./fonts/Amuro%20Bold%20Italic.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
+  font-family:'Amuro';
+  src:url('./fonts/Amuro%20Bold%20Italic.otf') format('opentype');
 }
 
+/* ================= RESET & DEFAULT ================= */
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family:'Inter',sans-serif; /* DEFAULT */
+  font-family:'Inter',sans-serif; /* KUNCI DEFAULT */
+  color:white;
+
+  /* ===== BACKGROUND SESUAI PUNYA KAMU ===== */
   background-color:#7c0f0f;
   background-image:
-    linear-gradient(rgba(124,15,15,.92),rgba(124,15,15,.92)),
-    url("./uav-ui-portrait.jpg");
+    linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+    url("uav-ui-portrait.jpg");
   background-repeat:repeat-y;
   background-size:contain;
   background-position:top center;
-  color:white;
 }
 @media (orientation: landscape){
   body{
     background-image:
-      linear-gradient(rgba(124,15,15,.92),rgba(124,15,15,.92)),
-      url("./uav-ui-landscape.jpg");
+      linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+      url("uav-ui-landscape.jpg");
   }
 }
 
-.container{
+/* ================= PAGE & CARD ================= */
+.page{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:32px 16px;
+}
+.card{
+  width:100%;
   max-width:420px;
-  margin:32px auto;
-  padding:28px 20px 56px;
   background:rgba(0,0,0,.45);
   border-radius:22px;
+  padding:28px 20px 48px;
+  animation:slideIn .3s ease;
 }
 
-/* HEADER */
-.profile{
+/* ================= HEADER ================= */
+.header{
   text-align:center;
   margin-bottom:22px;
 }
-.profile img{
+.header img{
   width:88px;
-  height:88px;
   border-radius:50%;
   margin-bottom:10px;
 }
-.profile h1{
-  font-size:18px;
-  margin:0;
-  font-weight:600;
-}
-.profile p{
-  font-size:14px;
-  opacity:.9;
-  margin-top:6px;
-}
 
-/* POWERED BY */
-.powered{
-  font-size:14px;
-  margin-top:6px;
-  opacity:.9;
-}
-.powered span{
-  font-family:'Amuro',sans-serif; /* HANYA AUTACS */
+/* AUTACS SAJA PAKAI AMURO */
+.autacs{
+  font-family:'Amuro',sans-serif;
   color:#4da3ff;
   letter-spacing:1.5px;
 }
 
-/* VIDEO */
-.video-block{
+/* ================= VIDEO ================= */
+.video{
   border-radius:18px;
   overflow:hidden;
   background:black;
-  margin:22px 0 26px;
+  margin-bottom:22px;
 }
-.video-block iframe{
+.video iframe{
   width:100%;
   aspect-ratio:16/9;
   border:none;
 }
 
-/* MENU */
+/* ================= BUTTON ================= */
 .links{
   display:flex;
   flex-direction:column;
@@ -100,39 +93,58 @@ body{
 }
 .link{
   height:54px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   border-radius:999px;
   background:rgba(255,255,255,.14);
   border:1px solid rgba(255,255,255,.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
   color:white;
   text-decoration:none;
   font-weight:600;
+}
+
+/* ================= TRANSITION ================= */
+@keyframes slideIn{
+  from{transform:translateX(30px);opacity:0}
+  to{opacity:1}
+}
+.slide-left{animation:slideLeft .25s ease forwards}
+@keyframes slideLeft{
+  to{transform:translateX(-30px);opacity:0}
 }
 </style>
 </head>
 
 <body>
-<div class="container">
 
-  <div class="profile">
-    <img src="./logo.png" alt="PT Len Industri">
-    <h1>Pusat Pengembangan UAV</h1>
-    <p class="powered">powered by <span>AUTACS</span></p>
+<div class="page">
+<div class="card" id="card">
+
+  <div class="header">
+    <img src="./logo.png" alt="Logo">
+    <h3>Pusat Pengembangan UAV</h3>
+    <p>powered by <span class="autacs">AUTACS</span></p>
   </div>
 
-  <!-- VIDEO UTAMA -->
-  <div class="video-block">
+  <div class="video">
     <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
   </div>
 
-  <!-- MENU -->
   <div class="links">
-    <a class="link" href="./menu-a.html">Katalog Produk</a>
+    <a class="link" href="#" onclick="go('menu-a.html')">Katalog Produk</a>
     <a class="link" href="#">Video Dokumentasi</a>
   </div>
 
 </div>
+</div>
+
+<script>
+function go(url){
+  document.getElementById('card').classList.add('slide-left');
+  setTimeout(()=>location.href=url,240);
+}
+</script>
+
 </body>
 </html>
