@@ -5,6 +5,7 @@
 <title>Pusat Pengembangan UAV</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -16,6 +17,7 @@
 
 /* ================= RESET ================= */
 *{box-sizing:border-box}
+a{-webkit-tap-highlight-color:transparent}
 
 /* ================= BACKGROUND ================= */
 body{
@@ -25,10 +27,7 @@ body{
 
   background-color:#7c0f0f;
   background-image:
-    linear-gradient(
-      rgba(124,15,15,0.92),
-      rgba(124,15,15,0.92)
-    ),
+    linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
     url("uav-ui-portrait.jpg");
 
   background-repeat:repeat-y;
@@ -40,13 +39,8 @@ body{
 @media (orientation: landscape){
   body{
     background-image:
-      linear-gradient(
-        rgba(124,15,15,0.92),
-        rgba(124,15,15,0.92)
-      ),
+      linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
       url("uav-ui-landscape.jpg");
-    background-repeat:repeat-y;
-    background-size:contain;
   }
 }
 
@@ -60,44 +54,44 @@ body{
 .card{
   width:100%;
   max-width:420px;
-  background:rgba(0,0,0,.45);
+  background:rgba(0,0,0,.35);
   border-radius:22px;
-  padding:28px 20px 48px;
+  padding:32px 20px 48px;
+  color:white;
   animation:slideIn .3s ease;
 }
 
 /* ================= HEADER ================= */
 .header{
   text-align:center;
-  margin-bottom:22px;
+  margin-bottom:24px;
+  padding-top:12px; /* PRESISI */
 }
 
-/* ================= LOGO BULAT BG PUTIH ================= */
-/* INI YANG MEMBUAT logo.png TERLIHAT BULAT + PUTIH */
+/* LOGO BULAT BG PUTIH */
 .logo-wrap{
   width:96px;
   height:96px;
-  margin:0 auto 12px;
+  margin:0 auto 14px;
 
-  background:#ffffff;      /* BG PUTIH */
-  border-radius:50%;       /* BULAT */
+  background:#ffffff;
+  border-radius:50%;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
+  overflow:hidden; /* WAJIB */
   box-shadow:0 6px 18px rgba(0,0,0,.25);
 }
-
-/* LOGO ASLI TIDAK DIUBAH */
 .logo-wrap img{
-  max-width:65%;
-  max-height:65%;
+  width:70%;
+  height:70%;
   object-fit:contain;
   display:block;
 }
 
-/* ================= AUTACS ONLY ================= */
+/* AUTACS ONLY */
 .autacs{
   font-family:'Amuro',sans-serif;
   color:#4da3ff;
@@ -128,12 +122,20 @@ body{
   border-radius:999px;
   background:rgba(255,255,255,.14);
   border:1px solid rgba(255,255,255,.45);
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   color:white;
   text-decoration:none;
   font-weight:600;
+
+  -webkit-tap-highlight-color:transparent;
+}
+.link:active{
+  background:rgba(255,255,255,.18);
+  color:white;
 }
 
 /* ================= TRANSITION ================= */
@@ -153,35 +155,35 @@ body{
 <body>
 
 <div class="page">
-<div class="card" id="card">
+  <div class="card" id="card">
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="logo-wrap">
-      <!-- logo.png ASLI, TIDAK DIEDIT -->
-      <img src="./logo.png" alt="Logo">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="logo-wrap">
+        <img src="./logo.png" alt="Logo">
+      </div>
+      <h3>Pusat Pengembangan UAV</h3>
+      <p>Powered by <span class="autacs">AUTACS</span></p>
     </div>
-    <h3>Pusat Pengembangan UAV</h3>
-    <p>powered by <span class="autacs">AUTACS</span></p>
-  </div>
 
-  <!-- VIDEO -->
-  <div class="video">
-    <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
-  </div>
+    <!-- VIDEO -->
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
+    </div>
 
-  <!-- MENU -->
-  <div class="links">
-    <a class="link" href="#" onclick="go('menu-a.html')">Katalog Produk</a>
-    <a class="link" href="#">Video Dokumentasi</a>
-  </div>
+    <!-- MENU -->
+    <div class="links">
+      <a class="link" href="#" onclick="go('menu-a.html')">Katalog Produk</a>
+      <a class="link" href="#">Video Dokumentasi</a>
+    </div>
 
-</div>
+  </div>
 </div>
 
 <script>
 function go(url){
-  document.getElementById('card').classList.add('slide-left');
+  const card=document.getElementById('card');
+  card.classList.add('slide-left');
   setTimeout(()=>location.href=url,240);
 }
 </script>
