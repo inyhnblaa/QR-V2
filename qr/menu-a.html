@@ -9,33 +9,37 @@
 
 <style>
 *{box-sizing:border-box}
-html,body{margin:0}
 body{
+  margin:0;
   font-family:'Inter',sans-serif;
   background:#7c0f0f;
   color:white;
-  overflow-x:hidden;
 }
 
-/* ================= TOP BAR ================= */
-.top-bar{
-  position:sticky;
-  top:0;
-  z-index:100;
+/* ===== LINKTREE BACKGROUND ===== */
+.page{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:32px 16px;
+}
 
+/* ===== MAIN CARD (SAMA SEPERTI HOME) ===== */
+.card{
+  width:100%;
+  max-width:420px;
+  background:rgba(0,0,0,.45);
+  border-radius:22px;
+  padding:20px 18px 32px;
+}
+
+/* ===== TOP BAR DI DALAM CARD ===== */
+.top-bar{
   display:flex;
   align-items:center;
-  gap:14px;
-
-  padding:14px 16px;
-  background:rgba(0,0,0,.6);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(255,255,255,.25);
-
-  transition:padding .25s ease;
-}
-.top-bar.shrink{
-  padding:8px 16px;
+  gap:12px;
+  margin-bottom:16px;
 }
 
 /* BACK BUTTON */
@@ -44,34 +48,24 @@ body{
   align-items:center;
   gap:8px;
   padding:8px 14px;
-
   border-radius:999px;
   background:rgba(255,255,255,.14);
   border:1px solid rgba(255,255,255,.45);
-
   color:white;
   text-decoration:none;
   font-weight:600;
+  font-size:14px;
 }
 .back-btn svg{
-  width:18px;
-  height:18px;
+  width:16px;
+  height:16px;
   stroke:white;
 }
 
 /* BREADCRUMB */
 .breadcrumb{
   font-size:13px;
-  opacity:.85;
-  display:flex;
-  align-items:center;
-  gap:6px;
-
-  transition:opacity .25s ease, transform .25s ease;
-}
-.breadcrumb.hide{
-  opacity:0;
-  transform:translateY(-6px);
+  opacity:.75;
 }
 .breadcrumb a{
   color:white;
@@ -82,27 +76,19 @@ body{
   opacity:.5;
 }
 
-/* ================= PAGE ================= */
-.page{
-  max-width:420px;
-  margin:0 auto;
-  padding:20px 16px 56px;
-  animation:slideIn .35s ease;
-}
-
-/* HERO IMAGE */
+/* ===== IMAGE ===== */
 .image-block{
   border-radius:18px;
   overflow:hidden;
-  margin-bottom:26px;
   background:#fff;
+  margin-bottom:22px;
 }
 .image-block img{
   width:100%;
   display:block;
 }
 
-/* MENU */
+/* ===== BUTTONS ===== */
 .links{
   display:flex;
   flex-direction:column;
@@ -120,92 +106,46 @@ body{
   text-decoration:none;
   font-weight:600;
 }
-
-/* ================= ANIMATIONS ================= */
-@keyframes slideIn{
-  from{transform:translateX(40px);opacity:0}
-  to{transform:none;opacity:1}
-}
-.slide-left{
-  animation:slideLeft .3s ease forwards;
-}
-.slide-right{
-  animation:slideRight .3s ease forwards;
-}
-@keyframes slideLeft{
-  to{transform:translateX(-40px);opacity:0}
-}
-@keyframes slideRight{
-  to{transform:translateX(40px);opacity:0}
-}
 </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-<div class="top-bar" id="topBar">
-  <a href="./index.html" class="back-btn" onclick="goBack(event)">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-      <path d="M15 18l-6-6 6-6"/>
-    </svg>
-    Kembali
-  </a>
+<div class="page">
 
-  <div class="breadcrumb" id="breadcrumb">
-    <a href="./index.html" onclick="goHome(event)">Home</a>
-    <span>›</span>
-    <span>Katalog</span>
+  <div class="card">
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <a href="./index.html" class="back-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+        Kembali
+      </a>
+
+      <div class="breadcrumb">
+        <a href="./index.html">Home</a>
+        <span> › </span>
+        <span>Katalog</span>
+      </div>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="image-block">
+      <img src="./produk-a.jpg" alt="Katalog UAV">
+    </div>
+
+    <!-- MENU -->
+    <div class="links">
+      <a class="link" href="#">Produk A</a>
+      <a class="link" href="#">Produk B</a>
+      <a class="link" href="#">Produk C</a>
+    </div>
+
   </div>
+
 </div>
-
-<!-- PAGE CONTENT -->
-<div class="page" id="page">
-
-  <div class="image-block">
-    <img src="./produk-a.jpg" alt="Katalog UAV">
-  </div>
-
-  <div class="links">
-    <a class="link" href="#">Produk A</a>
-    <a class="link" href="#">Produk B</a>
-    <a class="link" href="#">Produk C</a>
-  </div>
-
-</div>
-
-<script>
-const topBar = document.getElementById('topBar');
-const breadcrumb = document.getElementById('breadcrumb');
-const page = document.getElementById('page');
-
-let lastScroll = 0;
-
-window.addEventListener('scroll',()=>{
-  const y = window.scrollY;
-
-  // Shrink top bar
-  if(y > 20){
-    topBar.classList.add('shrink');
-    breadcrumb.classList.add('hide');
-  }else{
-    topBar.classList.remove('shrink');
-    breadcrumb.classList.remove('hide');
-  }
-});
-
-/* NAVIGATION TRANSITIONS */
-function goBack(e){
-  e.preventDefault();
-  page.classList.add('slide-right');
-  setTimeout(()=>location.href='./index.html',280);
-}
-function goHome(e){
-  e.preventDefault();
-  page.classList.add('slide-left');
-  setTimeout(()=>location.href='./index.html',280);
-}
-</script>
 
 </body>
 </html>
