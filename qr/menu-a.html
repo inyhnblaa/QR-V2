@@ -2,78 +2,45 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Menu A | PT Len Industri</title>
+<title>Katalog Produk | PT Len Industri</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
-/* BACKGROUND */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
-  background-color:#7c0f0f;
-  background-image:
-    linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
-    url("./uav-ui-portrait.jpg");
-  background-repeat:repeat-y;
-  background-size:contain;
-  background-position:top center;
+  background:#7c0f0f;
   color:white;
 }
-@media (orientation: landscape){
-  body{
-    background-image:
-      linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
-      url("./uav-ui-landscape.jpg");
-  }
-}
 
-/* CONTAINER */
 .container{
   max-width:420px;
   margin:32px auto;
   padding:28px 20px 56px;
-  background:rgba(0,0,0,0.45);
+  background:rgba(0,0,0,.45);
   border-radius:22px;
 }
 
-/* HEADER */
-.profile{
-  text-align:center;
-  margin-bottom:22px;
-}
-.profile img{
-  width:88px;
-  height:88px;
-  border-radius:50%;
-  margin-bottom:10px;
-}
-.profile h1{
-  font-size:18px;
-  margin:0;
-  font-weight:600;
-}
-.profile p{
-  font-size:14px;
+.back{
+  display:inline-block;
+  margin-bottom:16px;
+  color:white;
+  text-decoration:none;
   opacity:.85;
-  margin-top:6px;
 }
 
-/* VIDEO */
-.video-block{
+/* IMAGE */
+.image-block{
   border-radius:18px;
   overflow:hidden;
-  background:black;
   margin-bottom:26px;
 }
-.video-block iframe{
+.image-block img{
   width:100%;
-  aspect-ratio:16/9;
-  border:none;
+  display:block;
 }
 
 /* MENU */
@@ -94,45 +61,24 @@ body{
   text-decoration:none;
   font-weight:600;
 }
-
-/* BACK BUTTON */
-.back{
-  display:inline-block;
-  margin-bottom:16px;
-  color:white;
-  text-decoration:none;
-  opacity:.85;
-}
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
-  <!-- BACK -->
-  <a class="back" href="./index.html">← Kembali</a>
+<a class="back" href="./index.html">← Kembali</a>
 
-  <!-- HEADER -->
-  <div class="profile">
-    <img src="./logo.png" alt="PT Len Industri">
-    <h1>@PTLenIndustri</h1>
-    <p>PT Len Industri (Persero)</p>
-  </div>
-
-  <!-- VIDEO UTAMA MENU A -->
-  <div class="video-block">
-    <iframe src="https://www.youtube.com/embed/LCfEqudu4pc"allowfullscreen></iframe>
-  </div>
-
-  <!-- PRODUK MENU -->
-  <div class="links">
-    <a class="link" href="./produk-a.html">Produk A</a>
-    <a class="link" href="./produk-b.html">Produk B</a>
-    <a class="link" href="#">Produk C</a>
-  </div>
-
+<div class="image-block">
+  <img src="./produk-a.jpg" alt="Produk UAV">
 </div>
 
+<div class="links">
+  <a class="link" href="#">Produk A</a>
+  <a class="link" href="#">Produk B</a>
+  <a class="link" href="#">Produk C</a>
+</div>
+
+</div>
 </body>
 </html>
