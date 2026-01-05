@@ -1,1 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Menu A | PT Len Industri</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,sans-serif;
+  background:#7c0f0f;
+  color:white;
+}
+.container{
+  max-width:420px;
+  margin:24px auto;
+  padding:20px;
+}
+.back{
+  display:inline-block;
+  margin-bottom:16px;
+  color:white;
+  text-decoration:none;
+  opacity:.85;
+}
+h2{margin:0 0 16px}
+
+.accordion{
+  border-radius:18px;
+  overflow:hidden;
+  margin-bottom:16px;
+  border:1px solid rgba(255,255,255,.3);
+}
+.accordion button{
+  width:100%;
+  padding:16px;
+  background:rgba(255,255,255,.15);
+  border:none;
+  color:white;
+  font-weight:600;
+  text-align:left;
+  cursor:pointer;
+}
+.panel{
+  display:none;
+  background:black;
+}
+.panel iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<a class="back" href="./index.html">← Kembali</a>
+<h2>Menu A</h2>
+
+<!-- ITEM 1 -->
+<div class="accordion">
+  <button onclick="toggle(this)">Aerobait – Strategic UAV</button>
+  <div class="panel">
+    <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- ITEM 2 -->
+<div class="accordion">
+  <button onclick="toggle(this)">ISR Drone System</button>
+  <div class="panel">
+    <iframe src="https://www.youtube.com/embed/JdqL89ZZwFw" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- ITEM 3 -->
+<div class="accordion">
+  <button onclick="toggle(this)">Surveillance Platform</button>
+  <div class="panel">
+    <iframe src="https://www.youtube.com/embed/NdhbliYoGhY" allowfullscreen></iframe>
+  </div>
+</div>
+
+</div>
+
+<script>
+function toggle(btn){
+  const panel = btn.nextElementSibling;
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
 
