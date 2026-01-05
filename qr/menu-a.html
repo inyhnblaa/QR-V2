@@ -9,17 +9,93 @@
 
 <style>
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+/* BACKGROUND */
 body{
   margin:0;
-  font-family:Inter,sans-serif;
-  background:#7c0f0f;
+  font-family:'Inter',sans-serif;
+  background-color:#7c0f0f;
+  background-image:
+    linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+    url("./uav-ui-portrait.jpg");
+  background-repeat:repeat-y;
+  background-size:contain;
+  background-position:top center;
   color:white;
 }
+@media (orientation: landscape){
+  body{
+    background-image:
+      linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+      url("./uav-ui-landscape.jpg");
+  }
+}
+
+/* CONTAINER */
 .container{
   max-width:420px;
-  margin:24px auto;
-  padding:20px;
+  margin:32px auto;
+  padding:28px 20px 56px;
+  background:rgba(0,0,0,0.45);
+  border-radius:22px;
 }
+
+/* HEADER */
+.profile{
+  text-align:center;
+  margin-bottom:22px;
+}
+.profile img{
+  width:88px;
+  height:88px;
+  border-radius:50%;
+  margin-bottom:10px;
+}
+.profile h1{
+  font-size:18px;
+  margin:0;
+  font-weight:600;
+}
+.profile p{
+  font-size:14px;
+  opacity:.85;
+  margin-top:6px;
+}
+
+/* VIDEO */
+.video-block{
+  border-radius:18px;
+  overflow:hidden;
+  background:black;
+  margin-bottom:26px;
+}
+.video-block iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
+}
+
+/* MENU */
+.links{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.link{
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.45);
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* BACK BUTTON */
 .back{
   display:inline-block;
   margin-bottom:16px;
@@ -27,75 +103,36 @@ body{
   text-decoration:none;
   opacity:.85;
 }
-h2{margin:0 0 16px}
-
-.accordion{
-  border-radius:18px;
-  overflow:hidden;
-  margin-bottom:16px;
-  border:1px solid rgba(255,255,255,.3);
-}
-.accordion button{
-  width:100%;
-  padding:16px;
-  background:rgba(255,255,255,.15);
-  border:none;
-  color:white;
-  font-weight:600;
-  text-align:left;
-  cursor:pointer;
-}
-.panel{
-  display:none;
-  background:black;
-}
-.panel iframe{
-  width:100%;
-  aspect-ratio:16/9;
-  border:none;
-}
 </style>
 </head>
 
 <body>
+
 <div class="container">
 
-<a class="back" href="./index.html">← Kembali</a>
-<h2>Menu A</h2>
+  <!-- BACK -->
+  <a class="back" href="./index.html">← Kembali</a>
 
-<!-- ITEM 1 -->
-<div class="accordion">
-  <button onclick="toggle(this)">Aerobait – Strategic UAV</button>
-  <div class="panel">
+  <!-- HEADER -->
+  <div class="profile">
+    <img src="./logo.png" alt="PT Len Industri">
+    <h1>@PTLenIndustri</h1>
+    <p>PT Len Industri (Persero)</p>
+  </div>
+
+  <!-- VIDEO UTAMA MENU A -->
+  <div class="video-block">
     <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
   </div>
-</div>
 
-<!-- ITEM 2 -->
-<div class="accordion">
-  <button onclick="toggle(this)">ISR Drone System</button>
-  <div class="panel">
-    <iframe src="https://www.youtube.com/embed/JdqL89ZZwFw" allowfullscreen></iframe>
+  <!-- PRODUK MENU -->
+  <div class="links">
+    <a class="link" href="./produk-a.html">Produk A</a>
+    <a class="link" href="./produk-b.html">Produk B</a>
+    <a class="link" href="#">Produk C</a>
   </div>
-</div>
-
-<!-- ITEM 3 -->
-<div class="accordion">
-  <button onclick="toggle(this)">Surveillance Platform</button>
-  <div class="panel">
-    <iframe src="https://www.youtube.com/embed/NdhbliYoGhY" allowfullscreen></iframe>
-  </div>
-</div>
 
 </div>
-
-<script>
-function toggle(btn){
-  const panel = btn.nextElementSibling;
-  panel.style.display = panel.style.display === "block" ? "none" : "block";
-}
-</script>
 
 </body>
 </html>
-
