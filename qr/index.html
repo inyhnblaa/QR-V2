@@ -19,10 +19,11 @@
 *{box-sizing:border-box}
 a{-webkit-tap-highlight-color:transparent}
 
-/* ================= BACKGROUND ================= */
+/* ================= BACKGROUND FULL FIT ================= */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
+  color:white;
 
   background-color:#7c0f0f;
   background-image:
@@ -32,9 +33,10 @@ body{
     ),
     url("uav-ui-portrait.jpg");
 
-  background-repeat:repeat-y;
-  background-size:contain;
-  background-position:top center;
+  background-repeat:no-repeat;
+  background-size:cover;        /* 🔑 FULL FIT */
+  background-position:center;   /* 🔑 TENGAH */
+  background-attachment:fixed;  /* OPSIONAL: lebih solid */
 }
 
 /* Landscape */
@@ -46,8 +48,10 @@ body{
         rgba(124,15,15,0.92)
       ),
       url("uav-ui-landscape.jpg");
-    background-repeat:repeat-y;
-    background-size:contain;
+
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
   }
 }
 
