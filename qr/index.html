@@ -23,6 +23,7 @@ a{-webkit-tap-highlight-color:transparent}
 body{
   margin:0;
   font-family:'Inter',sans-serif;
+  color:white;
 
   background-color:#7c0f0f;
   background-image:
@@ -46,11 +47,8 @@ body{
         rgba(124,15,15,0.92)
       ),
       url("uav-ui-landscape.jpg");
-    background-repeat:repeat-y;
-    background-size:contain;
   }
 }
-
 
 /* ================= PAGE & CARD ================= */
 .page{
@@ -76,16 +74,16 @@ body{
   padding-top:12px;
 }
 
-/* ================= LOGO BULAT LANGSUNG ================= */
+/* ================= LOGO CIRCLE (FIX JPG NON-KOTAK) ================= */
 .logo-circle{
   width:96px;
   height:96px;
 
-  border-radius:50%;        /* JADI BULAT */
-  background:#ffffff;       /* BG PUTIH */
+  border-radius:50%;
+  background:#ffffff;
 
-  object-fit:contain;
-  padding:14px;             /* JARAK LOGO KE TEPI */
+  object-fit:cover;       /* 🔑 KUNCI UTAMA */
+  object-position:center;
 
   display:block;
   margin:0 auto 14px;
@@ -161,11 +159,11 @@ body{
 
     <!-- HEADER -->
     <div class="header">
-      <div class="logo-wrap">
-        <img src="./logo.jpg" alt="Logo">
-      </div>
+      <!-- LOGO.JPG BULAT -->
+      <img src="./logo.jpg" alt="Logo" class="logo-circle">
+
       <h3>Pusat Pengembangan UAV</h3>
-      <p>Powered by <span class="autacs">AUTACS</span></p>
+      <p>powered by <span class="autacs">AUTACS</span></p>
     </div>
 
     <!-- VIDEO -->
