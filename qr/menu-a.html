@@ -5,26 +5,23 @@
 <title>Katalog Produk</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-@font-face{
-  font-family:'Amuro';
-  src:url('./fonts/Amuro%20Bold%20Italic.otf') format('opentype');
-}
-
+/* ================= RESET ================= */
 *{box-sizing:border-box}
-/* ================= BACKGROUND ================= */
+a{-webkit-tap-highlight-color:transparent}
+
+/* ================= BACKGROUND (SAMA DENGAN HOME) ================= */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
+  color:white;
 
   background-color:#7c0f0f;
   background-image:
-    linear-gradient(
-      rgba(124,15,15,0.92),
-      rgba(124,15,15,0.92)
-    ),
+    linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
     url("uav-ui-portrait.jpg");
 
   background-repeat:repeat-y;
@@ -36,15 +33,12 @@ body{
 @media (orientation: landscape){
   body{
     background-image:
-      linear-gradient(
-        rgba(124,15,15,0.92),
-        rgba(124,15,15,0.92)
-      ),
+      linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
       url("uav-ui-landscape.jpg");
-    background-repeat:repeat-y;
-    background-size:contain;
   }
 }
+
+/* ================= PAGE & CARD ================= */
 .page{
   min-height:100vh;
   display:flex;
@@ -54,35 +48,61 @@ body{
 .card{
   width:100%;
   max-width:420px;
-  background:rgba(0,0,0,.45);
+  background:rgba(0,0,0,.35);
   border-radius:22px;
-  padding:20px 18px 32px;
+  padding:24px 18px 36px;
+  color:white;
   animation:slideIn .3s ease;
 }
 
-/* TOP BAR DALAM CARD */
+/* ================= TOP BAR ================= */
 .top-bar{
   display:flex;
   align-items:center;
   gap:12px;
   margin-bottom:16px;
 }
-.back{
+
+/* BACK BUTTON */
+.back-btn{
   padding:8px 14px;
   border-radius:999px;
   background:rgba(255,255,255,.14);
   border:1px solid rgba(255,255,255,.45);
+
   color:white;
   text-decoration:none;
   font-weight:600;
   font-size:14px;
+
+  display:flex;
+  align-items:center;
+  gap:6px;
+
+  -webkit-tap-highlight-color:transparent;
 }
-.breadcrumb{
-  font-size:13px;
-  opacity:.7;
+.back-btn:active{
+  background:rgba(255,255,255,.18);
 }
 
-/* IMAGE */
+/* BREADCRUMB */
+.breadcrumb{
+  font-size:13px;
+  opacity:.85;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.breadcrumb a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+}
+.breadcrumb a:active{
+  opacity:.6;
+}
+
+/* ================= IMAGE ================= */
 .media{
   border-radius:18px;
   overflow:hidden;
@@ -94,7 +114,7 @@ body{
   display:block;
 }
 
-/* BUTTON */
+/* ================= BUTTON ================= */
 .links{
   display:flex;
   flex-direction:column;
@@ -105,20 +125,30 @@ body{
   border-radius:999px;
   background:rgba(255,255,255,.14);
   border:1px solid rgba(255,255,255,.45);
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   color:white;
   text-decoration:none;
   font-weight:600;
+
+  -webkit-tap-highlight-color:transparent;
+}
+.link:active{
+  background:rgba(255,255,255,.18);
+  color:white;
 }
 
-/* TRANSITION */
+/* ================= TRANSITION ================= */
 @keyframes slideIn{
   from{transform:translateX(30px);opacity:0}
   to{opacity:1}
 }
-.slide-right{animation:slideRight .25s ease forwards}
+.slide-right{
+  animation:slideRight .25s ease forwards;
+}
 @keyframes slideRight{
   to{transform:translateX(30px);opacity:0}
 }
@@ -128,29 +158,39 @@ body{
 <body>
 
 <div class="page">
-<div class="card" id="card">
+  <div class="card" id="card">
 
-  <div class="top-bar">
-    <a href="#" class="back" onclick="back()">← Kembali</a>
-    <div class="breadcrumb">Home › Katalog Produk</div>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <a href="#" class="back-btn" onclick="back()">
+        ← Kembali
+      </a>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span>Katalog Produk</span>
+      </div>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="media">
+      <img src="./produk-a.jpg" alt="Katalog Produk UAV">
+    </div>
+
+    <!-- MENU -->
+    <div class="links">
+      <a class="link" href="#">Produk A</a>
+      <a class="link" href="#">Produk B</a>
+      <a class="link" href="#">Produk C</a>
+    </div>
+
   </div>
-
-  <div class="media">
-    <img src="./produk-a.jpg" alt="Katalog UAV">
-  </div>
-
-  <div class="links">
-    <a class="link" href="#">Produk A</a>
-    <a class="link" href="#">Produk B</a>
-    <a class="link" href="#">Produk C</a>
-  </div>
-
-</div>
 </div>
 
 <script>
 function back(){
-  document.getElementById('card').classList.add('slide-right');
+  const card=document.getElementById('card');
+  card.classList.add('slide-right');
   setTimeout(()=>location.href='index.html',240);
 }
 </script>
