@@ -16,27 +16,38 @@
 
 /* ================= RESET & DEFAULT ================= */
 *{box-sizing:border-box}
+/* ================= BACKGROUND ================= */
 body{
   margin:0;
-  font-family:'Inter',sans-serif; /* KUNCI DEFAULT */
-  color:white;
+  font-family:'Inter',sans-serif;
 
-  /* ===== BACKGROUND SESUAI PUNYA KAMU ===== */
   background-color:#7c0f0f;
   background-image:
-    linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+    linear-gradient(
+      rgba(124,15,15,0.92),
+      rgba(124,15,15,0.92)
+    ),
     url("uav-ui-portrait.jpg");
+
   background-repeat:repeat-y;
   background-size:contain;
   background-position:top center;
 }
+
+/* Landscape */
 @media (orientation: landscape){
   body{
     background-image:
-      linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+      linear-gradient(
+        rgba(124,15,15,0.92),
+        rgba(124,15,15,0.92)
+      ),
       url("uav-ui-landscape.jpg");
+    background-repeat:repeat-y;
+    background-size:contain;
   }
 }
+
 
 /* ================= PAGE & CARD ================= */
 .page{
