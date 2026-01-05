@@ -23,11 +23,13 @@ a{-webkit-tap-highlight-color:transparent}
 body{
   margin:0;
   font-family:'Inter',sans-serif;
-  color:white;
 
   background-color:#7c0f0f;
   background-image:
-    linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+    linear-gradient(
+      rgba(124,15,15,0.92),
+      rgba(124,15,15,0.92)
+    ),
     url("uav-ui-portrait.jpg");
 
   background-repeat:repeat-y;
@@ -39,10 +41,16 @@ body{
 @media (orientation: landscape){
   body{
     background-image:
-      linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+      linear-gradient(
+        rgba(124,15,15,0.92),
+        rgba(124,15,15,0.92)
+      ),
       url("uav-ui-landscape.jpg");
+    background-repeat:repeat-y;
+    background-size:contain;
   }
 }
+
 
 /* ================= PAGE & CARD ================= */
 .page{
@@ -65,33 +73,27 @@ body{
 .header{
   text-align:center;
   margin-bottom:24px;
-  padding-top:12px; /* PRESISI */
+  padding-top:12px;
 }
 
-/* LOGO BULAT BG PUTIH */
-.logo-wrap{
+/* ================= LOGO BULAT LANGSUNG ================= */
+.logo-circle{
   width:96px;
   height:96px;
+
+  border-radius:50%;        /* JADI BULAT */
+  background:#ffffff;       /* BG PUTIH */
+
+  object-fit:contain;
+  padding:14px;             /* JARAK LOGO KE TEPI */
+
+  display:block;
   margin:0 auto 14px;
 
-  background:#ffffff;
-  border-radius:50%;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  overflow:hidden; /* WAJIB */
   box-shadow:0 6px 18px rgba(0,0,0,.25);
 }
-.logo-wrap img{
-  width:70%;
-  height:70%;
-  object-fit:contain;
-  display:block;
-}
 
-/* AUTACS ONLY */
+/* ================= AUTACS ONLY ================= */
 .autacs{
   font-family:'Amuro',sans-serif;
   color:#4da3ff;
