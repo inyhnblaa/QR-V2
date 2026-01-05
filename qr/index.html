@@ -14,12 +14,14 @@
   src:url('./fonts/Amuro%20Bold%20Italic.otf') format('opentype');
 }
 
-/* ================= RESET & DEFAULT ================= */
+/* ================= RESET ================= */
 *{box-sizing:border-box}
+
 /* ================= BACKGROUND ================= */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
+  color:white;
 
   background-color:#7c0f0f;
   background-image:
@@ -48,7 +50,6 @@ body{
   }
 }
 
-
 /* ================= PAGE & CARD ================= */
 .page{
   min-height:100vh;
@@ -70,13 +71,33 @@ body{
   text-align:center;
   margin-bottom:22px;
 }
-.header img{
-  width:88px;
-  border-radius:50%;
-  margin-bottom:10px;
+
+/* ================= LOGO BULAT BG PUTIH ================= */
+/* INI YANG MEMBUAT logo.png TERLIHAT BULAT + PUTIH */
+.logo-wrap{
+  width:96px;
+  height:96px;
+  margin:0 auto 12px;
+
+  background:#ffffff;      /* BG PUTIH */
+  border-radius:50%;       /* BULAT */
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
 }
 
-/* AUTACS SAJA PAKAI AMURO */
+/* LOGO ASLI TIDAK DIUBAH */
+.logo-wrap img{
+  max-width:65%;
+  max-height:65%;
+  object-fit:contain;
+  display:block;
+}
+
+/* ================= AUTACS ONLY ================= */
 .autacs{
   font-family:'Amuro',sans-serif;
   color:#4da3ff;
@@ -120,7 +141,9 @@ body{
   from{transform:translateX(30px);opacity:0}
   to{opacity:1}
 }
-.slide-left{animation:slideLeft .25s ease forwards}
+.slide-left{
+  animation:slideLeft .25s ease forwards;
+}
 @keyframes slideLeft{
   to{transform:translateX(-30px);opacity:0}
 }
@@ -132,16 +155,22 @@ body{
 <div class="page">
 <div class="card" id="card">
 
+  <!-- HEADER -->
   <div class="header">
-    <img src="./logo.png" alt="Logo">
+    <div class="logo-wrap">
+      <!-- logo.png ASLI, TIDAK DIEDIT -->
+      <img src="./logo.png" alt="Logo">
+    </div>
     <h3>Pusat Pengembangan UAV</h3>
     <p>powered by <span class="autacs">AUTACS</span></p>
   </div>
 
+  <!-- VIDEO -->
   <div class="video">
-    <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/LCfEqudu4pc" allowfullscreen></iframe>
   </div>
 
+  <!-- MENU -->
   <div class="links">
     <a class="link" href="#" onclick="go('menu-a.html')">Katalog Produk</a>
     <a class="link" href="#">Video Dokumentasi</a>
