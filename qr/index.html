@@ -9,106 +9,42 @@
 
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
-/* ================= BACKGROUND ================= */
 body{
   margin:0;
-  font-family:'Inter',sans-serif;
-
+  font-family:Inter,sans-serif;
   background-color:#7c0f0f;
   background-image:
-    linear-gradient(
-      rgba(124,15,15,0.92),
-      rgba(124,15,15,0.92)
-    ),
-    url("uav-ui-portrait.jpg");
-
+    linear-gradient(rgba(124,15,15,.92),rgba(124,15,15,.92)),
+    url("./uav-ui-portrait.jpg");
   background-repeat:repeat-y;
   background-size:contain;
   background-position:top center;
+  color:white;
 }
-
-/* Landscape */
 @media (orientation: landscape){
   body{
     background-image:
-      linear-gradient(
-        rgba(124,15,15,0.92),
-        rgba(124,15,15,0.92)
-      ),
-      url("uav-ui-landscape.jpg");
-    background-repeat:repeat-y;
-    background-size:contain;
+      linear-gradient(rgba(124,15,15,.92),rgba(124,15,15,.92)),
+      url("./uav-ui-landscape.jpg");
   }
 }
-
-/* ================= CONTAINER ================= */
 .container{
-  width:100%;
   max-width:420px;
   margin:32px auto;
-  padding:28px 20px 56px;
-
-  background:rgba(0,0,0,0.45);
-  color:white;
+  padding:24px 20px 48px;
+  background:rgba(0,0,0,.45);
   border-radius:22px;
 }
+.profile{text-align:center;margin-bottom:24px}
+.profile img{width:88px;height:88px;border-radius:50%;margin-bottom:10px}
+.profile h1{margin:0;font-size:18px}
+.profile p{opacity:.85;margin-top:6px}
 
-/* ================= HEADER ================= */
-.profile{
-  text-align:center;
-  margin-bottom:28px;
-}
-.profile img{
-  width:88px;
-  height:88px;
-  border-radius:50%;
-  margin-bottom:10px;
-}
-.profile h1{
-  font-size:18px;
-  margin:0;
-  font-weight:600;
-}
-.profile p{
-  font-size:14px;
-  opacity:.85;
-  margin-top:6px;
-}
-
-/* ================= SECTION ================= */
-.section{
-  margin-bottom:38px;
-}
-
-/* ================= MENU ================= */
-.links{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-.link{
-  height:54px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:999px;
-  background:rgba(255,255,255,.14);
-  border:1px solid rgba(255,255,255,.45);
-
-  color:white;
-  text-decoration:none;
-  font-weight:600;
-}
-
-/* ================= VIDEO ================= */
 .video-block{
-  margin-top:18px;
   border-radius:18px;
   overflow:hidden;
   background:black;
+  margin-bottom:24px;
 }
 .video-block iframe{
   width:100%;
@@ -116,129 +52,43 @@ body{
   border:none;
 }
 
-/* ================= SOCIAL ICONS ================= */
-.social{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:30px;
-  margin-top:46px;
-}
-
-.social a{
-  width:36px;
-  height:36px;
+.links{display:flex;flex-direction:column;gap:14px}
+.link{
+  height:54px;
   display:flex;
   align-items:center;
   justify-content:center;
-}
-
-.social svg{
-  width:26px;
-  height:26px;
-  fill:#ffffff;
-  opacity:.95;
-}
-
-/* Optical correction khusus logo X */
-.social a[aria-label="X"] svg{
-  width:24px;
+  border-radius:999px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.45);
+  color:white;
+  text-decoration:none;
+  font-weight:600;
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
   <!-- HEADER -->
   <div class="profile">
-    <img src="logo.png" alt="PT Len Industri">
+    <img src="./logo.png" alt="PT Len Industri">
     <h1>@PTLenIndustri</h1>
     <p>PT Len Industri (Persero)</p>
   </div>
 
-  <!-- SECTION 1 -->
-  <div class="section">
-    <div class="links">
-      <a class="link" href="#">Menu A</a>
-      <a class="link" href="#">Menu B</a>
-    </div>
-    <div class="video-block">
-      <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
-    </div>
+  <!-- VIDEO UTAMA -->
+  <div class="video-block">
+    <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
   </div>
 
-  <!-- SECTION 2 -->
-  <div class="section">
-    <div class="links">
-      <a class="link" href="#">Menu C</a>
-      <a class="link" href="#">Menu D</a>
-    </div>
-    <div class="video-block">
-      <iframe src="https://www.youtube.com/embed/JdqL89ZZwFw" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <!-- SECTION 3 -->
-  <div class="section">
-    <div class="links">
-      <a class="link" href="#">Menu E</a>
-      <a class="link" href="#">Menu F</a>
-    </div>
-    <div class="video-block">
-      <iframe src="https://www.youtube.com/embed/NdhbliYoGhY" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <!-- SECTION 4 -->
-  <div class="section">
-    <div class="links">
-      <a class="link" href="#">Menu G</a>
-      <a class="link" href="#">Menu H</a>
-      <a class="link" href="#">Menu I</a>
-    </div>
-  </div>
-
-  <!-- SOCIAL ICONS (FINAL) -->
-  <div class="social">
-
-    <!-- Facebook -->
-    <a href="https://facebook.com/PTLenIndustri" target="_blank" aria-label="Facebook">
-      <svg viewBox="0 0 24 24">
-        <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8.1V12h2.4V9.7c0-2.3 1.4-3.6 3.5-3.6 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.4.7-1.4 1.4V12h2.4l-.4 2.9h-2v7A10 10 0 0 0 22 12z"/>
-      </svg>
-    </a>
-
-    <!-- Instagram -->
-    <a href="https://instagram.com/lenindustri" target="_blank" aria-label="Instagram">
-      <svg viewBox="0 0 24 24">
-        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5a4.5 4.5 0 1 0 4.5 4.5A4.5 4.5 0 0 0 12 7.5zm6.1-1.8a1.1 1.1 0 1 0 1.1 1.1 1.1 1.1 0 0 0-1.1-1.1z"/>
-      </svg>
-    </a>
-
-    <!-- X (UI ICON – SOLID, CLEAN) -->
-<a href="https://x.com/PTLenIndustri" target="_blank" aria-label="X">
-  <svg viewBox="0 0 24 24">
-    <path d="M17.2 2H20l-6.6 7.5L21.5 22h-5.4l-4.3-5.6L6.9 22H4l7-8L2.5 2H8l4 5.2L17.2 2z"/>
-  </svg>
-</a>
-    <!-- YouTube -->
-    <a href="https://youtube.com/@PTLenIndustri" target="_blank" aria-label="YouTube">
-      <svg viewBox="0 0 24 24">
-        <path d="M23 12s0-3.4-.4-5a3.3 3.3 0 0 0-2.3-2.3C18.7 4 12 4 12 4s-6.7 0-8.3.7A3.3 3.3 0 0 0 1.4 7C1 8.6 1 12 1 12s0 3.4.4 5a3.3 3.3 0 0 0 2.3 2.3C5.3 20 12 20 12 20s6.7 0 8.3-.7a3.3 3.3 0 0 0 2.3-2.3c.4-1.6.4-5 .4-5Zm-13 3.5v-7l6 3.5-6 3.5Z"/>
-      </svg>
-    </a>
-
-    <!-- Email (MODERN SOLID) -->
-<a href="mailto:info@len.co.id" aria-label="Email">
-  <svg viewBox="0 0 24 24">
-    <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-  </svg>
-</a>
+  <!-- MENU -->
+  <div class="links">
+    <a class="link" href="./menu-a.html">Menu A</a>
+    <a class="link" href="./menu-b.html">Menu B</a>
   </div>
 
 </div>
-
 </body>
 </html>
