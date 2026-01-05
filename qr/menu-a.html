@@ -9,6 +9,8 @@
 
 <style>
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
 body{
   margin:0;
   font-family:'Inter',sans-serif;
@@ -16,34 +18,81 @@ body{
   color:white;
 }
 
+/* CONTAINER */
 .container{
   max-width:420px;
-  margin:32px auto;
+  margin:96px auto 32px;
   padding:28px 20px 56px;
   background:rgba(0,0,0,.45);
   border-radius:22px;
 }
 
-.back{
-  display:inline-block;
-  margin-bottom:16px;
-  color:white;
-  text-decoration:none;
-  opacity:.85;
+/* ================= FLOATING TOP BAR ================= */
+.top-bar{
+  position:fixed;
+  top:14px;
+  left:50%;
+  transform:translateX(-50%);
+  width:calc(100% - 24px);
+  max-width:420px;
+
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  padding:10px 14px;
+  border-radius:999px;
+
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.35);
+  z-index:100;
 }
 
-/* IMAGE */
+/* BACK BUTTON */
+.back-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+
+  border-radius:999px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.45);
+
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.back-btn svg{
+  width:18px;
+  height:18px;
+  stroke:white;
+}
+
+/* BREADCRUMB */
+.breadcrumb{
+  font-size:13px;
+  opacity:.85;
+  white-space:nowrap;
+}
+.breadcrumb span{
+  opacity:.65;
+}
+
+/* ================= IMAGE ================= */
 .image-block{
   border-radius:18px;
   overflow:hidden;
-  margin-bottom:26px;
+  margin-bottom:28px;
 }
 .image-block img{
   width:100%;
   display:block;
 }
 
-/* MENU */
+/* ================= MENU ================= */
 .links{
   display:flex;
   flex-direction:column;
@@ -61,24 +110,64 @@ body{
   text-decoration:none;
   font-weight:600;
 }
+
+/* ================= ANIMATION ================= */
+.slide-out{
+  animation:slideOut .35s ease forwards;
+}
+@keyframes slideOut{
+  to{
+    transform:translateX(40px);
+    opacity:0;
+  }
+}
 </style>
 </head>
 
 <body>
-<div class="container">
 
-<a class="back" href="./index.html">← Kembali</a>
+<!-- FLOATING HEADER -->
+<div class="top-bar">
+  <a href="./index.html" class="back-btn" onclick="goBack(event)">
+    <!-- SVG ARROW -->
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+    Kembali
+  </a>
 
-<div class="image-block">
-  <img src="./produk-a.jpg" alt="Produk UAV">
+  <div class="breadcrumb">
+    Home <span>›</span> Katalog
+  </div>
 </div>
 
-<div class="links">
-  <a class="link" href="#">Produk A</a>
-  <a class="link" href="#">Produk B</a>
-  <a class="link" href="#">Produk C</a>
-</div>
+<!-- CONTENT -->
+<div class="container" id="page">
+
+  <!-- HERO IMAGE -->
+  <div class="image-block">
+    <img src="./produk-a.jpg" alt="Katalog UAV">
+  </div>
+
+  <!-- MENU -->
+  <div class="links">
+    <a class="link" href="#">Produk A</a>
+    <a class="link" href="#">Produk B</a>
+    <a class="link" href="#">Produk C</a>
+  </div>
 
 </div>
+
+<script>
+function goBack(e){
+  e.preventDefault();
+  const page = document.getElementById('page');
+  page.classList.add('slide-out');
+  setTimeout(()=>{
+    window.location.href = './index.html';
+  },300);
+}
+</script>
+
 </body>
 </html>
