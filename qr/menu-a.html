@@ -9,44 +9,33 @@
 
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
+html,body{margin:0}
 body{
-  margin:0;
   font-family:'Inter',sans-serif;
   background:#7c0f0f;
   color:white;
+  overflow-x:hidden;
 }
 
-/* CONTAINER */
-.container{
-  max-width:420px;
-  margin:96px auto 32px;
-  padding:28px 20px 56px;
-  background:rgba(0,0,0,.45);
-  border-radius:22px;
-}
-
-/* ================= FLOATING TOP BAR ================= */
+/* ================= TOP BAR ================= */
 .top-bar{
-  position:fixed;
-  top:14px;
-  left:50%;
-  transform:translateX(-50%);
-  width:calc(100% - 24px);
-  max-width:420px;
+  position:sticky;
+  top:0;
+  z-index:100;
 
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:14px;
 
-  padding:10px 14px;
-  border-radius:999px;
-
-  background:rgba(0,0,0,.55);
+  padding:14px 16px;
+  background:rgba(0,0,0,.6);
   backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,.35);
-  z-index:100;
+  border-bottom:1px solid rgba(255,255,255,.25);
+
+  transition:padding .25s ease;
+}
+.top-bar.shrink{
+  padding:8px 16px;
 }
 
 /* BACK BUTTON */
@@ -64,7 +53,6 @@ body{
   text-decoration:none;
   font-weight:600;
 }
-
 .back-btn svg{
   width:18px;
   height:18px;
@@ -75,24 +63,46 @@ body{
 .breadcrumb{
   font-size:13px;
   opacity:.85;
-  white-space:nowrap;
+  display:flex;
+  align-items:center;
+  gap:6px;
+
+  transition:opacity .25s ease, transform .25s ease;
+}
+.breadcrumb.hide{
+  opacity:0;
+  transform:translateY(-6px);
+}
+.breadcrumb a{
+  color:white;
+  text-decoration:none;
+  opacity:.85;
 }
 .breadcrumb span{
-  opacity:.65;
+  opacity:.5;
 }
 
-/* ================= IMAGE ================= */
+/* ================= PAGE ================= */
+.page{
+  max-width:420px;
+  margin:0 auto;
+  padding:20px 16px 56px;
+  animation:slideIn .35s ease;
+}
+
+/* HERO IMAGE */
 .image-block{
   border-radius:18px;
   overflow:hidden;
-  margin-bottom:28px;
+  margin-bottom:26px;
+  background:#fff;
 }
 .image-block img{
   width:100%;
   display:block;
 }
 
-/* ================= MENU ================= */
+/* MENU */
 .links{
   display:flex;
   flex-direction:column;
@@ -111,45 +121,51 @@ body{
   font-weight:600;
 }
 
-/* ================= ANIMATION ================= */
-.slide-out{
-  animation:slideOut .35s ease forwards;
+/* ================= ANIMATIONS ================= */
+@keyframes slideIn{
+  from{transform:translateX(40px);opacity:0}
+  to{transform:none;opacity:1}
 }
-@keyframes slideOut{
-  to{
-    transform:translateX(40px);
-    opacity:0;
-  }
+.slide-left{
+  animation:slideLeft .3s ease forwards;
+}
+.slide-right{
+  animation:slideRight .3s ease forwards;
+}
+@keyframes slideLeft{
+  to{transform:translateX(-40px);opacity:0}
+}
+@keyframes slideRight{
+  to{transform:translateX(40px);opacity:0}
 }
 </style>
 </head>
 
 <body>
 
-<!-- FLOATING HEADER -->
-<div class="top-bar">
+<!-- TOP BAR -->
+<div class="top-bar" id="topBar">
   <a href="./index.html" class="back-btn" onclick="goBack(event)">
-    <!-- SVG ARROW -->
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
       <path d="M15 18l-6-6 6-6"/>
     </svg>
     Kembali
   </a>
 
-  <div class="breadcrumb">
-    Home <span>›</span> Katalog
+  <div class="breadcrumb" id="breadcrumb">
+    <a href="./index.html" onclick="goHome(event)">Home</a>
+    <span>›</span>
+    <span>Katalog</span>
   </div>
 </div>
 
-<!-- CONTENT -->
-<div class="container" id="page">
+<!-- PAGE CONTENT -->
+<div class="page" id="page">
 
-  <!-- HERO IMAGE -->
   <div class="image-block">
     <img src="./produk-a.jpg" alt="Katalog UAV">
   </div>
 
-  <!-- MENU -->
   <div class="links">
     <a class="link" href="#">Produk A</a>
     <a class="link" href="#">Produk B</a>
@@ -159,13 +175,35 @@ body{
 </div>
 
 <script>
+const topBar = document.getElementById('topBar');
+const breadcrumb = document.getElementById('breadcrumb');
+const page = document.getElementById('page');
+
+let lastScroll = 0;
+
+window.addEventListener('scroll',()=>{
+  const y = window.scrollY;
+
+  // Shrink top bar
+  if(y > 20){
+    topBar.classList.add('shrink');
+    breadcrumb.classList.add('hide');
+  }else{
+    topBar.classList.remove('shrink');
+    breadcrumb.classList.remove('hide');
+  }
+});
+
+/* NAVIGATION TRANSITIONS */
 function goBack(e){
   e.preventDefault();
-  const page = document.getElementById('page');
-  page.classList.add('slide-out');
-  setTimeout(()=>{
-    window.location.href = './index.html';
-  },300);
+  page.classList.add('slide-right');
+  setTimeout(()=>location.href='./index.html',280);
+}
+function goHome(e){
+  e.preventDefault();
+  page.classList.add('slide-left');
+  setTimeout(()=>location.href='./index.html',280);
 }
 </script>
 
