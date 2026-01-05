@@ -8,10 +8,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+/* FONT AMURO – KHUSUS AUTACS */
+@font-face{
+  font-family:'Amuro';
+  src:url('./fonts/Amuro.ttf') format('truetype');
+}
+
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family:Inter,sans-serif;
+  font-family:'Inter',sans-serif; /* DEFAULT */
   background-color:#7c0f0f;
   background-image:
     linear-gradient(rgba(124,15,15,.92),rgba(124,15,15,.92)),
@@ -28,23 +34,55 @@ body{
       url("./uav-ui-landscape.jpg");
   }
 }
+
 .container{
   max-width:420px;
   margin:32px auto;
-  padding:24px 20px 48px;
+  padding:28px 20px 56px;
   background:rgba(0,0,0,.45);
   border-radius:22px;
 }
-.profile{text-align:center;margin-bottom:24px}
-.profile img{width:88px;height:88px;border-radius:50%;margin-bottom:10px}
-.profile h1{margin:0;font-size:18px}
-.profile p{opacity:.85;margin-top:6px}
 
+/* HEADER */
+.profile{
+  text-align:center;
+  margin-bottom:22px;
+}
+.profile img{
+  width:88px;
+  height:88px;
+  border-radius:50%;
+  margin-bottom:10px;
+}
+.profile h1{
+  font-size:18px;
+  margin:0;
+  font-weight:600;
+}
+.profile p{
+  font-size:14px;
+  opacity:.9;
+  margin-top:6px;
+}
+
+/* POWERED BY */
+.powered{
+  font-size:14px;
+  margin-top:6px;
+  opacity:.9;
+}
+.powered span{
+  font-family:'Amuro',sans-serif; /* HANYA AUTACS */
+  color:#4da3ff;
+  letter-spacing:1.5px;
+}
+
+/* VIDEO */
 .video-block{
   border-radius:18px;
   overflow:hidden;
   background:black;
-  margin-bottom:24px;
+  margin:22px 0 26px;
 }
 .video-block iframe{
   width:100%;
@@ -52,7 +90,12 @@ body{
   border:none;
 }
 
-.links{display:flex;flex-direction:column;gap:14px}
+/* MENU */
+.links{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
 .link{
   height:54px;
   display:flex;
@@ -71,22 +114,21 @@ body{
 <body>
 <div class="container">
 
-  <!-- HEADER -->
   <div class="profile">
     <img src="./logo.png" alt="PT Len Industri">
     <h1>Pusat Pengembangan UAV</h1>
-    <p>Ganti jadi powered by Autacs dan png </p>
+    <p class="powered">powered by <span>AUTACS</span></p>
   </div>
 
   <!-- VIDEO UTAMA -->
   <div class="video-block">
-    <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/LCfEqudu4pc" allowfullscreen></iframe>
   </div>
 
   <!-- MENU -->
   <div class="links">
     <a class="link" href="./menu-a.html">Katalog Produk</a>
-    <a class="link" href="./menu-b.html">Video Dokumentasi</a>
+    <a class="link" href="#">Video Dokumentasi</a>
   </div>
 
 </div>
