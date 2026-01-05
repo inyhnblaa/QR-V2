@@ -13,7 +13,7 @@
 *{box-sizing:border-box}
 a{-webkit-tap-highlight-color:transparent}
 
-/* ================= BACKGROUND (SAMA DENGAN HOME) ================= */
+/* ================= BACKGROUND FULL FIT ================= */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
@@ -21,22 +21,34 @@ body{
 
   background-color:#7c0f0f;
   background-image:
-    linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+    linear-gradient(
+      rgba(124,15,15,0.92),
+      rgba(124,15,15,0.92)
+    ),
     url("uav-ui-portrait.jpg");
 
-  background-repeat:repeat-y;
-  background-size:contain;
-  background-position:top center;
+  background-repeat:no-repeat;
+  background-size:cover;        /* 🔑 FULL FIT */
+  background-position:center;   /* 🔑 TENGAH */
+  background-attachment:fixed;  /* OPSIONAL: lebih solid */
 }
 
 /* Landscape */
 @media (orientation: landscape){
   body{
     background-image:
-      linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+      linear-gradient(
+        rgba(124,15,15,0.92),
+        rgba(124,15,15,0.92)
+      ),
       url("uav-ui-landscape.jpg");
+
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
   }
 }
+
 
 /* ================= PAGE & CARD ================= */
 .page{
@@ -60,56 +72,63 @@ body{
   display:flex;
   align-items:center;
   gap:12px;
-  margin-bottom:16px;
+  margin-bottom:18px;
 }
 
-/* BACK BUTTON */
+/* Bubble Kembali */
 .back-btn{
   padding:8px 14px;
   border-radius:999px;
   background:rgba(255,255,255,.14);
   border:1px solid rgba(255,255,255,.45);
-
   color:white;
   text-decoration:none;
   font-weight:600;
   font-size:14px;
-
   display:flex;
   align-items:center;
   gap:6px;
-
-  -webkit-tap-highlight-color:transparent;
 }
-.back-btn:active{
-  background:rgba(255,255,255,.18);
-}
+.back-btn:active{opacity:.75}
 
-/* BREADCRUMB */
+/* Breadcrumb */
 .breadcrumb{
-  font-size:13px;
-  opacity:.85;
   display:flex;
   align-items:center;
   gap:6px;
+  font-size:12.5px;
+  opacity:.75;
 }
 .breadcrumb a{
   color:white;
   text-decoration:none;
   font-weight:500;
 }
-.breadcrumb a:active{
-  opacity:.6;
+.breadcrumb .sep{opacity:.6}
+.breadcrumb .current{opacity:.9}
+
+/* Divider */
+.top-bar::after{
+  content:'';
+  display:block;
+  width:100%;
+  height:1px;
+  margin-top:12px;
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,.25),
+    transparent
+  );
 }
 
-/* ================= IMAGE ================= */
-.media{
+/* ================= HERO IMAGE ================= */
+.hero{
   border-radius:18px;
   overflow:hidden;
-  background:#fff;
   margin-bottom:22px;
 }
-.media img{
+.hero img{
   width:100%;
   display:block;
 }
@@ -125,32 +144,24 @@ body{
   border-radius:999px;
   background:rgba(255,255,255,.14);
   border:1px solid rgba(255,255,255,.45);
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   color:white;
   text-decoration:none;
   font-weight:600;
-
-  -webkit-tap-highlight-color:transparent;
-}
-.link:active{
-  background:rgba(255,255,255,.18);
-  color:white;
 }
 
 /* ================= TRANSITION ================= */
 @keyframes slideIn{
-  from{transform:translateX(30px);opacity:0}
-  to{opacity:1}
+  from{transform:translateX(20px);opacity:0}
+  to{transform:none;opacity:1}
 }
-.slide-right{
-  animation:slideRight .25s ease forwards;
+.slide-left{
+  animation:slideLeft .2s ease forwards;
 }
-@keyframes slideRight{
-  to{transform:translateX(30px);opacity:0}
+@keyframes slideLeft{
+  to{transform:translateX(-20px);opacity:0}
 }
 </style>
 </head>
@@ -158,40 +169,38 @@ body{
 <body>
 
 <div class="page">
-  <div class="card" id="card">
+<div class="card" id="card">
 
-    <!-- TOP BAR -->
-    <div class="top-bar">
-      <a href="#" class="back-btn" onclick="back()">
-        ← Kembali
-      </a>
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <span>›</span>
-        <span>Katalog Produk</span>
-      </div>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <a href="#" class="back-btn" onclick="goBack()">← Kembali</a>
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">›</span>
+      <span class="current">Katalog Produk</span>
     </div>
-
-    <!-- IMAGE -->
-    <div class="media">
-      <img src="./produk-a.jpg" alt="Katalog Produk UAV">
-    </div>
-
-    <!-- MENU -->
-    <div class="links">
-      <a class="link" href="#">Produk A</a>
-      <a class="link" href="#">Produk B</a>
-      <a class="link" href="#">Produk C</a>
-    </div>
-
   </div>
+
+  <!-- HERO IMAGE -->
+  <div class="hero">
+    <img src="produk-a.jpg" alt="Produk UAV">
+  </div>
+
+  <!-- MENU PRODUK -->
+  <div class="links">
+    <a class="link" href="#">Produk A</a>
+    <a class="link" href="#">Produk B</a>
+    <a class="link" href="#">Produk C</a>
+  </div>
+
+</div>
 </div>
 
 <script>
-function back(){
-  const card=document.getElementById('card');
-  card.classList.add('slide-right');
-  setTimeout(()=>location.href='index.html',240);
+function goBack(){
+  document.getElementById('card').classList.add('slide-left');
+  setTimeout(()=>history.back(),180);
 }
 </script>
 
