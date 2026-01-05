@@ -2,51 +2,62 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Katalog Produk | PT Len Industri</title>
+<title>Katalog Produk</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+@font-face{
+  font-family:'Amuro';
+  src:url('./fonts/Amuro%20Bold%20Italic.otf') format('opentype');
+}
+
 *{box-sizing:border-box}
 body{
   margin:0;
   font-family:'Inter',sans-serif;
-  background:#7c0f0f;
   color:white;
+
+  background-color:#7c0f0f;
+  background-image:
+    linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+    url("uav-ui-portrait.jpg");
+  background-repeat:repeat-y;
+  background-size:contain;
+  background-position:top center;
+}
+@media (orientation: landscape){
+  body{
+    background-image:
+      linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+      url("uav-ui-landscape.jpg");
+  }
 }
 
-/* ===== LINKTREE BACKGROUND ===== */
 .page{
   min-height:100vh;
   display:flex;
   justify-content:center;
-  align-items:flex-start;
   padding:32px 16px;
 }
-
-/* ===== MAIN CARD (SAMA SEPERTI HOME) ===== */
 .card{
   width:100%;
   max-width:420px;
   background:rgba(0,0,0,.45);
   border-radius:22px;
   padding:20px 18px 32px;
+  animation:slideIn .3s ease;
 }
 
-/* ===== TOP BAR DI DALAM CARD ===== */
+/* TOP BAR DALAM CARD */
 .top-bar{
   display:flex;
   align-items:center;
   gap:12px;
   margin-bottom:16px;
 }
-
-/* BACK BUTTON */
-.back-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
+.back{
   padding:8px 14px;
   border-radius:999px;
   background:rgba(255,255,255,.14);
@@ -56,39 +67,24 @@ body{
   font-weight:600;
   font-size:14px;
 }
-.back-btn svg{
-  width:16px;
-  height:16px;
-  stroke:white;
-}
-
-/* BREADCRUMB */
 .breadcrumb{
   font-size:13px;
-  opacity:.75;
-}
-.breadcrumb a{
-  color:white;
-  text-decoration:none;
-  opacity:.85;
-}
-.breadcrumb span{
-  opacity:.5;
+  opacity:.7;
 }
 
-/* ===== IMAGE ===== */
-.image-block{
+/* IMAGE */
+.media{
   border-radius:18px;
   overflow:hidden;
   background:#fff;
   margin-bottom:22px;
 }
-.image-block img{
+.media img{
   width:100%;
   display:block;
 }
 
-/* ===== BUTTONS ===== */
+/* BUTTON */
 .links{
   display:flex;
   flex-direction:column;
@@ -96,15 +92,25 @@ body{
 }
 .link{
   height:54px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   border-radius:999px;
   background:rgba(255,255,255,.14);
   border:1px solid rgba(255,255,255,.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
   color:white;
   text-decoration:none;
   font-weight:600;
+}
+
+/* TRANSITION */
+@keyframes slideIn{
+  from{transform:translateX(30px);opacity:0}
+  to{opacity:1}
+}
+.slide-right{animation:slideRight .25s ease forwards}
+@keyframes slideRight{
+  to{transform:translateX(30px);opacity:0}
 }
 </style>
 </head>
@@ -112,40 +118,32 @@ body{
 <body>
 
 <div class="page">
+<div class="card" id="card">
 
-  <div class="card">
+  <div class="top-bar">
+    <a href="#" class="back" onclick="back()">← Kembali</a>
+    <div class="breadcrumb">Home › Katalog</div>
+  </div>
 
-    <!-- TOP BAR -->
-    <div class="top-bar">
-      <a href="./index.html" class="back-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-          <path d="M15 18l-6-6 6-6"/>
-        </svg>
-        Kembali
-      </a>
+  <div class="media">
+    <img src="./produk-a.jpg" alt="Katalog UAV">
+  </div>
 
-      <div class="breadcrumb">
-        <a href="./index.html">Home</a>
-        <span> › </span>
-        <span>Katalog</span>
-      </div>
-    </div>
-
-    <!-- IMAGE -->
-    <div class="image-block">
-      <img src="./produk-a.jpg" alt="Katalog UAV">
-    </div>
-
-    <!-- MENU -->
-    <div class="links">
-      <a class="link" href="#">Produk A</a>
-      <a class="link" href="#">Produk B</a>
-      <a class="link" href="#">Produk C</a>
-    </div>
-
+  <div class="links">
+    <a class="link" href="#">Produk A</a>
+    <a class="link" href="#">Produk B</a>
+    <a class="link" href="#">Produk C</a>
   </div>
 
 </div>
+</div>
+
+<script>
+function back(){
+  document.getElementById('card').classList.add('slide-right');
+  setTimeout(()=>location.href='index.html',240);
+}
+</script>
 
 </body>
 </html>
