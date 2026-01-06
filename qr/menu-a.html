@@ -8,12 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ================= GLASS VARIABLE ================= */
-    :root{
-      --lg-bg-color: rgba(255,255,255,0.22);
-      --lg-border: rgba(255,255,255,0.55);
-      --lg-highlight: rgba(255,255,255,0.80);
-      --lg-text: #ffffff;
+    @font-face{
+      font-family:'Amuro';
+      src:url('./fonts/Amuro%20Bold%20Italic.otf') format('opentype');
     }
 
     /* ================= RESET ================= */
@@ -22,24 +19,29 @@
       -webkit-tap-highlight-color:transparent;
     }
 
-    a,a:visited,a:hover,a:active{
-      color:white!important;
-      text-decoration:none;
+    a, a:visited, a:hover, a:active{
+      color:white !important;
+      text-decoration:none !important;
     }
 
-    /* ================= BACKGROUND ================= */
+    /* ================= BACKGROUND HALAMAN (TETAP MERAH SOLID) ================= */
     body{
       margin:0;
       font-family:'Inter',sans-serif;
-      color:var(--lg-text);
+      color:white;
 
-      background:url("uav-ui-portrait.jpg") center/cover no-repeat fixed;
-      position:relative;
+      background-color:#7c0f0f;
+      background-image: url("uav-ui-portrait.jpg");
+      background-repeat:no-repeat;
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
     }
 
     @media (orientation: landscape){
       body{
-        background:url("uav-ui-landscape.jpg") center/cover no-repeat fixed;
+        background-image: url("uav-ui-landscape.jpg");
+        background-attachment:fixed;
       }
     }
 
@@ -48,16 +50,15 @@
       min-height:100vh;
       display:flex;
       justify-content:center;
-      padding:28px 16px;
+      padding:32px 16px;
     }
 
-    /* ================= CARD SOLID ================= */
     .card{
       width:100%;
       max-width:420px;
-      background:rgba(0,0,0,.45);
+      background:rgba(0,0,0,0.40);
       border-radius:22px;
-      padding:22px 18px 96px;
+      padding:24px 18px 110px;
       position:relative;
       animation:slideIn .25s ease;
     }
@@ -67,10 +68,14 @@
       border-radius:18px;
       margin-bottom:18px;
       background:url("produk-a.jpg") center/cover no-repeat;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.20);
     }
 
-    /* ================= GLASS BUTTON ONLY ================= */
+    /* ================= GLASS STYLE (UNTUK SEMUA TOMBOL) ================= */
+
+    :root{
+      --glass-red: rgba(124,15,15,0.55);
+    }
+
     .links{
       display:flex;
       flex-direction:column;
@@ -80,32 +85,35 @@
 
     .link,
     .back-btn{
-      background: rgba(255,255,255,0.18);
-      border:1px solid var(--lg-border);
 
-      backdrop-filter: blur(10px) saturate(150%) brightness(1.05);
+      border-radius:999px;
 
-      box-shadow:
-        0 6px 12px rgba(0,0,0,0.25),
-        inset 1px 1px 0 rgba(255,255,255,0.75);
+      /* 🔑 WARNA MERAH BRAND TRANSPARAN */
+      background: var(--glass-red);
+
+      backdrop-filter: blur(12px) saturate(140%) brightness(1.06);
+
+      border:1px solid rgba(255,255,255,0.45);
+
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
 
       display:flex;
       align-items:center;
       justify-content:center;
 
       color:white !important;
-      text-decoration:none;
       font-weight:600;
+
       transition: all .25s ease;
-      border-radius:999px;
     }
 
     .link{
-      height:54px;
+      height:56px;
+      margin-bottom:4px;
     }
 
     .link:hover{
-      background:rgba(255,255,255,0.30);
+      background:rgba(255,255,255,0.25);
       transform:translateY(-1px);
     }
 
@@ -113,22 +121,15 @@
       transform:scale(.96);
     }
 
-    /* tombol kembali */
+    /* posisi tombol kembali */
     .back-btn{
       position:absolute;
-      left:18px;
-      bottom:calc(18px + env(safe-area-inset-bottom));
-      padding:10px 18px;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:calc(22px + env(safe-area-inset-bottom));
+      padding:10px 20px;
       height:auto;
       border-radius:3rem;
-    }
-
-    .back-btn:hover{
-      background:rgba(255,255,255,0.30);
-    }
-
-    .back-btn:active{
-      transform:scale(.96);
     }
 
     @keyframes slideIn{
@@ -151,26 +152,27 @@
   <div class="page">
     <div class="card" id="card">
 
-      <!-- TOMBOL NAVIGASI HOME > KATALOG PRODUK -->
+      <!-- PANEL ATAS SEKARANG BENAR-BENAR GLASS -->
       <div class="links">
-        <a class="link" href="index.html" onclick="go(this.href);return false;">
+        <a class="link nav-top" href="index.html" onclick="go(this.href);return false;">
           Home › Katalog Produk
         </a>
       </div>
 
       <div class="hero"></div>
 
-      <!-- MENU PRODUK -->
+      <!-- TOMBOL PRODUK -->
       <div class="links">
         <a class="link" href="produk-a.html" onclick="go(this.href);return false;">Produk A</a>
         <a class="link" href="#">Produk B</a>
         <a class="link" href="#">Produk C</a>
       </div>
 
-      <a class="back-btn" href="index.html" onclick="go(this.href);return false;">
+      <!-- TOMBOL KEMBALI -->
+      <a class="back-btn back-btn" href="index.html" onclick="go(this.href);return false;">
         ← Kembali
       </a>
- 
+
     </div>
   </div>
 
@@ -180,10 +182,6 @@
       c.classList.add('slide-out');
       setTimeout(()=>location.href=url,180);
     }
-
-    window.addEventListener('pageshow',()=>{
-      document.getElementById('card').classList.remove('slide-out');
-    });
   </script>
 
 </body>
