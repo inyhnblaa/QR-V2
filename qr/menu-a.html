@@ -37,24 +37,29 @@
       color:#4f86ff !important;
     }
 
-    /* ================= BACKGROUND ================= */
-    body{
-      margin:0;
-      font-family:'Inter',sans-serif;
-      color:white;
+  /* ================= BACKGROUND FULL FIT ================= */
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+    url("uav-ui-portrait.jpg");
 
-      background:
-        
-        url("WhatsApp Image 2026-01-06 at 2.35.12 PM.jpeg") center/cover no-repeat;
-    }
+  background-repeat:no-repeat;
+  background-size:cover;        /* 🔑 FULL FIT */
+  background-position:center;   /* 🔑 TENGAH */
+  background-attachment:fixed;  /* OPSIONAL: lebih solid */
+}
 
-    @media (orientation:landscape){
-      body{
-        background:
-          
-          url("WhatsApp Image 2026-01-06 at 2.35.12 PM.jpeg") center/cover no-repeat;
-      }
-    }
+/* Landscape */
+@media (orientation: landscape){
+  body{
+    background-image:
+      url("uav-ui-landscape.jpg");
+
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+  }
+}
 
     /* ================= LAYOUT ================= */
     .page{
