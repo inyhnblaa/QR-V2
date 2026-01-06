@@ -8,30 +8,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    @font-face{
-      font-family:'Amuro';
-      src:url('./fonts/Amuro%20Bold%20Italic.otf') format('opentype');
+    :root{
+      --panel-red-dark: rgba(74,18,18,0.72);
+      --btn-glass-clear: rgba(255,255,255,0.12);
     }
 
-    /* ================= RESET ================= */
-    *{
-      box-sizing:border-box;
-      -webkit-tap-highlight-color:transparent;
-    }
+    *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 
     a, a:visited, a:hover, a:active{
       color:white !important;
       text-decoration:none !important;
     }
 
-    /* ================= BACKGROUND HALAMAN (TETAP MERAH SOLID) ================= */
     body{
       margin:0;
       font-family:'Inter',sans-serif;
       color:white;
 
       background-color:#7c0f0f;
-      background-image: url("uav-ui-portrait.jpg");
+
+      background-image:
+        linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+        url("uav-ui-portrait.jpg");
+
       background-repeat:no-repeat;
       background-size:cover;
       background-position:center;
@@ -40,12 +39,17 @@
 
     @media (orientation: landscape){
       body{
-        background-image: url("uav-ui-landscape.jpg");
+        background-image:
+          linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+          url("uav-ui-landscape.jpg");
+
+        background-repeat:no-repeat;
+        background-size:cover;
+        background-position:center;
         background-attachment:fixed;
       }
     }
 
-    /* ================= LAYOUT ================= */
     .page{
       min-height:100vh;
       display:flex;
@@ -56,10 +60,17 @@
     .card{
       width:100%;
       max-width:420px;
-      background:rgba(0,0,0,0.40);
+
+      /* No 2 panel merah tua sekarang GLASS ✔ */
+      background: var(--panel-red-dark);
+      backdrop-filter: blur(10px) saturate(140%) brightness(1.05);
+
       border-radius:22px;
-      padding:24px 18px 110px;
+      padding:22px 18px 110px;
       position:relative;
+
+      box-shadow: 0 8px 24px rgba(0,0,0,.35);
+
       animation:slideIn .25s ease;
     }
 
@@ -70,50 +81,45 @@
       background:url("produk-a.jpg") center/cover no-repeat;
     }
 
-    /* ================= GLASS STYLE (UNTUK SEMUA TOMBOL) ================= */
-
-    :root{
-      --glass-red: rgba(124,15,15,0.55);
+    .breadcrumb{
+      padding:12px;
+      border-radius:999px;
+      text-align:center;
+      margin-bottom:16px;
+      font-size:14px;
+      font-weight:600;
     }
 
     .links{
       display:flex;
       flex-direction:column;
       gap:14px;
-      margin-bottom:16px;
     }
 
-    .link,
-    .back-btn{
-
+    .link{
+      height:56px;
       border-radius:999px;
 
-      /* 🔑 WARNA MERAH BRAND TRANSPARAN */
-      background: var(--glass-red);
+      /* No 3 tetap glass clear ✔ */
+      background: var(--btn-glass-clear);
+      backdrop-filter: blur(10px) saturate(140%) brightness(1.06);
 
-      backdrop-filter: blur(12px) saturate(140%) brightness(1.06);
+      border:1px solid rgba(255,255,255,0.55);
 
-      border:1px solid rgba(255,255,255,0.45);
-
-      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+      box-shadow: 0 6px 14px rgba(0,0,0,.25);
 
       display:flex;
       align-items:center;
       justify-content:center;
 
-      color:white !important;
+      color:white;
+      text-decoration:none;
       font-weight:600;
-
-      transition: all .25s ease;
-    }
-
-    .link{
-      height:56px;
-      margin-bottom:4px;
+      transition:.25s ease;
     }
 
     .link:hover{
-      background:rgba(255,255,255,0.25);
+      background:rgba(255,255,255,0.20);
       transform:translateY(-1px);
     }
 
@@ -121,15 +127,25 @@
       transform:scale(.96);
     }
 
-    /* posisi tombol kembali */
     .back-btn{
       position:absolute;
       left:50%;
       transform:translateX(-50%);
-      bottom:calc(22px + env(safe-area-inset-bottom));
+      bottom:22px;
+
       padding:10px 20px;
-      height:auto;
+
+      background: var(--btn-glass-clear);
+      backdrop-filter: blur(10px) saturate(140%);
+
+      border:1px solid rgba(255,255,255,0.55);
       border-radius:3rem;
+
+      box-shadow: 0 4px 12px rgba(0,0,0,.25);
+
+      color:white;
+      font-weight:600;
+      font-size:14px;
     }
 
     @keyframes slideIn{
@@ -144,6 +160,7 @@
     @keyframes slideOut{
       to{ transform:translateX(-20px); opacity:0; }
     }
+
   </style>
 </head>
 
@@ -152,24 +169,19 @@
   <div class="page">
     <div class="card" id="card">
 
-      <!-- PANEL ATAS SEKARANG BENAR-BENAR GLASS -->
-      <div class="links">
-        <a class="link nav-top" href="index.html" onclick="go(this.href);return false;">
-          Home › Katalog Produk
-        </a>
+      <div class="breadcrumb">
+        Danantara Indonesia – Katalog Produk
       </div>
 
       <div class="hero"></div>
 
-      <!-- TOMBOL PRODUK -->
       <div class="links">
-        <a class="link" href="produk-a.html" onclick="go(this.href);return false;">Produk A</a>
-        <a class="link" href="#">Produk B</a>
-        <a class="link" href="#">Produk C</a>
+        <a class="link">Produk A</a>
+        <a class="link">Produk B</a>
+        <a class="link">Produk C</a>
       </div>
 
-      <!-- TOMBOL KEMBALI -->
-      <a class="back-btn back-btn" href="index.html" onclick="go(this.href);return false;">
+      <a class="back-btn" href="index.html" onclick="go(this.href);return false;">
         ← Kembali
       </a>
 
@@ -178,7 +190,7 @@
 
   <script>
     function go(url){
-      const c = document.getElementById('card');
+      const c=document.getElementById('card');
       c.classList.add('slide-out');
       setTimeout(()=>location.href=url,180);
     }
