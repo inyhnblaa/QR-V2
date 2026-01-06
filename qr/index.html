@@ -17,7 +17,11 @@
 
 /* ================= RESET ================= */
 *{box-sizing:border-box}
-a{-webkit-tap-highlight-color:transparent;color:white;text-decoration:none}
+a{
+  -webkit-tap-highlight-color:transparent;
+  color:white;
+  text-decoration:none;
+}
 
 /* ================= BACKGROUND ================= */
 body{
@@ -46,7 +50,7 @@ body{
   padding:32px 16px;
 }
 
-/* ================= CARD (SOLID, NON GLASS) ================= */
+/* ================= CARD (SOLID) ================= */
 .card{
   width:100%;
   max-width:420px;
@@ -105,10 +109,10 @@ body{
 .links{
   display:flex;
   flex-direction:column;
-  gap:16px;
+  gap:18px;
 }
 
-/* ================= LIQUID GLASS BUTTON ================= */
+/* ================= ULTRA TRANSPARENT LIQUID GLASS BUTTON ================= */
 .link{
   height:56px;
   border-radius:999px;
@@ -116,14 +120,14 @@ body{
   background:
     linear-gradient(
       180deg,
-      rgba(255,255,255,.32),
-      rgba(255,255,255,.08)
+      rgba(255,255,255,.16),
+      rgba(255,255,255,.03)
     );
 
-  backdrop-filter:blur(14px) saturate(160%);
-  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
 
-  border:1px solid rgba(255,255,255,.45);
+  border:1px solid rgba(255,255,255,.22);
 
   display:flex;
   align-items:center;
@@ -133,19 +137,26 @@ body{
   letter-spacing:.2px;
 
   box-shadow:
-    0 10px 22px rgba(0,0,0,.35),
-    inset 0 1px 1px rgba(255,255,255,.6);
+    0 6px 14px rgba(0,0,0,.38),
+    inset 0 1px 1px rgba(255,255,255,.4);
 
   transition:
     transform .18s ease,
-    box-shadow .18s ease;
+    box-shadow .18s ease,
+    background .18s ease;
 }
 
 /* tekan ala iOS */
 .link:active{
-  transform:scale(.97);
+  transform:scale(.965);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.1),
+      rgba(255,255,255,.02)
+    );
   box-shadow:
-    0 6px 14px rgba(0,0,0,.45),
+    0 4px 10px rgba(0,0,0,.45),
     inset 0 2px 6px rgba(0,0,0,.35);
 }
 
