@@ -8,21 +8,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+/* ================= FONT ================= */
 @font-face{
   font-family:'Amuro';
   src:url('./fonts/Amuro%20Bold%20Italic.otf') format('opentype');
 }
 
-*{box-sizing:border-box}
-a{color:white;text-decoration:none;-webkit-tap-highlight-color:transparent}
+/* ================= ROOT GLASS VAR ================= */
+:root{
+  --lg-bg-color: rgba(255,255,255,.12);
+  --lg-highlight: rgba(255,255,255,.65);
+  --lg-text: #ffffff;
+}
 
-/* ================= BACKGROUND ================= */
+/* ================= RESET ================= */
+*{box-sizing:border-box}
+a{color:var(--lg-text);text-decoration:none;-webkit-tap-highlight-color:transparent}
+
+/* ================= BODY BACKGROUND ================= */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
   color:white;
+
   background:
-    linear-gradient(rgba(124,15,15,.92), rgba(124,15,15,.92)),
+    linear-gradient(rgba(124,15,15,.9), rgba(124,15,15,.9)),
     url("uav-ui-portrait.jpg") center / cover no-repeat;
 }
 
@@ -30,22 +40,21 @@ body{
 .page{
   min-height:100vh;
   display:flex;
-  justify-content:center;
+  flex-direction:column;
+  align-items:center;
   padding:32px 16px;
+  gap:28px;
 }
 
-/* ================= CARD ================= */
+/* ================= SOLID CARD ================= */
 .card{
   width:100%;
   max-width:420px;
-  border-radius:22px;
-  overflow:hidden;
-}
+  padding:32px 20px;
 
-/* ================= TOP CONTENT (SOLID) ================= */
-.card-top{
-  padding:32px 20px 24px;
+  border-radius:22px;
   background:rgba(0,0,0,.45);
+  box-shadow:0 18px 36px rgba(0,0,0,.45);
 }
 
 /* ================= HEADER ================= */
@@ -70,52 +79,70 @@ body{
   overflow:hidden;
   background:black;
 }
+
 .video iframe{
   width:100%;
   aspect-ratio:16/9;
   border:none;
 }
 
-/* ================= MENU AREA (TRANSPARENT!) ================= */
-.card-menu{
-  padding:26px 20px 34px;
-  say background:transparent;
-}
-
 /* ================= REAL GLASS BUTTON ================= */
-.link{
-  height:56px;
+.glass-container{
+  position:relative;
+  width:100%;
+  max-width:420px;
+  height:58px;
   border-radius:999px;
+  overflow:hidden;
   margin-bottom:18px;
 
-  /* BENING */
-  background:rgba(255,255,255,.06);
+  box-shadow:
+    0 14px 30px rgba(0,0,0,.45);
+}
 
-  /* GLASS CORE */
-  backdrop-filter:blur(28px) saturate(200%);
-  -webkit-backdrop-filter:blur(28px) saturate(200%);
+/* layer 1: blur core */
+.glass-filter{
+  position:absolute;
+  inset:0;
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  z-index:0;
+}
 
-  border:1px solid rgba(255,255,255,.3);
+/* layer 2: glass color */
+.glass-overlay{
+  position:absolute;
+  inset:0;
+  background: var(--lg-bg-color);
+  z-index:1;
+}
 
+/* layer 3: highlight / specular */
+.glass-specular{
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  box-shadow:
+    inset 1px 1px 0 var(--lg-highlight),
+    inset -1px -1px 0 rgba(255,255,255,.15);
+  z-index:2;
+}
+
+/* layer 4: content */
+.glass-content{
+  position:relative;
+  z-index:3;
+  height:100%;
   display:flex;
   align-items:center;
   justify-content:center;
-
   font-weight:600;
   letter-spacing:.3px;
-
-  box-shadow:
-    0 12px 28px rgba(0,0,0,.45),
-    inset 0 1px 1px rgba(255,255,255,.55);
-
-  transition:transform .18s ease, box-shadow .18s ease;
 }
 
-.link:active{
+/* press */
+.glass-container:active .glass-content{
   transform:scale(.96);
-  box-shadow:
-    0 8px 18px rgba(0,0,0,.6),
-    inset 0 2px 6px rgba(0,0,0,.35);
 }
 </style>
 </head>
@@ -123,28 +150,35 @@ body{
 <body>
 
 <div class="page">
+
+  <!-- SOLID CONTENT -->
   <div class="card">
-
-    <!-- SOLID AREA -->
-    <div class="card-top">
-      <div class="header">
-        <img src="./logo.jpg" class="logo-circle">
-        <h3>Pusat Pengembangan UAV</h3>
-        <p>Powered by <span class="autacs">AUTACS</span></p>
-      </div>
-
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
-      </div>
+    <div class="header">
+      <img src="./logo.jpg" class="logo-circle">
+      <h3>Pusat Pengembangan UAV</h3>
+      <p>Powered by <span class="autacs">AUTACS</span></p>
     </div>
 
-    <!-- GLASS AREA -->
-    <div class="card-menu">
-      <a class="link" href="menu-a.html">Katalog Produk</a>
-      <a class="link" href="#">Video Dokumentasi</a>
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
     </div>
-
   </div>
+
+  <!-- REAL GLASS BUTTONS -->
+  <a href="menu-a.html" class="glass-container">
+    <div class="glass-filter"></div>
+    <div class="glass-overlay"></div>
+    <div class="glass-specular"></div>
+    <div class="glass-content">Katalog Produk</div>
+  </a>
+
+  <a href="#" class="glass-container">
+    <div class="glass-filter"></div>
+    <div class="glass-overlay"></div>
+    <div class="glass-specular"></div>
+    <div class="glass-content">Video Dokumentasi</div>
+  </a>
+
 </div>
 
 </body>
