@@ -10,8 +10,8 @@
   <style>
     /* ================= GLASS VARIABLE ================= */
     :root{
-      --lg-bg-color: rgb(255,255,255,0.30);
-      --lg-border: rgb(255,255,255,0.30);
+      --lg-bg-color: rgba(255,255,255,0.30);
+      --lg-border: rgba(255,255,255,0.30);
       --lg-highlight: rgba(255,255,255,0.80);
       --lg-text: #ffffff;
     }
@@ -22,7 +22,7 @@
       -webkit-tap-highlight-color:transparent;
     }
 
-    /* 🔑 FIX SEMUA LINK DI BREADCRUMB */
+    /* ================= BREADCRUMB LINKS FIX ================= */
     .breadcrumb a{
       color:white !important;
       text-decoration:none;
@@ -37,29 +37,25 @@
       color:#4f86ff !important;
     }
 
-  /* ================= BACKGROUND FULL FIT ================= */
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-    url("uav-ui-portrait.jpg");
+    /* ================= BACKGROUND PORTRAIT (FIXED) ================= */
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
 
-  background-repeat:no-repeat;
-  background-size:cover;        /* 🔑 FULL FIT */
-  background-position:center;   /* 🔑 TENGAH */
-  background-attachment:fixed;  /* OPSIONAL: lebih solid */
-}
+      background-image: url("uav-ui-portrait.jpg");
 
-/* Landscape */
-@media (orientation: landscape){
-  body{
-    background-image:
-      url("uav-ui-landscape.jpg");
+      background-repeat:no-repeat;
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+    }
 
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-position:center;
-  }
-}
+    /* ================= BACKGROUND LANDSCAPE ================= */
+    @media (orientation: landscape){
+      body{
+        background-image: url("uav-ui-landscape.jpg");
+      }
+    }
 
     /* ================= LAYOUT ================= */
     .page{
@@ -69,36 +65,36 @@ body{
       padding:28px 16px;
     }
 
-    /* ================= CARD SOLID ================= */
+    /* ================= CARD GLASS EFFECT ================= */
     .card{
       width:100%;
       max-width:420px;
       border-radius:22px;
       padding:22px 18px 96px;
       position:relative;
+
       background: linear-gradient(
         180deg,
-        rgba(255,255,255,0.30)
-        rgba(255,255,255,0.12));
-      backdrop-filter: 
-        blur(30px)
-        saturate(180%)
-        brightness(1.1)
-        url(#dispalcementFilter);
-      -webkit-backdrop-filter: 
-        blur(28px)
-        saturate(180%)
-        brightness(1.12);
-      border: 1px solid rgba(255,255,255,0.45);
+        rgba(255,255,255,0.30),
+        rgba(255,255,255,0.12)
+      );
+
+      backdrop-filter: blur(30px) saturate(180%) brightness(1.1);
+      -webkit-backdrop-filter: blur(28px) saturate(180%) brightness(1.12);
+
+      border:1px solid rgba(255,255,255,0.45);
+
       box-shadow:
         0 30px 70px rgba(0,0,0,0.45),
         inset 0 1px 1px rgba(255,255,255,.75),
         inset 0 -1px 1px rgba(255,255,255,.15);
+
       overflow:hidden;
       animation:slideIn .25s ease;
-      filter: drop-shadow(-8px -10px 46px #0000005f);
+      filter: drop-shadow(-8px -10px 46px rgba(0,0,0,0.35));
     }
 
+    /* ================= CARD LIGHT EFFECT ================= */
     .card::before{
       content:"";
       position:absolute;
@@ -129,45 +125,32 @@ body{
       pointer-events:none;
     }
 
-
-    
-
-    /* ================= BREADCRUMB ================= */
-    .breadcrumb{
-      padding:12px;
-      border-radius:999px;
-      background:rgba(0,0,0,.35);
-      text-align:center;
-      margin-bottom:16px;
-      font-size:14px;
-    }
-
-    /* ================= HERO ================= */
+    /* ================= HERO IMAGE ================= */
     .hero{
       height:190px;
       border-radius:18px;
       margin-bottom:18px;
-      background:url("produk-a.jpg") center/cover no-repeat;
+
+      background: url("produk-a.jpg") center/cover no-repeat;
+
       box-shadow: inset 0 0 0 1px rgba(255,255,255,.20);
     }
 
-    /* ================= LINKS CONTAINER ================= */
+    /* ================= LINKS ================= */
     .links{
       display:flex;
       flex-direction:column;
       gap:14px;
     }
 
-    /* ================= GLASS BUTTON (ONLY) ================= */
+    /* ================= GLASS BUTTON ================= */
     .link,
     .back-btn{
       border-radius:999px;
-
-      /* 🔑 TRANSPARANSI DITINGKATKAN */
       background: var(--lg-bg-color);
 
-      /* 🔑 BLUR LEBIH BESAR */
       backdrop-filter: blur(12px) saturate(150%) brightness(1.08);
+      -webkit-backdrop-filter: blur(12px) saturate(150%) brightness(1.08);
 
       border:1px solid var(--lg-border);
 
@@ -182,7 +165,8 @@ body{
       color:white !important;
       text-decoration:none;
       font-weight:600;
-      transition: all .25s ease;
+
+      transition:all .25s ease;
     }
 
     .link{
@@ -190,36 +174,35 @@ body{
     }
 
     .link:hover{
-      background:rgba(255,255,255,0.34);
-      transform:translateY(-1px);
+      background: rgba(255,255,255,0.38);
+      transform: translateY(-1px);
     }
 
     .link:active{
-      transform:scale(.96);
+      transform: scale(.96);
     }
 
-    /* ================= BACK BUTTON POSISI ================= */
+    /* ================= BACK BUTTON POSITION ================= */
     .back-btn{
       position:absolute;
       left:18px;
       bottom:calc(18px + env(safe-area-inset-bottom));
       padding:10px 18px;
       height:auto;
-      border-radius:3rem;
     }
 
     .back-btn:hover{
-      background:rgba(255,255,255,0.34);
+      background: rgba(255,255,255,0.38);
     }
 
     .back-btn:active{
-      transform:scale(.96);
+      transform: scale(.96);
     }
 
     /* ================= TRANSITION ================= */
     @keyframes slideIn{
       from{ transform:translateX(20px); opacity:0; }
-      to{ opacity:1; }
+      to{ transform:translateX(0); opacity:1; }
     }
 
     .slide-out{
@@ -229,10 +212,12 @@ body{
     @keyframes slideOut{
       to{ transform:translateX(-20px); opacity:0; }
     }
+
   </style>
 </head>
 
 <body>
+
   <div class="page">
     <div class="card" id="card">
 
@@ -257,7 +242,7 @@ body{
     function go(url){
       const c = document.getElementById('card');
       c.classList.add('slide-out');
-      setTimeout(()=>location.href=url,180);
+      setTimeout(()=> location.href=url,180);
     }
   </script>
 
