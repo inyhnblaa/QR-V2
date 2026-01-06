@@ -1,250 +1,280 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Katalog Produk</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Katalog Produk</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-  <style>
-    /* ================= GLASS VARIABLE ================= */
-    :root{
-      --lg-bg-color: rgba(255,255,255,0.30);
-      --lg-border: rgba(255,255,255,0.30);
-      --lg-highlight: rgba(255,255,255,0.80);
-      --lg-text: #ffffff;
-    }
+<style>
+:root{
+  --lg-bg-color: rgba(255,255,255,0.32);
+  --lg-border: rgba(255,255,255,0.40);
+  --lg-highlight: rgba(255,255,255,0.90);
+  --text-grey: #666666;        /* 🔑 warna teks abu */
+}
 
-    /* ================= RESET ================= */
-    *{
-      box-sizing:border-box;
-      -webkit-tap-highlight-color:transparent;
-    }
+/* ===== RESET ===== */
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
 
-    /* ================= BREADCRUMB LINKS FIX ================= */
-    .breadcrumb a{
-      color:white !important;
-      text-decoration:none;
-      font-weight:600;
-    }
+/* ===== BACKGROUND PORTRAIT ===== */
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
 
-    .breadcrumb a:visited{
-      color:white !important;
-    }
+  background-image: url("uav-ui-portrait.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+}
 
-    .breadcrumb a:hover{
-      color:#4f86ff !important;
-    }
+/* jika landscape ganti gambar */
+@media (orientation: landscape){
+  body{
+    background-image: url("uav-ui-landscape.jpg");
+  }
+}
 
-    /* ================= BACKGROUND PORTRAIT (FIXED) ================= */
-    body{
-      margin:0;
-      font-family:'Inter',sans-serif;
+/* ===== PAGE LAYOUT ===== */
+.page{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:28px 16px;
+}
 
-      background-image: url("uav-ui-portrait.jpg");
+/* ===== CARD UTAMA ===== */
+.card{
+  width:100%;
+  max-width:420px;
+  border-radius:22px;
+  padding:22px 18px 120px;
+  position:relative;
 
-      background-repeat:no-repeat;
-      background-size:cover;
-      background-position:center;
-      background-attachment:fixed;
-    }
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.28),
+    rgba(255,255,255,0.10)
+  );
 
-    /* ================= BACKGROUND LANDSCAPE ================= */
-    @media (orientation: landscape){
-      body{
-        background-image: url("uav-ui-landscape.jpg");
-      }
-    }
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
 
-    /* ================= LAYOUT ================= */
-    .page{
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      padding:28px 16px;
-    }
+  border:1px solid rgba(255,255,255,0.45);
 
-    /* ================= CARD GLASS EFFECT ================= */
-    .card{
-      width:100%;
-      max-width:420px;
-      border-radius:22px;
-      padding:22px 18px 96px;
-      position:relative;
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.40),
+    inset 0 1px 1px rgba(255,255,255,.70);
 
-      background: linear-gradient(
-        180deg,
-        rgba(255,255,255,0.30),
-        rgba(255,255,255,0.12)
-      );
+  overflow:hidden;
+  animation:slideIn .25s ease;
+}
 
-      backdrop-filter: blur(30px) saturate(180%) brightness(1.1);
-      -webkit-backdrop-filter: blur(28px) saturate(180%) brightness(1.12);
+/* efek cahaya glass card */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(255,255,255,0.40),
+      transparent 60%
+    );
+  filter: blur(18px);
+  transform:rotate(10deg);
+  pointer-events:none;
+}
 
-      border:1px solid rgba(255,255,255,0.45);
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255,255,255,.15),
+      transparent 70%
+    );
+  opacity:.5;
+  pointer-events:none;
+}
 
-      box-shadow:
-        0 30px 70px rgba(0,0,0,0.45),
-        inset 0 1px 1px rgba(255,255,255,.75),
-        inset 0 -1px 1px rgba(255,255,255,.15);
+/* ===== HERO IMAGE ===== */
+.hero{
+  height:190px;
+  border-radius:18px;
+  margin-bottom:20px;
+  background: url("produk-a.jpg") center/cover no-repeat;
+}
 
-      overflow:hidden;
-      animation:slideIn .25s ease;
-      filter: drop-shadow(-8px -10px 46px rgba(0,0,0,0.35));
-    }
+/* ===== BREADCRUMB PANJANG LIQUID GLASS ===== */
+.breadcrumb-bar{
+  width:100%;
+  margin-bottom:20px;
+  display:flex;
+  justify-content:center;
+}
 
-    /* ================= CARD LIGHT EFFECT ================= */
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:-40%;
-      background:
-        radial-gradient(
-          circle at 30% 25%,
-          rgba(255,255,255,0.45),
-          transparent 60%
-        );
-      filter: blur(18px);
-      transform:rotate(12deg);
-      pointer-events:none;
-    }
+.breadcrumb-long{
+  display:inline-block;
+  padding:12px 24px;
+  border-radius:999px;
 
-    .card::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(
-          120deg,
-          transparent 30%,
-          rgba(255,255,255,.18),
-          transparent 70%
-        );
-      opacity:.6;
-      pointer-events:none;
-    }
+  /* 🔑 efek LIQUID GLASS CLEAR */
+  background: rgba(255,255,255,0.35);
 
-    /* ================= HERO IMAGE ================= */
-    .hero{
-      height:190px;
-      border-radius:18px;
-      margin-bottom:18px;
+  backdrop-filter: blur(12px) saturate(170%) brightness(1.12);
+  -webkit-backdrop-filter: blur(12px) saturate(170%) brightness(1.12);
 
-      background: url("produk-a.jpg") center/cover no-repeat;
+  border:1px solid var(--lg-border);
 
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.20);
-    }
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.18),
+    inset 0 1px 1px rgba(255,255,255,0.95);
 
-    /* ================= LINKS ================= */
-    .links{
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
+  /* 🔑 WARNA TEKS ABU */
+  color: var(--text-grey);
 
-    /* ================= GLASS BUTTON ================= */
-    .link,
-    .back-btn{
-      border-radius:999px;
-      background: var(--lg-bg-color);
+  font-size:15px;
+  font-weight:600;
 
-      backdrop-filter: blur(12px) saturate(150%) brightness(1.08);
-      -webkit-backdrop-filter: blur(12px) saturate(150%) brightness(1.08);
+  width:100%;
+  max-width:380px;
+  text-align:center;
 
-      border:1px solid var(--lg-border);
+  animation: liquidFloat 3s ease-in-out infinite;
+}
 
-      box-shadow:
-        0 6px 14px rgba(0,0,0,.25),
-        inset 1px 1px 0 var(--lg-highlight);
+/* link dalam breadcrumb */
+.breadcrumb-long a{
+  color:#666666 !important;
+  text-decoration:none;
+}
 
-      display:flex;
-      align-items:center;
-      justify-content:center;
+.breadcrumb-long a:hover{
+  color:#4f86ff !important;
+}
 
-      color:white !important;
-      text-decoration:none;
-      font-weight:600;
+/* ===== ANIMASI LIQUID ===== */
+@keyframes liquidFloat{
+  0%{ transform: translateY(0); }
+  50%{ transform: translateY(-4px); }
+  100%{ transform: translateY(0); }
+}
 
-      transition:all .25s ease;
-    }
+/* simulasi liquid halus */
+@keyframes liquidMove{
+  0%{ background-position:0% 50%; }
+  50%{ background-position:100% 50%; }
+  100%{ background-position:0% 50%; }
+}
 
-    .link{
-      height:54px;
-    }
+/* ===== LINKS BUTTON ===== */
+.links{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
 
-    .link:hover{
-      background: rgba(255,255,255,0.38);
-      transform: translateY(-1px);
-    }
+.link,
+.back-btn{
+  border-radius:999px;
+  background: var(--lg-bg-color);
 
-    .link:active{
-      transform: scale(.96);
-    }
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
 
-    /* ================= BACK BUTTON POSITION ================= */
-    .back-btn{
-      position:absolute;
-      left:18px;
-      bottom:calc(18px + env(safe-area-inset-bottom));
-      padding:10px 18px;
-      height:auto;
-    }
+  border:1px solid var(--lg-border);
 
-    .back-btn:hover{
-      background: rgba(255,255,255,0.38);
-    }
+  box-shadow:
+    0 6px 14px rgba(0,0,0,.25),
+    inset 1px 1px 0 var(--lg-highlight);
 
-    .back-btn:active{
-      transform: scale(.96);
-    }
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    /* ================= TRANSITION ================= */
-    @keyframes slideIn{
-      from{ transform:translateX(20px); opacity:0; }
-      to{ transform:translateX(0); opacity:1; }
-    }
+  color:#555555 !important;   /* 🔑 teks tombol abu juga biar selaras */
+  text-decoration:none;
+  font-weight:600;
 
-    .slide-out{
-      animation:slideOut .2s ease forwards;
-    }
+  transition:all .25s ease;
+  height:54px;
+}
 
-    @keyframes slideOut{
-      to{ transform:translateX(-20px); opacity:0; }
-    }
+.link:hover{
+  background: rgba(255,255,255,0.55);
+  transform: translateY(-1px);
+}
 
-  </style>
+.link:active{
+  transform: scale(.96);
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn{
+  position:absolute;
+  left:18px;
+  bottom:calc(22px + env(safe-area-inset-bottom));
+  padding:10px 20px;
+  height:auto;
+}
+
+/* ===== TRANSITION ===== */
+@keyframes slideIn{
+  from{ transform:translateX(20px); opacity:0; }
+  to{ transform:translateX(0); opacity:1; }
+}
+
+.slide-out{
+  animation:slideOut .2s ease forwards;
+}
+
+@keyframes slideOut{
+  to{ transform:translateX(-20px); opacity:0; }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="page">
-    <div class="card" id="card">
+<div class="page">
+  <div class="card" id="card">
 
-      <div class="breadcrumb">
+    <!-- BREADCRUMB DALAM SATU KAPSUL PANJANG -->
+    <div class="breadcrumb-bar">
+      <div class="breadcrumb-long">
         <a href="index.html" onclick="go(this.href);return false;">Home</a> › Katalog Produk
       </div>
-
-      <div class="hero"></div>
-
-      <div class="links">
-        <a class="link" href="produk-a.html" onclick="go(this.href);return false;">Produk A</a>
-        <a class="link" href="#">Produk B</a>
-        <a class="link" href="#">Produk C</a>
-      </div>
-
-      <a class="back-btn" href="index.html" onclick="go(this.href);return false;">← Kembali</a>
-
     </div>
-  </div>
 
-  <script>
-    function go(url){
-      const c = document.getElementById('card');
-      c.classList.add('slide-out');
-      setTimeout(()=> location.href=url,180);
-    }
-  </script>
+    <div class="hero"></div>
+
+    <div class="links">
+      <a class="link" href="produk-a.html" onclick="go(this.href);return false;">Produk A</a>
+      <a class="link" href="#">Produk B</a>
+      <a class="link" href="#">Produk C</a>
+    </div>
+
+    <a class="back-btn" href="index.html" onclick="go(this.href);return false;">← Kembali</a>
+
+  </div>
+</div>
+
+<script>
+function go(url){
+  const c = document.getElementById('card');
+  c.classList.add('slide-out');
+  setTimeout(()=> location.href=url,180);
+}
+</script>
 
 </body>
 </html>
