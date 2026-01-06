@@ -8,18 +8,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --panel-red-dark: rgba(74,18,18,0.72);
-      --btn-glass-clear: rgba(255,255,255,0.12);
+    /* ================= RESET ================= */
+    *{
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
     }
-
-    *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 
     a, a:visited, a:hover, a:active{
       color:white !important;
       text-decoration:none !important;
     }
 
+    /* ================= BACKGROUND HALAMAN – TETAP ✔ ================= */
     body{
       margin:0;
       font-family:'Inter',sans-serif;
@@ -28,7 +28,7 @@
       background-color:#7c0f0f;
 
       background-image:
-        linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+        linear-gradient(rgba(124,15,15,0.92), rgba(124,15,15,0.92)),
         url("uav-ui-portrait.jpg");
 
       background-repeat:no-repeat;
@@ -40,7 +40,7 @@
     @media (orientation: landscape){
       body{
         background-image:
-          linear-gradient(rgba(124,15,15,0.92),rgba(124,15,15,0.92)),
+          linear-gradient(rgba(124,15,15,0.92), rgba(124,15,15,0.92)),
           url("uav-ui-landscape.jpg");
 
         background-repeat:no-repeat;
@@ -50,6 +50,7 @@
       }
     }
 
+    /* ================= LAYOUT ================= */
     .page{
       min-height:100vh;
       display:flex;
@@ -57,19 +58,40 @@
       padding:32px 16px;
     }
 
+    /* ================= NAVIGASI ATAS – PANEL GLASS CLEAR ✔ ================= */
+    .breadcrumb{
+      padding:14px 18px;
+      border-radius:999px;
+      text-align:center;
+      margin-bottom:18px;
+
+      background: rgba(255,255,255,0.10);     /* glass clear */
+      backdrop-filter: blur(10px) saturate(140%);
+
+      border:1px solid rgba(255,255,255,0.55);
+
+      box-shadow: 0 6px 16px rgba(0,0,0,.25);
+
+      font-size:15px;
+      font-weight:600;
+      color:white;
+    }
+
+    /* ================= CARD – PANEL MERAH TUA JADI GLASS ✔ ================= */
     .card{
       width:100%;
       max-width:420px;
 
-      /* No 2 panel merah tua sekarang GLASS ✔ */
-      background: var(--panel-red-dark);
-      backdrop-filter: blur(10px) saturate(140%) brightness(1.05);
+      /* 🔑 Warna tetap #4a1212 tapi dibuat glass */
+      background: rgba(74,18,18,0.78);       /* #4a1212 versi transparan */
+
+      backdrop-filter: blur(12px) saturate(135%) brightness(1.04);
 
       border-radius:22px;
       padding:22px 18px 110px;
       position:relative;
 
-      box-shadow: 0 8px 24px rgba(0,0,0,.35);
+      box-shadow: 0 12px 32px rgba(0,0,0,.35);
 
       animation:slideIn .25s ease;
     }
@@ -81,15 +103,7 @@
       background:url("produk-a.jpg") center/cover no-repeat;
     }
 
-    .breadcrumb{
-      padding:12px;
-      border-radius:999px;
-      text-align:center;
-      margin-bottom:16px;
-      font-size:14px;
-      font-weight:600;
-    }
-
+    /* ================= BUTTON PRODUK – TETAP GLASS CLEAR ✔ ================= */
     .links{
       display:flex;
       flex-direction:column;
@@ -100,8 +114,8 @@
       height:56px;
       border-radius:999px;
 
-      /* No 3 tetap glass clear ✔ */
-      background: var(--btn-glass-clear);
+      background: rgba(255,255,255,0.12);  /* glass clear */
+
       backdrop-filter: blur(10px) saturate(140%) brightness(1.06);
 
       border:1px solid rgba(255,255,255,0.55);
@@ -112,8 +126,7 @@
       align-items:center;
       justify-content:center;
 
-      color:white;
-      text-decoration:none;
+      color:white !important;
       font-weight:600;
       transition:.25s ease;
     }
@@ -127,6 +140,7 @@
       transform:scale(.96);
     }
 
+    /* ================= BACK BUTTON ================= */
     .back-btn{
       position:absolute;
       left:50%;
@@ -134,18 +148,24 @@
       bottom:22px;
 
       padding:10px 20px;
+      border-radius:3rem;
 
-      background: var(--btn-glass-clear);
-      backdrop-filter: blur(10px) saturate(140%);
+      background: rgba(255,255,255,0.10); /* glass clear */
+
+      backdrop-filter: blur(10px);
 
       border:1px solid rgba(255,255,255,0.55);
-      border-radius:3rem;
 
       box-shadow: 0 4px 12px rgba(0,0,0,.25);
 
-      color:white;
+      color:white !important;
       font-weight:600;
       font-size:14px;
+      transition:.25s ease;
+    }
+
+    .back-btn:hover{
+      background:rgba(255,255,255,0.18);
     }
 
     @keyframes slideIn{
@@ -167,23 +187,27 @@
 <body>
 
   <div class="page">
-    <div class="card" id="card">
+    <div class="container">
 
       <div class="breadcrumb">
-        Danantara Indonesia – Katalog Produk
+        Home › Katalog Produk
       </div>
 
-      <div class="hero"></div>
+      <div class="card" id="card">
 
-      <div class="links">
-        <a class="link">Produk A</a>
-        <a class="link">Produk B</a>
-        <a class="link">Produk C</a>
+        <div class="hero"></div>
+
+        <div class="links">
+          <a class="link" href="produk-a.html" onclick="go(this.href);return false;">Produk A</a>
+          <a class="link" href="#">Produk B</a>
+          <a class="link" href="#">Produk C</a>
+        </div>
+
+        <a class="back-btn" href="index.html" onclick="go(this.href);return false;">
+          ← Kembali
+        </a>
+
       </div>
-
-      <a class="back-btn" href="index.html" onclick="go(this.href);return false;">
-        ← Kembali
-      </a>
 
     </div>
   </div>
