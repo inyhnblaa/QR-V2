@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Katalog Produk</title>
 
-  <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ================= FONT AMURO (AUTACS) ================= */
-    @font-face{
-      font-family:'Amuro';
-      src:url('./fonts/Amuro%20Bold%20Italic.otf') format('opentype');
+    /* ================= GLASS VARIABLE ================= */
+    :root{
+      --lg-bg-color: rgba(255,255,255,0.22);
+      --lg-border: rgba(255,255,255,0.55);
+      --lg-highlight: rgba(255,255,255,0.80);
+      --lg-text: #ffffff;
     }
 
     /* ================= RESET ================= */
@@ -21,30 +22,24 @@
       -webkit-tap-highlight-color:transparent;
     }
 
-    a{
-      color:white;
+    a,a:visited,a:hover,a:active{
+      color:white!important;
       text-decoration:none;
     }
 
-    /* ================= BACKGROUND TETAP SOLID IMAGE ================= */
+    /* ================= BACKGROUND ================= */
     body{
       margin:0;
       font-family:'Inter',sans-serif;
-      color:white;
+      color:var(--lg-text);
 
-      background-color:#7c0f0f;
-
-      /* 🔑 image tidak ditutup – tetap solid */
-      background-image: url("uav-ui-portrait.jpg");
-      background-repeat:no-repeat;
-      background-size:cover;
-      background-position:center;
-      background-attachment:fixed;
+      background:url("uav-ui-portrait.jpg") center/cover no-repeat fixed;
+      position:relative;
     }
 
     @media (orientation: landscape){
       body{
-        background-image: url("uav-ui-landscape.jpg");
+        background:url("uav-ui-landscape.jpg") center/cover no-repeat fixed;
       }
     }
 
@@ -53,15 +48,16 @@
       min-height:100vh;
       display:flex;
       justify-content:center;
-      padding:32px 16px;
+      padding:28px 16px;
     }
 
+    /* ================= CARD SOLID ================= */
     .card{
       width:100%;
       max-width:420px;
-      background:rgba(0,0,0,.40);
+      background:rgba(0,0,0,.45);
       border-radius:22px;
-      padding:24px 18px 96px;
+      padding:22px 18px 96px;
       position:relative;
       animation:slideIn .25s ease;
     }
@@ -71,99 +67,70 @@
       border-radius:18px;
       margin-bottom:18px;
       background:url("produk-a.jpg") center/cover no-repeat;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.20);
     }
 
-    /* ================= PANEL MERAH TRANSPARAN (PANEL GLASS) ================= */
-
-    .panel-red{
-      padding:12px 16px;
-      border-radius:3rem;
-      margin-bottom:16px;
-
-      /* 🔑 WARNA MERAH GELAP TRANSPARAN */
-      background: rgba(134,32,32,0.65);      /* #862020 */
-
-      /* 🔑 efek panel kaca */
-      backdrop-filter: blur(8px) saturate(130%) brightness(.95);
-
-      border:1px solid rgba(255,255,255,.25);
-
-      box-shadow: 0 6px 14px rgba(0,0,0,.30);
-
-      text-align:center;
-      font-size:14px;
-      font-weight:600;
-    }
-
-    /* ================= BUTTON GLASS CLEAR ================= */
-
+    /* ================= GLASS BUTTON ONLY ================= */
     .links{
       display:flex;
       flex-direction:column;
       gap:14px;
+      margin-bottom:16px;
     }
 
-    .link{
-      height:54px;
-      border-radius:999px;
+    .link,
+    .back-btn{
+      background: rgba(255,255,255,0.18);
+      border:1px solid var(--lg-border);
 
-      /* 🔑 tombol kaca BENING */
-      background: rgba(255,255,255,0.12);
-
-      backdrop-filter: blur(12px) saturate(150%);
-      border:1px solid rgba(255,255,255,0.55);
+      backdrop-filter: blur(10px) saturate(150%) brightness(1.05);
 
       box-shadow:
-        inset 1px 1px 4px rgba(255,255,255,0.45),
-        0 4px 12px rgba(0,0,0,0.25);
+        0 6px 12px rgba(0,0,0,0.25),
+        inset 1px 1px 0 rgba(255,255,255,0.75);
 
       display:flex;
       align-items:center;
       justify-content:center;
 
-      color:white;
+      color:white !important;
       text-decoration:none;
       font-weight:600;
-      transition:.25s ease;
+      transition: all .25s ease;
+      border-radius:999px;
+    }
+
+    .link{
+      height:54px;
     }
 
     .link:hover{
-      background: rgba(255,255,255,0.20);
+      background:rgba(255,255,255,0.30);
+      transform:translateY(-1px);
     }
 
     .link:active{
-      transform: scale(.96);
+      transform:scale(.96);
     }
 
-    /* ================= BACK BUTTON ================= */
-
+    /* tombol kembali */
     .back-btn{
       position:absolute;
       left:18px;
       bottom:calc(18px + env(safe-area-inset-bottom));
       padding:10px 18px;
-
-      background: rgba(255,255,255,0.10);
-      backdrop-filter: blur(12px);
-      border:1px solid rgba(255,255,255,0.55);
-
-      box-shadow: 0 4px 12px rgba(0,0,0,.25);
-
-      color:white;
-      font-weight:600;
+      height:auto;
       border-radius:3rem;
-      transition:.25s ease;
     }
 
     .back-btn:hover{
-      background: rgba(255,255,255,0.18);
+      background:rgba(255,255,255,0.30);
     }
 
     .back-btn:active{
-      transform: scale(.96);
+      transform:scale(.96);
     }
 
-    /* ================= ANIMATION ================= */
     @keyframes slideIn{
       from{ transform:translateX(20px); opacity:0; }
       to{ opacity:1; }
@@ -176,7 +143,6 @@
     @keyframes slideOut{
       to{ transform:translateX(-20px); opacity:0; }
     }
-
   </style>
 </head>
 
@@ -185,23 +151,22 @@
   <div class="page">
     <div class="card" id="card">
 
-      <!-- PANEL MERAH TRANSPARAN -->
-      <div class="panel-red">
-        <a href="index.html" onclick="go(this.href);return false;">
+      <!-- TOMBOL NAVIGASI HOME > KATALOG PRODUK -->
+      <div class="links">
+        <a class="link" href="index.html" onclick="go(this.href);return false;">
           Home › Katalog Produk
         </a>
       </div>
 
       <div class="hero"></div>
 
-      <!-- TOMBOL PRODUK -->
+      <!-- MENU PRODUK -->
       <div class="links">
         <a class="link" href="produk-a.html" onclick="go(this.href);return false;">Produk A</a>
         <a class="link" href="#">Produk B</a>
         <a class="link" href="#">Produk C</a>
       </div>
 
-      <!-- TOMBOL KEMBALI -->
       <a class="back-btn" href="index.html" onclick="go(this.href);return false;">
         ← Kembali
       </a>
@@ -215,6 +180,10 @@
       c.classList.add('slide-out');
       setTimeout(()=>location.href=url,180);
     }
+
+    window.addEventListener('pageshow',()=>{
+      document.getElementById('card').classList.remove('slide-out');
+    });
   </script>
 
 </body>
