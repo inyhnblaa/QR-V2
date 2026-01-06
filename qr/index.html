@@ -9,127 +9,132 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-/* ================= FONT AMURO (KHUSUS AUTACS) ================= */
+/* ================= FONT ================= */
 @font-face{
   font-family:'Amuro';
   src:url('./fonts/Amuro%20Bold%20Italic.otf') format('opentype');
 }
 
-/* ================= RESET ================= */
 *{box-sizing:border-box}
 a{-webkit-tap-highlight-color:transparent}
 
-/* ================= BACKGROUND FULL FIT ================= */
+/* ================= BACKGROUND ================= */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
   color:white;
 
-  background-color:#7c0f0f;
-  background-image:
-    linear-gradient(
-      rgba(124,15,15,0.92),
-      rgba(124,15,15,0.92)
-    ),
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,.12), transparent 40%),
+    linear-gradient(rgba(124,15,15,.88), rgba(124,15,15,.88)),
     url("uav-ui-portrait.jpg");
 
-  background-repeat:no-repeat;
-  background-size:cover;        /* 🔑 FULL FIT */
-  background-position:center;   /* 🔑 TENGAH */
-  background-attachment:fixed;  /* OPSIONAL: lebih solid */
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
 }
 
-/* Landscape */
-@media (orientation: landscape){
-  body{
-    background-image:
-      linear-gradient(
-        rgba(124,15,15,0.92),
-        rgba(124,15,15,0.92)
-      ),
-      url("uav-ui-landscape.jpg");
-
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-position:center;
-  }
-}
-
-
-/* ================= PAGE & CARD ================= */
+/* ================= PAGE ================= */
 .page{
   min-height:100vh;
   display:flex;
   justify-content:center;
   padding:32px 16px;
 }
+
+/* ================= LIQUID GLASS CARD ================= */
 .card{
   width:100%;
   max-width:420px;
-  background:rgba(0,0,0,.35);
-  border-radius:22px;
-  padding:32px 20px 48px;
-  color:white;
-  animation:slideIn .3s ease;
+  padding:34px 22px 50px;
+
+  border-radius:26px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.25),
+      rgba(255,255,255,.05)
+    );
+
+  backdrop-filter:blur(22px) saturate(160%);
+  -webkit-backdrop-filter:blur(22px) saturate(160%);
+
+  border:1px solid rgba(255,255,255,.35);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.35),
+    inset 0 1px 1px rgba(255,255,255,.35);
+
+  animation:slideIn .35s cubic-bezier(.2,.8,.2,1);
 }
 
 /* ================= HEADER ================= */
 .header{
   text-align:center;
-  margin-bottom:24px;
-  padding-top:12px;
+  margin-bottom:26px;
 }
 
-/* ================= LOGO CIRCLE (FIX JPG NON-KOTAK) ================= */
+/* ================= LOGO ================= */
 .logo-circle{
   width:96px;
   height:96px;
-
   border-radius:50%;
-  background:#ffffff;
+  background:white;
+  object-fit:cover;
+  margin:0 auto 16px;
 
-  object-fit:cover;       /* 🔑 KUNCI UTAMA */
-  object-position:center;
-
-  display:block;
-  margin:0 auto 14px;
-
-  box-shadow:0 6px 18px rgba(0,0,0,.25);
+  box-shadow:
+    0 8px 22px rgba(0,0,0,.35),
+    inset 0 1px 2px rgba(255,255,255,.7);
 }
 
-/* ================= AUTACS ONLY ================= */
+/* ================= AUTACS ================= */
 .autacs{
   font-family:'Amuro',sans-serif;
-  color:#2e63e3;      /* WARNA BARU */
-  font-size:1.25em;  /* LEBIH BESAR (±25%) */
+  color:#4c7dff;
+  font-size:1.25em;
   letter-spacing:2px;
-  font-weight:700;
 }
-
 
 /* ================= VIDEO ================= */
 .video{
-  border-radius:18px;
+  border-radius:20px;
   overflow:hidden;
-  background:black;
-  margin-bottom:22px;
+  margin-bottom:26px;
+
+  background:rgba(0,0,0,.5);
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.35),
+    inset 0 1px 1px rgba(255,255,255,.25);
 }
+
 .video iframe{
   width:100%;
   aspect-ratio:16/9;
   border:none;
 }
 
-/* ================= BUTTON ================= */
+/* ================= LIQUID GLASS BUTTON ================= */
 .links{
   display:flex;
   flex-direction:column;
-  gap:14px;
+  gap:16px;
 }
+
 .link{
-  height:54px;
+  height:56px;
   border-radius:999px;
-  background:rgba(255,255,255,.14);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.35),
+      rgba(255,255,255,.08)
+    );
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
   border:1px solid rgba(255,255,255,.45);
 
   display:flex;
@@ -137,28 +142,51 @@ body{
   justify-content:center;
 
   color:white;
-  text-decoration:none;
   font-weight:600;
+  text-decoration:none;
 
-  -webkit-tap-highlight-color:transparent;
+  box-shadow:
+    0 10px 22px rgba(0,0,0,.35),
+    inset 0 1px 1px rgba(255,255,255,.6);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
 }
+
+/* Press like iOS */
 .link:active{
-  background:rgba(255,255,255,.18);
-  color:white;
+  transform:scale(.97);
+  box-shadow:
+    0 6px 14px rgba(0,0,0,.4),
+    inset 0 2px 6px rgba(0,0,0,.35);
 }
 
-/* ================= TRANSITION ================= */
+/* ================= ANIMATION ================= */
 @keyframes slideIn{
-  from{transform:translateX(30px);opacity:0}
-  to{opacity:1}
+  from{
+    transform:translateY(30px) scale(.96);
+    opacity:0;
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
+
 .slide-left{
   animation:slideLeft .25s ease forwards;
 }
+
 @keyframes slideLeft{
-  to{transform:translateX(-30px);opacity:0}
+  to{
+    transform:translateX(-30px);
+    opacity:0;
+  }
 }
 </style>
+
 </head>
 
 <body>
