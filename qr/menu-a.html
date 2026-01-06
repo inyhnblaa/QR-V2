@@ -10,7 +10,7 @@
   <style>
     /* ================= GLASS VARIABLE ================= */
     :root{
-      --lg-bg-color: rgba(255,255,255,0.26);
+      --lg-bg-color: rgba(255,255,255,0.22);
       --lg-border: rgba(255,255,255,0.55);
       --lg-highlight: rgba(255,255,255,0.80);
       --lg-text: #ffffff;
@@ -22,19 +22,9 @@
       -webkit-tap-highlight-color:transparent;
     }
 
-    /* 🔑 FIX SEMUA LINK DI BREADCRUMB */
-    .breadcrumb a{
-      color:white !important;
+    a,a:visited,a:hover,a:active{
+      color:white!important;
       text-decoration:none;
-      font-weight:600;
-    }
-
-    .breadcrumb a:visited{
-      color:white !important;
-    }
-
-    .breadcrumb a:hover{
-      color:#4f86ff !important;
     }
 
     /* ================= BACKGROUND ================= */
@@ -43,16 +33,13 @@
       font-family:'Inter',sans-serif;
       color:var(--lg-text);
 
-      background:
-        linear-gradient(rgba(124,15,15,.92),rgba(124,15,15,.92)),
-        url("uav-ui-portrait.jpg") center/cover no-repeat;
+      background:url("uav-ui-portrait.jpg") center/cover no-repeat fixed;
+      position:relative;
     }
 
-    @media (orientation:landscape){
+    @media (orientation: landscape){
       body{
-        background:
-          linear-gradient(rgba(124,15,15,.92),rgba(124,15,15,.92)),
-          url("uav-ui-landscape.jpg") center/cover no-repeat;
+        background:url("uav-ui-landscape.jpg") center/cover no-repeat fixed;
       }
     }
 
@@ -75,17 +62,6 @@
       animation:slideIn .25s ease;
     }
 
-    /* ================= BREADCRUMB ================= */
-    .breadcrumb{
-      padding:12px;
-      border-radius:999px;
-      background:rgba(0,0,0,.35);
-      text-align:center;
-      margin-bottom:16px;
-      font-size:14px;
-    }
-
-    /* ================= HERO ================= */
     .hero{
       height:190px;
       border-radius:18px;
@@ -94,29 +70,24 @@
       box-shadow: inset 0 0 0 1px rgba(255,255,255,.20);
     }
 
-    /* ================= LINKS CONTAINER ================= */
+    /* ================= GLASS BUTTON ONLY ================= */
     .links{
       display:flex;
       flex-direction:column;
       gap:14px;
+      margin-bottom:16px;
     }
 
-    /* ================= GLASS BUTTON (ONLY) ================= */
     .link,
     .back-btn{
-      border-radius:999px;
-
-      /* 🔑 TRANSPARANSI DITINGKATKAN */
-      background: var(--lg-bg-color);
-
-      /* 🔑 BLUR LEBIH BESAR */
-      backdrop-filter: blur(12px) saturate(150%) brightness(1.08);
-
+      background: rgba(255,255,255,0.18);
       border:1px solid var(--lg-border);
 
+      backdrop-filter: blur(10px) saturate(150%) brightness(1.05);
+
       box-shadow:
-        0 6px 14px rgba(0,0,0,.25),
-        inset 1px 1px 0 var(--lg-highlight);
+        0 6px 12px rgba(0,0,0,0.25),
+        inset 1px 1px 0 rgba(255,255,255,0.75);
 
       display:flex;
       align-items:center;
@@ -126,6 +97,7 @@
       text-decoration:none;
       font-weight:600;
       transition: all .25s ease;
+      border-radius:999px;
     }
 
     .link{
@@ -133,7 +105,7 @@
     }
 
     .link:hover{
-      background:rgba(255,255,255,0.34);
+      background:rgba(255,255,255,0.30);
       transform:translateY(-1px);
     }
 
@@ -141,7 +113,7 @@
       transform:scale(.96);
     }
 
-    /* ================= BACK BUTTON POSISI ================= */
+    /* tombol kembali */
     .back-btn{
       position:absolute;
       left:18px;
@@ -152,14 +124,13 @@
     }
 
     .back-btn:hover{
-      background:rgba(255,255,255,0.34);
+      background:rgba(255,255,255,0.30);
     }
 
     .back-btn:active{
       transform:scale(.96);
     }
 
-    /* ================= TRANSITION ================= */
     @keyframes slideIn{
       from{ transform:translateX(20px); opacity:0; }
       to{ opacity:1; }
@@ -176,22 +147,29 @@
 </head>
 
 <body>
+
   <div class="page">
     <div class="card" id="card">
 
-      <div class="breadcrumb">
-        <a href="index.html" onclick="go(this.href);return false;">Home</a> › Katalog Produk
+      <!-- TOMBOL NAVIGASI HOME > KATALOG PRODUK -->
+      <div class="links">
+        <a class="link" href="index.html" onclick="go(this.href);return false;">
+          Home › Katalog Produk
+        </a>
       </div>
 
       <div class="hero"></div>
 
+      <!-- MENU PRODUK -->
       <div class="links">
         <a class="link" href="produk-a.html" onclick="go(this.href);return false;">Produk A</a>
         <a class="link" href="#">Produk B</a>
         <a class="link" href="#">Produk C</a>
       </div>
 
-      <a class="back-btn" href="index.html" onclick="go(this.href);return false;">← Kembali</a>
+      <a class="back-btn" href="index.html" onclick="go(this.href);return false;">
+        ← Kembali
+      </a>
 
     </div>
   </div>
@@ -202,6 +180,10 @@
       c.classList.add('slide-out');
       setTimeout(()=>location.href=url,180);
     }
+
+    window.addEventListener('pageshow',()=>{
+      document.getElementById('card').classList.remove('slide-out');
+    });
   </script>
 
 </body>
