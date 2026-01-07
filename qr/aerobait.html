@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -14,13 +15,11 @@
   --text-black: #000000;
 }
 
-/* ===== RESET ===== */
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
 }
 
-/* ===== BACKGROUND ===== */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
@@ -38,7 +37,6 @@ body{
   }
 }
 
-/* ===== PAGE LAYOUT ===== */
 .page{
   min-height:100vh;
   display:flex;
@@ -46,7 +44,6 @@ body{
   padding:28px 16px;
 }
 
-/* ===== CARD UTAMA LIQUID GLASS ===== */
 .card{
   width:100%;
   max-width:420px;
@@ -73,38 +70,6 @@ body{
   animation:slideIn .25s ease;
 }
 
-/* efek cahaya glass card */
-.card::before{
-  content:"";
-  position:absolute;
-  inset:-40%;
-  background:
-    radial-gradient(
-      circle at 30% 25%,
-      rgba(255,255,255,0.40),
-      transparent 60%
-    );
-  filter: blur(18px);
-  transform:rotate(10deg);
-  pointer-events:none;
-}
-
-.card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      120deg,
-      transparent 30%,
-      rgba(255,255,255,.15),
-      transparent 70%
-    );
-  opacity:.5;
-  pointer-events:none;
-}
-
-/* ===== HERO ===== */
 .hero{
   height:190px;
   border-radius:18px;
@@ -112,7 +77,6 @@ body{
   background:url("produk-a.jpg") center/cover no-repeat;
 }
 
-/* ===== BREADCRUMB ===== */
 .breadcrumb-bar{
   width:100%;
   margin-bottom:20px;
@@ -125,11 +89,8 @@ body{
   padding:12px 24px;
   border-radius:999px;
 
-  background: rgba(255,255,255,0.90);
-
-  backdrop-filter: blur(12px) saturate(170%);
-  -webkit-backdrop-filter: blur(12px) saturate(170%);
-
+  background:rgba(255,255,255,0.90);
+  backdrop-filter:blur(12px);
   border:1px solid var(--lg-border);
 
   box-shadow:0 10px 32px rgba(0,0,0,.22);
@@ -144,17 +105,10 @@ body{
   text-align:center;
 }
 
-.breadcrumb-long a{
-  color:#000000 !important;
-  text-decoration:none;
-}
-
-/* ===== VIDEO ===== */
 .video-area{
   display:flex;
   flex-direction:column;
   gap:18px;
-  margin-top:10px;
 }
 
 .video-card{
@@ -171,16 +125,15 @@ iframe{
   border:none;
 }
 
-/* ===== DESKRIPSI ===== */
 .desc-panel{
   margin-top:18px;
   padding:14px;
   border-radius:18px;
 
-  background: rgba(255,255,255,.35);
+  background:rgba(255,255,255,0.35);
 
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter:blur(16px) saturate(160%);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);
 
   border:1px solid var(--lg-border);
 
@@ -192,7 +145,6 @@ iframe{
   color:#000000;
 }
 
-/* ===== BACK BUTTON ===== */
 .back-btn{
   position:absolute;
   left:18px;
@@ -201,10 +153,10 @@ iframe{
   padding:10px 20px;
 
   border-radius:999px;
-  background: var(--lg-bg-color);
+  background:var(--lg-bg-color);
 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
 
   border:1px solid var(--lg-border);
 
@@ -224,14 +176,13 @@ iframe{
   to{ transform:translateX(0); opacity:1; }
 }
 
-.slide-out{
-  animation:slideOut .2s ease forwards;
-}
-
 @keyframes slideOut{
   to{ transform:translateX(-20px); opacity:0; }
 }
 
+.slide-out{
+  animation:slideOut .2s ease forwards;
+}
 </style>
 </head>
 
@@ -262,35 +213,23 @@ iframe{
 
     </div>
 
-
     <div class="desc-panel">
-<p>
-<b>AEROBAIT</b> <em> Target Drone is a series of remotely piloted aircraft designed as a training target in various military and defense applications. Its main function is to simulate aerial threats such as enemy aircraft or other drones.<em>
-<p>
 
-<p>
-<b>AEROBAIT</b> Target Drone adalah serangkaian pesawat tanpa awak yang dikendalikan jarak jauh yang dirancang sebagai target latihan dalam berbagai aplikasi militer dan pertahanan.
-<p>
+      <p>
+      <b>AEROBAIT</b> <em>Target Drone</em> is a remotely piloted UAV platform designed as a training target in military and defense applications.  
+      Its main function is to simulate realistic aerial threats for testing and operational exercises.
+      </p>
 
-</div>
+      <p>
+      <b>AEROBAIT</b> Target Drone adalah platform UAV yang dikendalikan jarak jauh dan dirancang sebagai target latihan dalam berbagai aplikasi militer dan pertahanan.
+      </p>
 
+    </div>
 
     <a class="back-btn" href="menu-b.html" onclick="go(this.href);return false;">← Kembali</a>
 
   </div>
 </div>
-
-<script>
-function go(url){
-  const c = document.getElementById('card');
-  c.classList.add('slide-out');
-  setTimeout(()=> location.href=url,180);
-}
-</script>
-
-</body>
-</html>
-    </div>
 
 <script>
 function go(url){
