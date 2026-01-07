@@ -33,7 +33,6 @@ body{
   background-attachment:fixed;
 }
 
-/* jika landscape ganti gambar */
 @media (orientation: landscape){
   body{
     background-image: url("uav-ui-landscape.jpg");
@@ -75,37 +74,6 @@ body{
   animation:slideIn .25s ease;
 }
 
-/* efek cahaya glass card */
-.card::before{
-  content:"";
-  position:absolute;
-  inset:-40%;
-  background:
-    radial-gradient(
-      circle at 30% 25%,
-      rgba(255,255,255,0.40),
-      transparent 60%
-    );
-  filter: blur(18px);
-  transform:rotate(10deg);
-  pointer-events:none;
-}
-
-.card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      120deg,
-      transparent 30%,
-      rgba(255,255,255,.15),
-      transparent 70%
-    );
-  opacity:.5;
-  pointer-events:none;
-}
-
 /* ===== HERO IMAGE ===== */
 .hero{
   height:190px;
@@ -114,7 +82,7 @@ body{
   background: url("produk-a.jpg") center/cover no-repeat;
 }
 
-/* ===== BREADCRUMB PANJANG LIQUID GLASS ===== */
+/* ===== BREADCRUMB BAR ===== */
 .breadcrumb-bar{
   width:100%;
   margin-bottom:20px;
@@ -122,55 +90,35 @@ body{
   justify-content:center;
 }
 
+/* container breadcrumb */
 .breadcrumb-long{
-  display:inline-block;
-  padding:12px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 18px;
   border-radius:999px;
 
-  background: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.90);
 
-  backdrop-filter: blur(12px) saturate(170%) brightness(1.12);
-  -webkit-backdrop-filter: blur(12px) saturate(170%) brightness(1.12);
+  backdrop-filter: blur(12px) saturate(170%);
+  -webkit-backdrop-filter: blur(12px) saturate(170%);
 
   border:1px solid var(--lg-border);
 
-  box-shadow:
-    0 10px 28px rgba(0,0,0,0.18),
-    inset 0 1px 1px rgba(255,255,255,0.95);
-
-  color: var(--text-black);
-
-  font-size:15px;
-  font-weight:600;
+  box-shadow: 0 10px 32px rgba(0,0,0,.22);
 
   width:100%;
   max-width:380px;
-  text-align:center;
-
-  animation: liquidFloat 3s ease-in-out infinite;
 }
 
-/* link dalam breadcrumb */
-.breadcrumb-long a{
-  color:#000000 !important;
-  text-decoration:none;
-}
-
-/* ===== ANIMASI LIQUID ===== */
-@keyframes liquidFloat{
-  0%{ transform: translateY(0); }
-  50%{ transform: translateY(-4px); }
-  100%{ transform: translateY(0); }
-}
-
-/* ===== MENU LOGO BAR ===== */
-.links{
+/* ===== TOMBOL LOGO HOME ===== */
+.logo-home{
   display:flex;
-  flex-direction:column;
-  gap:16px;
-}
+  align-items:center;
+  justify-content:center;
+  height:72px;
+  margin-bottom:18px;
 
-.logo-link{
   border-radius:999px;
   background: var(--lg-bg-color);
 
@@ -183,16 +131,44 @@ body{
     0 6px 14px rgba(0,0,0,.25),
     inset 1px 1px 0 var(--lg-highlight);
 
+  cursor:pointer;
+}
+
+.logo-home img{
+  max-height:40px;
+  object-fit:contain;
+}
+
+/* ===== MENU BAR LOGO ===== */
+.links{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.logo-link{
   display:flex;
   align-items:center;
   justify-content:center;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,.30);
+
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+
+  border:1px solid rgba(255,255,255,.55);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,.7),
+    0 10px 26px rgba(0,0,0,.25);
 
   height:72px;
   cursor:pointer;
   transition:.25s ease;
 }
 
-/* ===== UKURAN LOGO JPG ===== */
 .logo-link img{
   max-height:145px;
   max-width:180px;
@@ -205,7 +181,6 @@ body{
   left:18px;
   bottom:calc(22px + env(safe-area-inset-bottom));
   padding:10px 20px;
-  height:auto;
 
   border-radius:999px;
   background: var(--lg-bg-color);
@@ -219,11 +194,10 @@ body{
     0 6px 14px rgba(0,0,0,.25),
     inset 1px 1px 0 var(--lg-highlight);
 
-  /* 🔑 pastikan teks hitam */
   color:#000000 !important;
-
   text-decoration:none;
   font-weight:600;
+  cursor:pointer;
 }
 
 /* ===== TRANSITION ===== */
@@ -247,15 +221,21 @@ body{
 <div class="page">
   <div class="card" id="card">
 
+    <!-- ===== TOMBOL LOGO HOME DI ATAS ===== -->
+    <a class="logo-home" href="index.html" onclick="go(this.href);return false;">
+      <img src="home-logo.jpg" alt="Home">
+    </a>
+    <!-- =================================== -->
+
     <div class="breadcrumb-bar">
       <div class="breadcrumb-long">
-        <a href="index.html" onclick="go(this.href);return false;">Home</a> › Katalog Produk
+        Home › Katalog Produk
       </div>
     </div>
 
     <div class="hero"></div>
 
-    <!-- ===== MENU DIUBAH MENJADI LOGO JPG ===== -->
+    <!-- ===== MENU BAR BERUPA LOGO JPG ===== -->
     <div class="links">
 
       <a class="logo-link" href="menu-a.html" onclick="go(this.href);return false;">
@@ -275,7 +255,7 @@ body{
       </a>
 
     </div>
-    <!-- ======================================== -->
+    <!-- ==================================== -->
 
     <a class="back-btn" href="index.html" onclick="go(this.href);return false;">← Kembali</a>
 
