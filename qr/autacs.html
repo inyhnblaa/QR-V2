@@ -36,7 +36,10 @@ body{
     background-image:url("uav-ui-landscape.jpg");
   }
 }
-
+a, a:visited, a:hover, a:active{
+  color: #000000;
+  text-decoration: none;
+}
 .page{
   min-height:100vh;
   display:flex;
@@ -193,7 +196,7 @@ iframe{
 
     <div class="breadcrumb-bar">
       <div class="breadcrumb-long">
-        <a href="index.html">Home</a> › 
+        <a href="index.html" onclick="go(this.href);return false;">Home</a> › 
         <a href="menu-b.html" onclick="go(this.href);return false;">Video Dokumentasi Produk</a> › 
         <b>AUTACS</b>
       </div>
@@ -204,11 +207,11 @@ iframe{
     <div class="video-area">
 
       <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_AUTACS_1"></iframe>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_AEROBAIT_1"></iframe>
       </div>
 
       <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_AUTACS_2"></iframe>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_AEROBAIT_2"></iframe>
       </div>
 
     </div>
@@ -216,12 +219,11 @@ iframe{
     <div class="desc-panel">
 
       <p>
-      <b>AUTACS</b> <em>Automatic UAV Control and Training System</em> adalah sistem kendali otomatis yang digunakan untuk pengujian dan pelatihan UAV.  
-      Video di atas memperlihatkan simulasi misi penerbangan otonom dan proses integrasi dengan Flight Control Computer.
+      <b>AUTACS</b><em> is an indigenous Flight Control Computer (FCC) and Ground Control System (GCS) solution for tactical UAV developed by PT. Len Industri (Persero) in collaboration with the Ministry of Defense Indonesia.</em>
       </p>
 
       <p>
-      Sistem ini memungkinkan evaluasi performa algoritma kendali sehingga hasil pengujian dapat dianalisis secara terukur dan sistematis.
+      <b>AUTACS</b> adalah sistem kendali komputer dan sistem kendali darat buatan dalam negeri untuk pesawat tanpa awak yang dikembangkan oleh PT. Len Industri (Persero) bekerja sama dengan Kementerian Pertahanan Indonesia.
       </p>
 
     </div>
