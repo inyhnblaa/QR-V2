@@ -2,25 +2,16 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Pusat Pengembangan UAV</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Katalog Produk</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-
-@font-face{
-  font-family:'Amuro';
-  src:url('./fonts/Amuro%20Bold%20Italic.otf') format('opentype');
-}
-
 :root{
-  --lg-bg-color: rgba(255,255,255,0.30);
-  --lg-border: rgba(255,255,255,0.42);
-  --lg-highlight: rgba(255,255,255,0.95);
-
-  /* 🔑 warna teks hitam */
+  --lg-bg-color: rgba(255,255,255,0.32);
+  --lg-border: rgba(255,255,255,0.40);
+  --lg-highlight: rgba(255,255,255,0.90);
   --text-black: #000000;
 }
 
@@ -30,16 +21,10 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-/* ===== BACKGROUND ===== */
+/* ===== BACKGROUND PORTRAIT ===== */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
-
-  /* 🔑 warna teks global jadi HITAM */
-  color: var(--text-black);
-
-  /* ukuran dasar NORMAL */
-  font-size:16px;
 
   background-image: url("uav-ui-portrait.jpg");
   background-repeat:no-repeat;
@@ -48,6 +33,7 @@ body{
   background-attachment:fixed;
 }
 
+/* jika landscape ganti gambar */
 @media (orientation: landscape){
   body{
     background-image: url("uav-ui-landscape.jpg");
@@ -59,37 +45,37 @@ body{
   min-height:100vh;
   display:flex;
   justify-content:center;
-  padding:36px 16px;
+  padding:28px 16px;
 }
 
-/* ===== CARD UTAMA (LIQUID GLASS BENING) ===== */
+/* ===== CARD UTAMA ===== */
 .card{
   width:100%;
   max-width:420px;
   border-radius:22px;
-  padding:36px 22px 160px;
+  padding:22px 18px 120px;
   position:relative;
 
   background: linear-gradient(
     180deg,
-    rgba(255,255,255,0.32),
-    rgba(255,255,255,0.12)
+    rgba(255,255,255,0.28),
+    rgba(255,255,255,0.10)
   );
 
-  backdrop-filter: blur(22px) saturate(165%) brightness(1.1);
-  -webkit-backdrop-filter: blur(22px) saturate(165%) brightness(1.1);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
 
-  border:1px solid rgba(255,255,255,0.48);
+  border:1px solid rgba(255,255,255,0.45);
 
   box-shadow:
     0 30px 70px rgba(0,0,0,0.40),
     inset 0 1px 1px rgba(255,255,255,.70);
 
   overflow:hidden;
-  animation:slideIn .3s ease;
+  animation:slideIn .25s ease;
 }
 
-/* efek cahaya pada card */
+/* efek cahaya glass card */
 .card::before{
   content:"";
   position:absolute;
@@ -120,84 +106,72 @@ body{
   pointer-events:none;
 }
 
-/* ===== HEADER ===== */
-.header{
-  text-align:center;
-  margin-bottom:28px;
-  line-height:1.6;
-
-  /* teks header tetap hitam */
-  color: var(--text-black);
+/* ===== HERO IMAGE ===== */
+.hero{
+  height:190px;
+  border-radius:18px;
+  margin-bottom:20px;
+  background: url("produk-a.jpg") center/cover no-repeat;
 }
 
-/* 🔑 HANYA JUDUL DAN SUBTITLE YANG DIPERBESAR */
-.header h3{
-  font-size:25px;      /* diperbesar khusus */
-  margin:12px 0 10px;
-}
-
-.header .subtitle{
-  font-size:24px;      /* diperbesar khusus */
-}
-
-/* logo */
-.logo-circle{
-  width:104px;
-  height:104px;
-  border-radius:50%;
-  object-fit:cover;
-  margin:0 auto 16px;
-  background:white;
-}
-
-/* ===== AUTACS TETAP BIRU ===== */
-.autacs{
-  font-family:'Amuro',sans-serif;
-  color:#4f86ff;
-  letter-spacing:2px;
-
-  /* ukuran AUTACS NORMAL */
-  font-size:20px;
-}
-
-/* ===== VIDEO PANEL ===== */
-.video-wrapper{
+/* ===== BREADCRUMB PANJANG LIQUID GLASS ===== */
+.breadcrumb-bar{
   width:100%;
+  margin-bottom:20px;
   display:flex;
   justify-content:center;
-  margin-bottom:26px;
 }
 
-.video{
+.breadcrumb-long{
+  display:inline-block;
+  padding:12px 24px;
+  border-radius:999px;
+
+  background: rgba(255,255,255,0.35);
+
+  backdrop-filter: blur(12px) saturate(170%) brightness(1.12);
+  -webkit-backdrop-filter: blur(12px) saturate(170%) brightness(1.12);
+
+  border:1px solid var(--lg-border);
+
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.18),
+    inset 0 1px 1px rgba(255,255,255,0.95);
+
+  color: var(--text-black);
+
+  font-size:15px;
+  font-weight:600;
+
   width:100%;
   max-width:380px;
-  border-radius:20px;
-  overflow:hidden;
-  background:black;
+  text-align:center;
 
-  border:2px solid rgba(0,0,0,0.25);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.30);
+  animation: liquidFloat 3s ease-in-out infinite;
 }
 
-.video iframe{
-  display:block;
-  width:100%;
-  aspect-ratio:16/9;
-  border:none;
+/* link dalam breadcrumb */
+.breadcrumb-long a{
+  color:#000000 !important;
+  text-decoration:none;
 }
 
-/* ===== LINKS BUTTON ===== */
+/* ===== ANIMASI LIQUID ===== */
+@keyframes liquidFloat{
+  0%{ transform: translateY(0); }
+  50%{ transform: translateY(-4px); }
+  100%{ transform: translateY(0); }
+}
+
+/* ===== MENU LOGO BAR ===== */
 .links{
   display:flex;
   flex-direction:column;
-  gap:18px;
+  gap:16px;
 }
 
-/* tombol tetap NORMAL dan hitam */
-.link{
-  height:54px;
+.logo-link{
   border-radius:999px;
-
   background: var(--lg-bg-color);
 
   backdrop-filter: blur(12px) saturate(150%);
@@ -205,57 +179,66 @@ body{
 
   border:1px solid var(--lg-border);
 
+  box-shadow:
+    0 6px 14px rgba(0,0,0,.25),
+    inset 1px 1px 0 var(--lg-highlight);
+
   display:flex;
   align-items:center;
   justify-content:center;
 
-  color:#000000;
-
-  font-size:16px;
-  font-weight:600;
-  text-decoration:none;
-
+  height:72px;
+  cursor:pointer;
   transition:.25s ease;
-  padding:0 24px;
 }
 
-.link:hover{
-  background: rgba(255,255,255,0.45);
-  transform: translateY(-2px);
-}
-
-.link:active{
-  transform: scale(.96);
+/* ===== UKURAN LOGO JPG ===== */
+.logo-link img{
+  max-height:145px;
+  max-width:180px;
+  object-fit:contain;
 }
 
 /* ===== BACK BUTTON ===== */
 .back-btn{
   position:absolute;
-  left:20px;
-  bottom:24px;
+  left:18px;
+  bottom:calc(22px + env(safe-area-inset-bottom));
+  padding:10px 20px;
+  height:auto;
 
-  padding:10px 22px;
+  border-radius:999px;
+  background: var(--lg-bg-color);
 
-  background:rgba(255,255,255,0.22);
-
-  backdrop-filter: blur(10px) saturate(140%);
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   border:1px solid var(--lg-border);
 
-  color:#000000;
-  font-size:16px;
+  box-shadow:
+    0 6px 14px rgba(0,0,0,.25),
+    inset 1px 1px 0 var(--lg-highlight);
 
-  font-weight:600;
+  /* 🔑 pastikan teks hitam */
+  color:#000000 !important;
+
   text-decoration:none;
+  font-weight:600;
 }
 
-/* ===== ANIMASI ===== */
+/* ===== TRANSITION ===== */
 @keyframes slideIn{
-  from{ transform:translateX(30px); opacity:0; }
-  to{ opacity:1; }
+  from{ transform:translateX(20px); opacity:0; }
+  to{ transform:translateX(0); opacity:1; }
 }
 
+.slide-out{
+  animation:slideOut .2s ease forwards;
+}
+
+@keyframes slideOut{
+  to{ transform:translateX(-20px); opacity:0; }
+}
 </style>
 </head>
 
@@ -264,25 +247,35 @@ body{
 <div class="page">
   <div class="card" id="card">
 
-    <div class="header">
-      <img src="./logo.jpg" class="logo-circle">
-      <h3>Pusat Pengembangan UAV</h3>
-
-      <p class="subtitle">
-        Powered by <span class="autacs">AUTACS</span>
-      </p>
-    </div>
-
-    <div class="video-wrapper">
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/bY7OeSBawOI" allowfullscreen></iframe>
+    <div class="breadcrumb-bar">
+      <div class="breadcrumb-long">
+        <a href="index.html" onclick="go(this.href);return false;">Home</a> › Katalog Produk
       </div>
     </div>
 
+    <div class="hero"></div>
+
+    <!-- ===== MENU DIUBAH MENJADI LOGO JPG ===== -->
     <div class="links">
-      <a class="link" href="menu-a.html" onclick="go(this.href);return false;">Katalog Produk</a>
-      <a class="link" href="#">Video Dokumentasi</a>
+
+      <a class="logo-link" href="menu-a.html" onclick="go(this.href);return false;">
+        <img src="autacs.jpg" alt="AUTACS">
+      </a>
+
+      <a class="logo-link" href="menu-b.html" onclick="go(this.href);return false;">
+        <img src="aerosight.jpg" alt="AEROSIGHT">
+      </a>
+
+      <a class="logo-link" href="#" onclick="go('produk-b.html');return false;">
+        <img src="aerobait.jpg" alt="AEROBAIT">
+      </a>
+
+      <a class="logo-link" href="#" onclick="go('produk-c.html');return false;">
+        <img src="kumbang.jpg" alt="KUMBANG">
+      </a>
+
     </div>
+    <!-- ======================================== -->
 
     <a class="back-btn" href="index.html" onclick="go(this.href);return false;">← Kembali</a>
 
@@ -291,9 +284,9 @@ body{
 
 <script>
 function go(url){
-  const card=document.getElementById('card');
-  card.classList.add('slide-out');
-  setTimeout(()=> location.href=url,200);
+  const c = document.getElementById('card');
+  c.classList.add('slide-out');
+  setTimeout(()=> location.href=url,180);
 }
 </script>
 
