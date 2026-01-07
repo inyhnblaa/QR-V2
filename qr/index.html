@@ -59,15 +59,15 @@ body{
   min-height:100vh;
   display:flex;
   justify-content:center;
-  padding:32px 16px;
+  padding:36px 16px;
 }
 
-/* ===== CARD UTAMA ===== */
+/* ===== CARD UTAMA (LIQUID GLASS BENING) ===== */
 .card{
   width:100%;
   max-width:420px;
   border-radius:22px;
-  padding:22px 18px 120px;
+  padding:36px 22px 160px;
   position:relative;
 
   background: linear-gradient(
@@ -76,10 +76,10 @@ body{
     rgba(255,255,255,0.12)
   );
 
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(22px) saturate(165%) brightness(1.1);
+  -webkit-backdrop-filter: blur(22px) saturate(165%) brightness(1.1);
 
-  border:1px solid rgba(255,255,255,0.45);
+  border:1px solid rgba(255,255,255,0.48);
 
   box-shadow:
     0 30px 70px rgba(0,0,0,0.40),
@@ -88,10 +88,10 @@ body{
   color: var(--text-grey);
 
   overflow:hidden;
-  animation:slideIn .25s ease;
+  animation:slideIn .3s ease;
 }
 
-/* efek cahaya glass card */
+/* efek cahaya pada card */
 .card::before{
   content:"";
   position:absolute;
@@ -125,31 +125,32 @@ body{
 /* ===== HEADER ===== */
 .header{
   text-align:center;
-  margin-bottom:22px;
+  margin-bottom:28px;
+  color: var(--text-grey);
+  line-height:1.6;
 }
 
-/* 🔑 INI BAGIAN YANG DIPERBESAR */
+/* 🔑 INI BAGIAN TEKS YANG DIPERBESAR */
 .header h3{
-  font-size:26px;      /* diperbesar */
-  color: var(--text-grey);
+  font-size:26px;
+  margin:10px 0 8px;
 }
 
-.header p{
-  font-size:22px;      /* diperbesar juga */
-  color: var(--text-grey);
+.header .subtitle{
+  font-size:22px;
 }
 
 /* logo */
 .logo-circle{
-  width:96px;
-  height:96px;
+  width:104px;
+  height:104px;
   border-radius:50%;
   object-fit:cover;
-  margin:0 auto 14px;
+  margin:0 auto 16px;
   background:white;
 }
 
-/* ===== AUTACS TETAP BIRU DAN NORMAL ===== */
+/* ===== AUTACS TETAP BIRU ===== */
 .autacs{
   font-family:'Amuro',sans-serif;
 
@@ -158,23 +159,42 @@ body{
 
   letter-spacing:2px;
 
-  /* ukuran NORMAL seperti awal */
-  font-size:20px;
+  /* diperbesar */
+  font-size:28px;
 }
 
 /* ===== VIDEO PANEL ===== */
-.video{
-  border-radius:18px;
-  overflow:hidden;
-  background:black;
-  margin-bottom:22px;
+.video-wrapper{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin-bottom:24px;
 }
 
-/* ===== BUTTONS ===== */
+.video{
+  width:100%;
+  max-width:380px;
+  border-radius:20px;
+  overflow:hidden;
+  background:black;
+
+  border:2px solid rgba(0,0,0,0.25);
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.30);
+}
+
+.video iframe{
+  display:block;
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
+}
+
+/* ===== LINKS BUTTON ===== */
 .links{
   display:flex;
   flex-direction:column;
-  gap:14px;
+  gap:18px;
 }
 
 .link{
@@ -192,7 +212,7 @@ body{
   align-items:center;
   justify-content:center;
 
-  /* teks tombol NORMAL dan abu */
+  /* teks tombol tetap normal dan abu */
   color:#666666;
 
   font-size:16px;
@@ -200,12 +220,22 @@ body{
   text-decoration:none;
 
   transition:.25s ease;
+  padding:0 24px;
+}
+
+.link:hover{
+  background: rgba(255,255,255,0.45);
+  transform: translateY(-2px);
+}
+
+.link:active{
+  transform: scale(.96);
 }
 
 /* ===== BACK BUTTON ===== */
 .back-btn{
   position:absolute;
-  left:18px;
+  left:20px;
   bottom:24px;
 
   padding:10px 22px;
@@ -217,7 +247,6 @@ body{
 
   border:1px solid var(--lg-border);
 
-  /* 🔑 teks NORMAL */
   color:#666666;
   font-size:16px;
 
@@ -229,6 +258,14 @@ body{
 @keyframes slideIn{
   from{ transform:translateX(30px); opacity:0; }
   to{ opacity:1; }
+}
+
+.slide-out{
+  animation:slideOut .2s ease forwards;
+}
+
+@keyframes slideOut{
+  to{ transform:translateX(-30px); opacity:0; }
 }
 
 </style>
@@ -243,11 +280,15 @@ body{
       <img src="./logo.jpg" class="logo-circle">
       <h3>Pusat Pengembangan UAV</h3>
 
-      <p>Powered by <span class="autacs">AUTACS</span></p>
+      <p class="subtitle">
+        Powered by <span class="autacs">AUTACS</span>
+      </p>
     </div>
 
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
+    <div class="video-wrapper">
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
+      </div>
     </div>
 
     <div class="links">
