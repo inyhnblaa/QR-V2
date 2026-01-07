@@ -8,9 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-
-/* ===== CSS SAMA PERSIS DENGAN TEMPLATE ===== */
-
 :root{
   --lg-bg-color: rgba(255,255,255,0.32);
   --lg-border: rgba(255,255,255,0.40);
@@ -18,13 +15,19 @@
   --text-black: #000000;
 }
 
-*{ box-sizing:border-box; }
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
 
 body{
   margin:0;
   font-family:'Inter',sans-serif;
+
   background-image:url("uav-ui-portrait.jpg");
+  background-repeat:no-repeat;
   background-size:cover;
+  background-position:center;
   background-attachment:fixed;
 }
 
@@ -33,45 +36,142 @@ body{
     background-image:url("uav-ui-landscape.jpg");
   }
 }
-
-.page{ min-height:100vh; display:flex; justify-content:center; padding:28px 16px; }
+a, a:visited, a:hover, a:active{
+  color: #000000;
+  text-decoration: none;
+}
+.page{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:28px 16px;
+}
 
 .card{
-  width:100%; max-width:420px; border-radius:22px; padding:22px 18px 140px;
+  width:100%;
+  max-width:420px;
+  border-radius:22px;
+  padding:22px 18px 140px;
   position:relative;
-  background:linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.10));
-  backdrop-filter:blur(20px) saturate(160%);
-  border:1px solid rgba(255,255,255,.45);
-  box-shadow:0 30px 70px rgba(0,0,0,.4);
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.28),
+    rgba(255,255,255,0.10)
+  );
+
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+
+  border:1px solid rgba(255,255,255,0.45);
+
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.40),
+    inset 0 1px 1px rgba(255,255,255,.70);
+
+  overflow:hidden;
   animation:slideIn .25s ease;
 }
 
-.hero{ height:190px; border-radius:18px; margin-bottom:20px; background:url("produk-a.jpg") center/cover no-repeat; }
+.hero{
+  height:190px;
+  border-radius:18px;
+  margin-bottom:20px;
+  background:url("produk-a.jpg") center/cover no-repeat;
+}
 
-.video-area{ display:flex; flex-direction:column; gap:18px; }
+.breadcrumb-bar{
+  width:100%;
+  margin-bottom:20px;
+  display:flex;
+  justify-content:center;
+}
 
-.video-card{ border-radius:18px; background:#2f2f2f; padding:12px; }
+.breadcrumb-long{
+  display:inline-block;
+  padding:12px 24px;
+  border-radius:999px;
 
-iframe{ width:100%; height:210px; border-radius:18px; border:none; }
+  background:rgba(255,255,255,0.90);
+  backdrop-filter:blur(12px);
+  border:1px solid var(--lg-border);
+
+  box-shadow:0 10px 32px rgba(0,0,0,.22);
+
+  color:var(--text-black);
+
+  font-size:15px;
+  font-weight:600;
+
+  width:100%;
+  max-width:380px;
+  text-align:center;
+}
+
+.video-area{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.video-card{
+  border-radius:18px;
+  background:#2f2f2f;
+  padding:12px;
+  box-shadow:0 10px 26px rgba(0,0,0,.25);
+}
+
+iframe{
+  width:100%;
+  height:210px;
+  border-radius:18px;
+  border:none;
+}
 
 .desc-panel{
-  margin-top:18px; padding:14px; border-radius:18px;
-  background:rgba(255,255,255,.35);
-  backdrop-filter:blur(16px);
+  margin-top:18px;
+  padding:14px;
+  border-radius:18px;
+
+  background:rgba(255,255,255,0.35);
+
+  backdrop-filter:blur(16px) saturate(160%);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);
+
   border:1px solid var(--lg-border);
+
   box-shadow:0 10px 24px rgba(0,0,0,.2);
-  font-size:15px; line-height:1.6; color:#000;
+
+  font-size:15px;
+  line-height:1.6;
+
+  color:#000000;
 }
 
 .back-btn{
-  position:absolute; left:18px; bottom:22px;
-  padding:10px 20px; border-radius:999px;
+  position:absolute;
+  left:18px;
+  bottom:22px;
+
+  padding:10px 20px;
+
+  border-radius:999px;
   background:var(--lg-bg-color);
+
   backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
   border:1px solid var(--lg-border);
-  color:#000 !important;
+
+  box-shadow:
+    0 6px 14px rgba(0,0,0,.25),
+    inset 1px 1px 0 var(--lg-highlight);
+
+  color:#000000 !important;
+
   text-decoration:none;
   font-weight:600;
+  cursor:pointer;
 }
 
 @keyframes slideIn{
@@ -83,8 +183,9 @@ iframe{ width:100%; height:210px; border-radius:18px; border:none; }
   to{ transform:translateX(-20px); opacity:0; }
 }
 
-.slide-out{ animation:slideOut .2s ease forwards; }
-
+.slide-out{
+  animation:slideOut .2s ease forwards;
+}
 </style>
 </head>
 
@@ -95,7 +196,7 @@ iframe{ width:100%; height:210px; border-radius:18px; border:none; }
 
     <div class="breadcrumb-bar">
       <div class="breadcrumb-long">
-        <a href="index.html">Home</a> › 
+        <a href="index.html" onclick="go(this.href);return false;">Home</a> › 
         <a href="menu-b.html" onclick="go(this.href);return false;">Video Dokumentasi Produk</a> › 
         <b>AEROSIGHT</b>
       </div>
@@ -106,23 +207,26 @@ iframe{ width:100%; height:210px; border-radius:18px; border:none; }
     <div class="video-area">
 
       <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_AEROSIGHT_1"></iframe>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_AEROBAIT_1"></iframe>
       </div>
 
       <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_AEROSIGHT_2"></iframe>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_AEROBAIT_2"></iframe>
       </div>
 
     </div>
 
     <div class="desc-panel">
+
       <p>
-      <b>AEROSIGHT</b> <em>Mission Control Interface</em> adalah sistem antarmuka monitoring UAV yang digunakan untuk memantau status penerbangan secara waktu nyata.
+      <b>AEROSIGHT</b> <em> is Unmanned Aerial Vehicle with Vertical Take-Off and Landing (VTOL) capability designed for efficient surveillance, reconnaissance, and data collection across various terrains and operational conditions.</em>
       </p>
 
       <p>
-      Melalui halaman ini ditampilkan dua video utama mengenai penggunaan perangkat lunak pada Flight Control Computer dalam skenario simulasi dan pengujian misi UAV.
+      <b>AEROSIGHT</b> adalah pesawat tanpa awak dengan kemampuan Take-Off dan Landing Vertikal (VTOL) yang dirancang untuk pemantauan, pengintaian, dan pengumpulan data secara efisien di berbagai medan dan kondisi operasional.
+
       </p>
+
     </div>
 
     <a class="back-btn" href="menu-b.html" onclick="go(this.href);return false;">← Kembali</a>
