@@ -33,6 +33,7 @@ body{
   background-attachment:fixed;
 }
 
+/* jika landscape ganti gambar */
 @media (orientation: landscape){
   body{
     background-image: url("uav-ui-landscape.jpg");
@@ -71,6 +72,38 @@ body{
     inset 0 1px 1px rgba(255,255,255,.70);
 
   overflow:hidden;
+  animation:slideIn .25s ease;
+}
+
+/* efek cahaya glass card */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(255,255,255,0.40),
+      transparent 60%
+    );
+  filter: blur(18px);
+  transform:rotate(10deg);
+  pointer-events:none;
+}
+
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255,255,255,.15),
+      transparent 70%
+    );
+  opacity:.5;
+  pointer-events:none;
 }
 
 /* ===== HERO IMAGE ===== */
@@ -81,7 +114,7 @@ body{
   background: url("produk-a.jpg") center/cover no-repeat;
 }
 
-/* ===== BREADCRUMB ===== */
+/* ===== BREADCRUMB PANJANG LIQUID GLASS ===== */
 .breadcrumb-bar{
   width:100%;
   margin-bottom:20px;
@@ -96,8 +129,8 @@ body{
 
   background: rgba(255,255,255,0.35);
 
-  backdrop-filter: blur(12px) saturate(170%);
-  -webkit-backdrop-filter: blur(12px) saturate(170%);
+  backdrop-filter: blur(12px) saturate(170%) brightness(1.12);
+  -webkit-backdrop-filter: blur(12px) saturate(170%) brightness(1.12);
 
   border:1px solid var(--lg-border);
 
@@ -113,6 +146,21 @@ body{
   width:100%;
   max-width:380px;
   text-align:center;
+
+  animation: liquidFloat 3s ease-in-out infinite;
+}
+
+/* link dalam breadcrumb */
+.breadcrumb-long a{
+  color:#000000 !important;
+  text-decoration:none;
+}
+
+/* ===== ANIMASI LIQUID ===== */
+@keyframes liquidFloat{
+  0%{ transform: translateY(0); }
+  50%{ transform: translateY(-4px); }
+  100%{ transform: translateY(0); }
 }
 
 /* ===== MENU LOGO BAR ===== */
@@ -144,6 +192,7 @@ body{
   transition:.25s ease;
 }
 
+/* ===== UKURAN LOGO JPG ===== */
 .logo-link img{
   max-height:145px;
   max-width:180px;
@@ -170,9 +219,25 @@ body{
     0 6px 14px rgba(0,0,0,.25),
     inset 1px 1px 0 var(--lg-highlight);
 
-  color:#555555;
+  /* 🔑 pastikan teks hitam */
+  color:#000000 !important;
+
   text-decoration:none;
   font-weight:600;
+}
+
+/* ===== TRANSITION ===== */
+@keyframes slideIn{
+  from{ transform:translateX(20px); opacity:0; }
+  to{ transform:translateX(0); opacity:1; }
+}
+
+.slide-out{
+  animation:slideOut .2s ease forwards;
+}
+
+@keyframes slideOut{
+  to{ transform:translateX(-20px); opacity:0; }
 }
 </style>
 </head>
@@ -190,7 +255,7 @@ body{
 
     <div class="hero"></div>
 
-    <!-- ===== MENU SEKARANG BERUPA LOGO JPG ===== -->
+    <!-- ===== MENU DIUBAH MENJADI LOGO JPG ===== -->
     <div class="links">
 
       <a class="logo-link" href="menu-a.html" onclick="go(this.href);return false;">
@@ -210,7 +275,7 @@ body{
       </a>
 
     </div>
-    <!-- ========================================== -->
+    <!-- ======================================== -->
 
     <a class="back-btn" href="index.html" onclick="go(this.href);return false;">← Kembali</a>
 
