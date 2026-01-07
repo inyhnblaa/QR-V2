@@ -1,3 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Pusat Pengembangan UAV</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+@font-face{
+  font-family:'Amuro';
+  src:url('./fonts/Amuro%20Bold%20Italic.otf') format('opentype');
+}
+
+:root{
+  --lg-bg-color: rgba(255,255,255,0.30);
+  --lg-border: rgba(255,255,255,0.42);
+  --lg-highlight: rgba(255,255,255,0.95);
+}
+
+/* ===== RESET ===== */
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* ===== BACKGROUND ===== */
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  color:white;
+
+  background-image: url("uav-ui-portrait.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+}
+
+@media (orientation: landscape){
+  body{
+    background-image: url("uav-ui-landscape.jpg");
+  }
+}
+
+/* ===== PAGE LAYOUT ===== */
+.page{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:32px 16px;
+}
+
+/* ===== CARD UTAMA ===== */
 .card{
   width:100%;
   max-width:420px;
@@ -54,3 +111,159 @@
   opacity:.5;
   pointer-events:none;
 }
+
+/* ===== HEADER ===== */
+.header{
+  text-align:center;
+  margin-bottom:22px;
+}
+
+.logo-circle{
+  width:96px;
+  height:96px;
+  border-radius:50%;
+  object-fit:cover;
+  margin:0 auto 14px;
+  background:white;
+}
+
+.autacs{
+  font-family:'Amuro',sans-serif;
+  color:#4f86ff;
+  letter-spacing:2px;
+  font-size:1.25em;
+}
+
+/* ===== VIDEO PANEL ===== */
+.video{
+  border-radius:18px;
+  overflow:hidden;
+  background:black;
+  margin-bottom:22px;
+}
+
+.video iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
+}
+
+/* ===== BUTTONS LIQUID GLASS ===== */
+.links{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.link{
+  height:54px;
+  border-radius:999px;
+
+  background: rgba(255,255,255,0.26);
+
+  backdrop-filter: blur(12px) saturate(150%) brightness(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+
+  border:1px solid var(--lg-border);
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.22),
+    inset 1px 1px 0 var(--lg-highlight);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+
+  transition:all .25s ease;
+
+  padding:0 20px;
+}
+
+.link:hover{
+  background: rgba(255,255,255,0.42);
+  transform: translateY(-2px);
+}
+
+.link:active{
+  transform: scale(.96);
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn{
+  position:absolute;
+  left:18px;
+  bottom:calc(22px + env(safe-area-inset-bottom));
+  padding:10px 22px;
+  height:auto;
+  border-radius:999px;
+
+  background: rgba(255,255,255,0.22);
+
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+
+  border:1px solid var(--lg-border);
+
+  box-shadow:
+    0 6px 16px rgba(0,0,0,.20),
+    inset 1px 1px 0 var(--lg-highlight);
+
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+
+  transition:.25s ease;
+}
+
+.back-btn:hover{
+  background: rgba(255,255,255,0.34);
+}
+
+/* ===== ANIMASI ===== */
+@keyframes slideIn{
+  from{ transform:translateX(30px); opacity:0; }
+  to{ opacity:1; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page">
+  <div class="card" id="card">
+
+    <div class="header">
+      <img src="./logo.jpg" class="logo-circle">
+      <h3>Pusat Pengembangan UAV</h3>
+      <p>Powered by <span class="autacs">AUTACS</span></p>
+    </div>
+
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/bY7OeSBawOI" allowfullscreen></iframe>
+    </div>
+
+    <div class="links">
+      <a class="link" href="menu-a.html" onclick="go(this.href);return false;">Katalog Produk</a>
+      <a class="link" href="#">Video Dokumentasi</a>
+    </div>
+
+    <a class="back-btn" href="index.html" onclick="go(this.href);return false;">← Kembali</a>
+
+  </div>
+</div>
+
+<script>
+function go(url){
+  const card=document.getElementById('card');
+  card.classList.add('slide-out');
+  setTimeout(()=> location.href=url,200);
+}
+</script>
+
+</body>
+</html>
