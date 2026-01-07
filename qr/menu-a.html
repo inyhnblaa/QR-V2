@@ -33,6 +33,7 @@ body{
   background-attachment:fixed;
 }
 
+/* jika landscape ganti gambar */
 @media (orientation: landscape){
   body{
     background-image: url("uav-ui-landscape.jpg");
@@ -74,6 +75,37 @@ body{
   animation:slideIn .25s ease;
 }
 
+/* efek cahaya glass card */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(255,255,255,0.40),
+      transparent 60%
+    );
+  filter: blur(18px);
+  transform:rotate(10deg);
+  pointer-events:none;
+}
+
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255,255,255,.15),
+      transparent 70%
+    );
+  opacity:.5;
+  pointer-events:none;
+}
+
 /* ===== HERO IMAGE ===== */
 .hero{
   height:190px;
@@ -82,7 +114,7 @@ body{
   background: url("produk-a.jpg") center/cover no-repeat;
 }
 
-/* ===== BREADCRUMB BAR ===== */
+/* ===== BREADCRUMB ===== */
 .breadcrumb-bar{
   width:100%;
   margin-bottom:20px;
@@ -90,12 +122,9 @@ body{
   justify-content:center;
 }
 
-/* container breadcrumb */
 .breadcrumb-long{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:10px 18px;
+  display:inline-block;
+  padding:12px 24px;
   border-radius:999px;
 
   background: rgba(255,255,255,0.90);
@@ -105,41 +134,26 @@ body{
 
   border:1px solid var(--lg-border);
 
-  box-shadow: 0 10px 32px rgba(0,0,0,.22);
+  box-shadow:
+    0 10px 32px rgba(0,0,0,.22);
+
+  color: var(--text-black);
+
+  font-size:15px;
+  font-weight:600;
 
   width:100%;
   max-width:380px;
+  text-align:center;
 }
 
-/* ===== TOMBOL LOGO HOME ===== */
-.logo-home{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:72px;
-  margin-bottom:18px;
-
-  border-radius:999px;
-  background: var(--lg-bg-color);
-
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
-
-  border:1px solid var(--lg-border);
-
-  box-shadow:
-    0 6px 14px rgba(0,0,0,.25),
-    inset 1px 1px 0 var(--lg-highlight);
-
-  cursor:pointer;
+/* link breadcrumb tetap hitam */
+.breadcrumb-long a{
+  color:#000000 !important;
+  text-decoration:none;
 }
 
-.logo-home img{
-  max-height:40px;
-  object-fit:contain;
-}
-
-/* ===== MENU BAR LOGO ===== */
+/* ===== MENU BAR LOGO JPG ===== */
 .links{
   display:flex;
   flex-direction:column;
@@ -181,6 +195,7 @@ body{
   left:18px;
   bottom:calc(22px + env(safe-area-inset-bottom));
   padding:10px 20px;
+  height:auto;
 
   border-radius:999px;
   background: var(--lg-bg-color);
@@ -194,7 +209,9 @@ body{
     0 6px 14px rgba(0,0,0,.25),
     inset 1px 1px 0 var(--lg-highlight);
 
+  /* 🔑 teks hitam agar tidak ungu */
   color:#000000 !important;
+
   text-decoration:none;
   font-weight:600;
   cursor:pointer;
@@ -221,41 +238,35 @@ body{
 <div class="page">
   <div class="card" id="card">
 
-    <!-- ===== TOMBOL LOGO HOME DI ATAS ===== -->
-    <a class="logo-home" href="index.html" onclick="go(this.href);return false;">
-      <img src="home-logo.jpg" alt="Home">
-    </a>
-    <!-- =================================== -->
-
     <div class="breadcrumb-bar">
       <div class="breadcrumb-long">
-        Home › Katalog Produk
+        <a href="index.html" onclick="go(this.href);return false;">Home</a> › Katalog Produk
       </div>
     </div>
 
     <div class="hero"></div>
 
-    <!-- ===== MENU BAR BERUPA LOGO JPG ===== -->
+    <!-- ===== MENU LOGO MENUJU PDF ===== -->
     <div class="links">
 
-      <a class="logo-link" href="menu-a.html" onclick="go(this.href);return false;">
+      <a class="logo-link" href="brosur/autacs.pdf">
         <img src="autacs.jpg" alt="AUTACS">
       </a>
 
-      <a class="logo-link" href="menu-b.html" onclick="go(this.href);return false;">
+      <a class="logo-link" href="brosur/aerosight.pdf">
         <img src="aerosight.jpg" alt="AEROSIGHT">
       </a>
 
-      <a class="logo-link" href="#" onclick="go('produk-b.html');return false;">
+      <a class="logo-link" href="brosur/aerobait.pdf">
         <img src="aerobait.jpg" alt="AEROBAIT">
       </a>
 
-      <a class="logo-link" href="#" onclick="go('produk-c.html');return false;">
+      <a class="logo-link" href="brosur/kumbang.pdf">
         <img src="kumbang.jpg" alt="KUMBANG">
       </a>
 
     </div>
-    <!-- ==================================== -->
+    <!-- ================================ -->
 
     <a class="back-btn" href="index.html" onclick="go(this.href);return false;">← Kembali</a>
 
