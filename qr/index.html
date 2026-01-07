@@ -35,8 +35,8 @@ body{
   margin:0;
   font-family:'Inter',sans-serif;
 
-  /* 🔑 warna teks global jadi abu */
-  color: var(--text-grey);
+  /* 🔑 warna teks global jadi HITAM */
+  color: var(--text-black);
 
   /* ukuran dasar NORMAL */
   font-size:16px;
@@ -85,8 +85,6 @@ body{
     0 30px 70px rgba(0,0,0,0.40),
     inset 0 1px 1px rgba(255,255,255,.70);
 
-  color: var(--text-black);
-
   overflow:hidden;
   animation:slideIn .3s ease;
 }
@@ -126,18 +124,20 @@ body{
 .header{
   text-align:center;
   margin-bottom:28px;
-  color: var(--text-black);
   line-height:1.6;
+
+  /* teks header tetap hitam */
+  color: var(--text-black);
 }
 
-/* 🔑 INI BAGIAN TEKS YANG DIPERBESAR */
+/* 🔑 HANYA JUDUL DAN SUBTITLE YANG DIPERBESAR */
 .header h3{
-  font-size:26px;
-  margin:10px 0 8px;
+  font-size:25px;      /* diperbesar khusus */
+  margin:12px 0 10px;
 }
 
 .header .subtitle{
-  font-size:22px;
+  font-size:24px;      /* diperbesar khusus */
 }
 
 /* logo */
@@ -153,14 +153,11 @@ body{
 /* ===== AUTACS TETAP BIRU ===== */
 .autacs{
   font-family:'Amuro',sans-serif;
-
-  /* tetap biru */
   color:#4f86ff;
-
   letter-spacing:2px;
 
-  /* diperbesar */
-  font-size:28px;
+  /* ukuran AUTACS NORMAL */
+  font-size:20px;
 }
 
 /* ===== VIDEO PANEL ===== */
@@ -168,7 +165,7 @@ body{
   width:100%;
   display:flex;
   justify-content:center;
-  margin-bottom:24px;
+  margin-bottom:26px;
 }
 
 .video{
@@ -179,7 +176,6 @@ body{
   background:black;
 
   border:2px solid rgba(0,0,0,0.25);
-
   box-shadow: 0 12px 30px rgba(0,0,0,0.30);
 }
 
@@ -197,6 +193,7 @@ body{
   gap:18px;
 }
 
+/* tombol tetap NORMAL dan hitam */
 .link{
   height:54px;
   border-radius:999px;
@@ -212,7 +209,6 @@ body{
   align-items:center;
   justify-content:center;
 
-  /* teks tombol tetap normal dan abu */
   color:#000000;
 
   font-size:16px;
@@ -258,14 +254,6 @@ body{
 @keyframes slideIn{
   from{ transform:translateX(30px); opacity:0; }
   to{ opacity:1; }
-}
-
-.slide-out{
-  animation:slideOut .2s ease forwards;
-}
-
-@keyframes slideOut{
-  to{ transform:translateX(-30px); opacity:0; }
 }
 
 </style>
