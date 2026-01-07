@@ -1,156 +1,56 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>Pusat Pengembangan UAV</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+.card{
+  width:100%;
+  max-width:420px;
+  border-radius:22px;
+  padding:22px 18px 120px;
+  position:relative;
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.28),
+    rgba(255,255,255,0.10)
+  );
 
-  <style>
-    @font-face{
-      font-family:'Amuro';
-      src:url('./fonts/Amuro%20Bold%20Italic.otf') format('opentype');
-    }
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
 
-    *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  border:1px solid rgba(255,255,255,0.45);
 
-    body{
-      margin:0;
-      font-family:'Inter',sans-serif;
-      color:white;
-      background:
-        linear-gradient(rgba(124,15,15,.92),rgba(124,15,15,.92)),
-        url("uav-ui-portrait.jpg") center/cover no-repeat fixed;
-    }
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.40),
+    inset 0 1px 1px rgba(255,255,255,.70);
 
-    @media (orientation:landscape){
-      body{
-        background:
-          linear-gradient(rgba(124,15,15,.92),rgba(124,15,15,.92)),
-          url("uav-ui-landscape.jpg") center/cover no-repeat;
-      }
-    }
+  overflow:hidden;
+  animation:slideIn .25s ease;
+}
 
-    .page{
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      padding:32px 16px;
-    }
+/* efek cahaya glass card */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(255,255,255,0.40),
+      transparent 60%
+    );
+  filter: blur(18px);
+  transform:rotate(10deg);
+  pointer-events:none;
+}
 
-    /* ❌ CARD BUKAN GLASS */
-    .card{
-      width:100%;
-      max-width:420px;
-      background:rgba(0,0,0,.45);
-      border-radius:22px;
-      padding:32px 20px 48px;
-      animation:slideIn .3s ease;
-    }
-
-    .header{
-      text-align:center;
-      margin-bottom:24px;
-    }
-
-    .logo-circle{
-      width:96px;
-      height:96px;
-      border-radius:50%;
-      object-fit:cover;
-      margin:0 auto 14px;
-      background:white;
-    }
-
-    .autacs{
-      font-family:'Amuro',sans-serif;
-      color:#4f86ff;
-      letter-spacing:2px;
-      font-size:1.25em;
-    }
-
-    .video{
-      border-radius:18px;
-      overflow:hidden;
-      background:black;
-      margin-bottom:22px;
-    }
-
-    .video iframe{
-      width:100%;
-      aspect-ratio:16/9;
-      border:none;
-    }
-
-    /* ✅ GLASS BUTTON ONLY */
-    .links{
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-
-    .link{
-      height:54px;
-      border-radius:999px;
-      background:rgba(255,255,255,.18);
-      border:1px solid rgba(255,255,255,.45);
-      backdrop-filter: blur(6px);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      text-decoration:none;
-      font-weight:600;
-      transition:.25s ease;
-    }
-
-    .link:hover{ background:rgba(255,255,255,.28); }
-    .link:active{ transform:scale(.97); }
-
-    @keyframes slideIn{
-      from{ transform:translateX(30px); opacity:0; }
-      to{ opacity:1; }
-    }
-
-    .slide-left{
-      animation:slideLeft .25s ease forwards;
-    }
-
-    @keyframes slideLeft{
-      to{ transform:translateX(-30px); opacity:0; }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="page">
-    <div class="card" id="card">
-
-      <div class="header">
-        <img src="./logo.jpg" class="logo-circle">
-        <h3>Pusat Pengembangan UAV</h3>
-        <p>Powered by <span class="autacs">AUTACS</span></p>
-      </div>
-
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
-      </div>
-
-      <div class="links">
-        <a class="link" href="#" onclick="go('menu-a.html')">Katalog Produk</a>
-        <a class="link" href="#">Video Dokumentasi</a>
-      </div>
-
-    </div>
-  </div>
-
-  <script>
-    function go(url){
-      const card=document.getElementById('card');
-      card.classList.add('slide-left');
-      setTimeout(()=>location.href=url,240);
-    }
-  </script>
-</body>
-</html>
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255,255,255,.15),
+      transparent 70%
+    );
+  opacity:.5;
+  pointer-events:none;
+}
