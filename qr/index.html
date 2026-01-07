@@ -19,6 +19,9 @@
   --lg-bg-color: rgba(255,255,255,0.30);
   --lg-border: rgba(255,255,255,0.42);
   --lg-highlight: rgba(255,255,255,0.95);
+
+  /* 🔑 warna teks abu */
+  --text-grey: #666666;
 }
 
 /* ===== RESET ===== */
@@ -31,7 +34,12 @@
 body{
   margin:0;
   font-family:'Inter',sans-serif;
-  color:white;
+
+  /* 🔑 warna teks global jadi abu */
+  color: var(--text-grey);
+
+  /* ukuran dasar NORMAL */
+  font-size:16px;
 
   background-image: url("uav-ui-portrait.jpg");
   background-repeat:no-repeat;
@@ -64,8 +72,8 @@ body{
 
   background: linear-gradient(
     180deg,
-    rgba(255,255,255,0.28),
-    rgba(255,255,255,0.10)
+    rgba(255,255,255,0.32),
+    rgba(255,255,255,0.12)
   );
 
   backdrop-filter: blur(20px) saturate(160%);
@@ -76,6 +84,8 @@ body{
   box-shadow:
     0 30px 70px rgba(0,0,0,0.40),
     inset 0 1px 1px rgba(255,255,255,.70);
+
+  color: var(--text-grey);
 
   overflow:hidden;
   animation:slideIn .25s ease;
@@ -118,6 +128,18 @@ body{
   margin-bottom:22px;
 }
 
+/* 🔑 INI BAGIAN YANG DIPERBESAR */
+.header h3{
+  font-size:26px;      /* diperbesar */
+  color: var(--text-grey);
+}
+
+.header p{
+  font-size:22px;      /* diperbesar juga */
+  color: var(--text-grey);
+}
+
+/* logo */
 .logo-circle{
   width:96px;
   height:96px;
@@ -127,11 +149,17 @@ body{
   background:white;
 }
 
+/* ===== AUTACS TETAP BIRU DAN NORMAL ===== */
 .autacs{
   font-family:'Amuro',sans-serif;
+
+  /* tetap biru */
   color:#4f86ff;
+
   letter-spacing:2px;
-  font-size:1.25em;
+
+  /* ukuran NORMAL seperti awal */
+  font-size:20px;
 }
 
 /* ===== VIDEO PANEL ===== */
@@ -142,13 +170,7 @@ body{
   margin-bottom:22px;
 }
 
-.video iframe{
-  width:100%;
-  aspect-ratio:16/9;
-  border:none;
-}
-
-/* ===== BUTTONS LIQUID GLASS ===== */
+/* ===== BUTTONS ===== */
 .links{
   display:flex;
   flex-direction:column;
@@ -159,68 +181,48 @@ body{
   height:54px;
   border-radius:999px;
 
-  background: rgba(255,255,255,0.26);
+  background: var(--lg-bg-color);
 
-  backdrop-filter: blur(12px) saturate(150%) brightness(1.1);
+  backdrop-filter: blur(12px) saturate(150%);
   -webkit-backdrop-filter: blur(12px) saturate(150%);
 
   border:1px solid var(--lg-border);
-
-  box-shadow:
-    0 8px 24px rgba(0,0,0,.22),
-    inset 1px 1px 0 var(--lg-highlight);
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  color:white;
-  text-decoration:none;
+  /* teks tombol NORMAL dan abu */
+  color:#666666;
+
+  font-size:16px;
   font-weight:600;
+  text-decoration:none;
 
-  transition:all .25s ease;
-
-  padding:0 20px;
-}
-
-.link:hover{
-  background: rgba(255,255,255,0.42);
-  transform: translateY(-2px);
-}
-
-.link:active{
-  transform: scale(.96);
+  transition:.25s ease;
 }
 
 /* ===== BACK BUTTON ===== */
 .back-btn{
   position:absolute;
   left:18px;
-  bottom:calc(22px + env(safe-area-inset-bottom));
-  padding:10px 22px;
-  height:auto;
-  border-radius:999px;
+  bottom:24px;
 
-  background: rgba(255,255,255,0.22);
+  padding:10px 22px;
+
+  background:rgba(255,255,255,0.22);
 
   backdrop-filter: blur(10px) saturate(140%);
   -webkit-backdrop-filter: blur(10px) saturate(140%);
 
   border:1px solid var(--lg-border);
 
-  box-shadow:
-    0 6px 16px rgba(0,0,0,.20),
-    inset 1px 1px 0 var(--lg-highlight);
+  /* 🔑 teks NORMAL */
+  color:#666666;
+  font-size:16px;
 
-  color:white;
-  text-decoration:none;
   font-weight:600;
-
-  transition:.25s ease;
-}
-
-.back-btn:hover{
-  background: rgba(255,255,255,0.34);
+  text-decoration:none;
 }
 
 /* ===== ANIMASI ===== */
@@ -240,11 +242,12 @@ body{
     <div class="header">
       <img src="./logo.jpg" class="logo-circle">
       <h3>Pusat Pengembangan UAV</h3>
+
       <p>Powered by <span class="autacs">AUTACS</span></p>
     </div>
 
     <div class="video">
-      <iframe src="https://www.youtube.com/embed/bY7OeSBawOI" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/Q6JyLjGvwSE" allowfullscreen></iframe>
     </div>
 
     <div class="links">
