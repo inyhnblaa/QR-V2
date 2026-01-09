@@ -128,46 +128,32 @@ iframe{
   border:none;
 }
 
+/* DESKRIPSI */
 .desc-panel{
   margin-top:18px;
-  padding:14px;
+  padding:16px;
   border-radius:18px;
-
   background:rgba(255,255,255,0.35);
-
   backdrop-filter:blur(16px) saturate(160%);
   -webkit-backdrop-filter:blur(16px) saturate(160%);
-
   border:1px solid var(--lg-border);
-
   box-shadow:0 10px 24px rgba(0,0,0,.2);
-
   font-size:15px;
-  line-height:1.6;
-
-  color:#000000;
-
-  /* 🔑 INI TAMBAHAN AGAR JUSTIFY RAPI */
-  text-align: justify;
-}
-/* 🔑 LOGO + TEXT RAPI */
-.desc-row{
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
-  margin-bottom:14px;
+  line-height:1.65;
+  color:#000;
 }
 
-.desc-row img{
-  width:120px;
-  height:auto;
-  flex-shrink:0;
-  display:block;
-}
-
-.desc-row p{
-  margin:0;
+.desc-panel p{
+  margin:0 0 14px;
   text-align:justify;
+}
+
+/* 🔑 AUTACS INLINE TEXT */
+.autacs-inline{
+  font-weight:800;
+  color:var(--autacs-blue);
+  letter-spacing:0.5px;
+  white-space:nowrap;
 }
 .back-btn{
   position:absolute;
@@ -243,19 +229,20 @@ iframe{
 
 <div class="desc-panel">
 
-<div class="desc-row">
-  <img src="autacs.png" alt="Logo AUTACS">
+<div class="desc-panel">
+
   <p>
+    <span class="autacs-inline">AUTACS</span>
     is an indigenous Flight Control Computer (FCC) and Ground Control System (GCS) solution for tactical UAV developed by PT. Len Industri (Persero) in collaboration with the Ministry of Defense Indonesia.
   </p>
-</div>
 
-<div class="desc-row">
-  <img src="autacs.png" alt="Logo AUTACS">
   <p>
+    <span class="autacs-inline">AUTACS</span>
     adalah sistem kendali komputer dan sistem kendali darat buatan dalam negeri untuk pesawat tanpa awak yang dikembangkan oleh PT. Len Industri (Persero) bekerja sama dengan Kementerian Pertahanan Indonesia.
   </p>
+
 </div>
+
 
 
 </div>
