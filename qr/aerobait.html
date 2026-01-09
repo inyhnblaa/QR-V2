@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>AEROBAIT - Video Dokumentasi Produk</title>
+<title>AUTACS - Video Dokumentasi Produk</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
@@ -146,6 +146,9 @@ iframe{
   line-height:1.6;
 
   color:#000000;
+
+  /* 🔑 INI TAMBAHAN AGAR JUSTIFY RAPI */
+  text-align: justify;
 }
 
 .back-btn{
@@ -173,7 +176,11 @@ iframe{
   font-weight:600;
   cursor:pointer;
 }
-
+.autacs-inline{
+  max-width:140px;
+  vertical-align:middle;
+  margin-right:10px;
+}
 @keyframes slideIn{
   from{ transform:translateX(20px); opacity:0; }
   to{ transform:translateX(0); opacity:1; }
@@ -198,7 +205,7 @@ iframe{
       <div class="breadcrumb-long">
         <a href="index.html" onclick="go(this.href);return false;">Home</a> › 
         <a href="menu-b.html" onclick="go(this.href);return false;">Video Dokumentasi Produk</a> › 
-        <b>AEROBAIT</b>
+        <b>AUTACS</b>
       </div>
     </div>
 
@@ -216,19 +223,19 @@ iframe{
 
     </div>
 
-    <div class="desc-panel">
+<div class="desc-panel">
 
-      <p>
-      <b>AEROBAIT</b> <em>Target Drone is a remotely piloted UAV platform designed as a training target in military and defense applications.  
-      Its main function is to simulate realistic aerial threats for testing and operational exercises.</em>
-      </p>
+<p>
+<img class="autacs-inline" src="autacs.jpg" alt="Logo AUTACS">
+is an indigenous Flight Control Computer (FCC) and Ground Control System (GCS) solution for tactical UAV developed by PT. Len Industri (Persero) in collaboration with the Ministry of Defense Indonesia.
+</p>
 
-      <p>
-      <b>AEROBAIT</b> Target Drone adalah platform UAV yang dikendalikan jarak jauh dan dirancang sebagai target latihan dalam berbagai aplikasi militer dan pertahanan.
-      </p>
+<p>
+<img class="autacs-inline" src="autacs.jpg" alt="Logo AUTACS">
+adalah sistem kendali komputer dan sistem kendali darat buatan dalam negeri untuk pesawat tanpa awak yang dikembangkan oleh PT. Len Industri (Persero) bekerja sama dengan Kementerian Pertahanan Indonesia.
+</p>
 
-    </div>
-
+</div>
     <a class="back-btn" href="menu-b.html" onclick="go(this.href);return false;">← Kembali</a>
 
   </div>
