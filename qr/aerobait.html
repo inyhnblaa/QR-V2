@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>AUTACS - Video Dokumentasi Produk</title>
+<title>AEROBAIT- Video Dokumentasi Produk</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
@@ -128,29 +128,33 @@ iframe{
   border:none;
 }
 
+/* DESKRIPSI */
 .desc-panel{
   margin-top:18px;
-  padding:14px;
+  padding:16px;
   border-radius:18px;
-
   background:rgba(255,255,255,0.35);
-
   backdrop-filter:blur(16px) saturate(160%);
   -webkit-backdrop-filter:blur(16px) saturate(160%);
-
   border:1px solid var(--lg-border);
-
   box-shadow:0 10px 24px rgba(0,0,0,.2);
-
   font-size:15px;
-  line-height:1.6;
-
-  color:#000000;
-
-  /* 🔑 INI TAMBAHAN AGAR JUSTIFY RAPI */
-  text-align: justify;
+  line-height:1.65;
+  color:#000;
 }
 
+.desc-panel p{
+  margin:0 0 14px;
+  text-align:justify;
+}
+
+/* 🔑 AEROBAIT INLINE TEXT */
+.AEROBAIT-inline{
+  font-weight:800;
+  color:var(--KUMBANG-blue);
+  letter-spacing:0.5px;
+  white-space:nowrap;
+}
 .back-btn{
   position:absolute;
   left:18px;
@@ -176,7 +180,7 @@ iframe{
   font-weight:600;
   cursor:pointer;
 }
-.autacs-inline{
+.KUMBANG-inline{
   max-width:140px;
   vertical-align:middle;
   margin-right:10px;
@@ -205,7 +209,7 @@ iframe{
       <div class="breadcrumb-long">
         <a href="index.html" onclick="go(this.href);return false;">Home</a> › 
         <a href="menu-b.html" onclick="go(this.href);return false;">Video Dokumentasi Produk</a> › 
-        <b>AUTACS</b>
+        <b>AEROBAIT</b>
       </div>
     </div>
 
@@ -225,20 +229,21 @@ iframe{
 
 <div class="desc-panel">
 
-<p>
-<img class="autacs-inline" src="autacs.jpg" alt="Logo AUTACS">
-is an indigenous Flight Control Computer (FCC) and Ground Control System (GCS) solution for tactical UAV developed by PT. Len Industri (Persero) in collaboration with the Ministry of Defense Indonesia.
-</p>
+      <p>
+      <b>AEROBAIT</b><em> is a compact, high-performance quadcopter built for fully autonomous missions and outfitted with a stabilized 3-axis gimbal camera for a crisp, reliable imagery.</em>
+      </p>
 
-<p>
-<img class="autacs-inline" src="autacs.jpg" alt="Logo AUTACS">
-adalah sistem kendali komputer dan sistem kendali darat buatan dalam negeri untuk pesawat tanpa awak yang dikembangkan oleh PT. Len Industri (Persero) bekerja sama dengan Kementerian Pertahanan Indonesia.
-</p>
+      <p>
+      <b>AEROBAIT</b> adalah quadcopter compact berperforma tinggi yang dirancang untuk misi otonom sepenuhnya dan dilengkapi dengan kamera gimbal 3-sumbu yang stabil untuk menghasilkan gambar yang tajam dan andal.
+      </p>
 
-</div>
+    </div>
+
     <a class="back-btn" href="menu-b.html" onclick="go(this.href);return false;">← Kembali</a>
 
   </div>
+</div>
+
 </div>
 
 <script>
