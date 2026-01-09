@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title> Video Dokumentasi Produk</title>
+<title>Video Dokumentasi Produk</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
- 
+
 <style>
 :root{
   --lg-bg-color: rgba(255,255,255,0.32);
@@ -21,26 +21,24 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-/* ===== BACKGROUND PORTRAIT ===== */
+/* ===== BACKGROUND ===== */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
-
-  background-image: url("uav-ui-portrait.jpg");
+  background-image:url("uav-ui-portrait.jpg");
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
 }
 
-/* jika landscape ganti gambar */
 @media (orientation: landscape){
   body{
-    background-image: url("uav-ui-landscape.jpg");
+    background-image:url("uav-ui-landscape.jpg");
   }
 }
 
-/* ===== PAGE LAYOUT ===== */
+/* ===== PAGE ===== */
 .page{
   min-height:100vh;
   display:flex;
@@ -48,7 +46,7 @@ body{
   padding:28px 16px;
 }
 
-/* ===== CARD UTAMA ===== */
+/* ===== CARD ===== */
 .card{
   width:100%;
   max-width:420px;
@@ -56,14 +54,14 @@ body{
   padding:22px 18px 120px;
   position:relative;
 
-  background: linear-gradient(
+  background:linear-gradient(
     180deg,
     rgba(255,255,255,0.28),
     rgba(255,255,255,0.10)
   );
 
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
 
   border:1px solid rgba(255,255,255,0.45);
 
@@ -75,43 +73,12 @@ body{
   animation:slideIn .25s ease;
 }
 
-/* efek cahaya glass card */
-.card::before{
-  content:"";
-  position:absolute;
-  inset:-40%;
-  background:
-    radial-gradient(
-      circle at 30% 25%,
-      rgba(255,255,255,0.40),
-      transparent 60%
-    );
-  filter: blur(18px);
-  transform:rotate(10deg);
-  pointer-events:none;
-}
-
-.card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      120deg,
-      transparent 30%,
-      rgba(255,255,255,.15),
-      transparent 70%
-    );
-  opacity:.5;
-  pointer-events:none;
-}
-
-/* ===== HERO IMAGE ===== */
+/* ===== HERO ===== */
 .hero{
   height:190px;
   border-radius:18px;
   margin-bottom:20px;
-  background: url("produk-a.jpg") center/cover no-repeat;
+  background:url("produk-a.jpg") center/cover no-repeat;
 }
 
 /* ===== BREADCRUMB ===== */
@@ -123,37 +90,25 @@ body{
 }
 
 .breadcrumb-long{
-  display:inline-block;
-  padding:12px 24px;
-  border-radius:999px;
-
-  background: rgba(255,255,255,0.90);
-
-  backdrop-filter: blur(12px) saturate(170%);
-  -webkit-backdrop-filter: blur(12px) saturate(170%);
-
-  border:1px solid var(--lg-border);
-
-  box-shadow:
-    0 10px 32px rgba(0,0,0,.22);
-
-  color: var(--text-black);
-
-  font-size:15px;
-  font-weight:600;
-
   width:100%;
   max-width:380px;
+  padding:12px 24px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.90);
+  backdrop-filter:blur(12px) saturate(170%);
+  border:1px solid var(--lg-border);
+  box-shadow:0 10px 32px rgba(0,0,0,.22);
+  font-size:15px;
+  font-weight:600;
   text-align:center;
 }
 
-/* link breadcrumb tetap hitam */
 .breadcrumb-long a{
-  color:#000000 !important;
+  color:#000 !important;
   text-decoration:none;
 }
 
-/* ===== MENU BAR LOGO JPG ===== */
+/* ===== MENU TEXT ===== */
 .links{
   display:flex;
   flex-direction:column;
@@ -164,13 +119,13 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
+  height:72px;
 
   border-radius:999px;
-
   background:rgba(255,255,255,.30);
 
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter:blur(16px) saturate(160%);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);
 
   border:1px solid rgba(255,255,255,.55);
 
@@ -178,57 +133,50 @@ body{
     inset 0 1px 1px rgba(255,255,255,.7),
     0 10px 26px rgba(0,0,0,.25);
 
-  height:72px;
-  cursor:pointer;
+  text-decoration:none;
   transition:.25s ease;
 }
 
-.logo-link img{
-  max-height:145px;
-  max-width:180px;
-  object-fit:contain;
+.logo-link span{
+  font-size:16px;
+  font-weight:600;
+  color:#000;
+  letter-spacing:0.3px;
 }
 
 /* ===== BACK BUTTON ===== */
 .back-btn{
   position:absolute;
   left:18px;
-  bottom:calc(22px + env(safe-area-inset-bottom));
+  bottom:22px;
   padding:10px 20px;
-  height:auto;
-
   border-radius:999px;
-  background: var(--lg-bg-color);
 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background:var(--lg-bg-color);
+  backdrop-filter:blur(12px);
 
   border:1px solid var(--lg-border);
-
   box-shadow:
     0 6px 14px rgba(0,0,0,.25),
     inset 1px 1px 0 var(--lg-highlight);
 
-  /* 🔑 teks hitam agar tidak ungu */
-  color:#000000 !important;
-
-  text-decoration:none;
+  color:#000 !important;
   font-weight:600;
-  cursor:pointer;
+  text-decoration:none;
 }
 
-/* ===== TRANSITION ===== */
+/* ===== ANIMATION ===== */
 @keyframes slideIn{
   from{ transform:translateX(20px); opacity:0; }
   to{ transform:translateX(0); opacity:1; }
 }
 
-.slide-out{
-  animation:slideOut .2s ease forwards;
-}
-
 @keyframes slideOut{
   to{ transform:translateX(-20px); opacity:0; }
+}
+
+.slide-out{
+  animation:slideOut .2s ease forwards;
 }
 </style>
 </head>
@@ -246,28 +194,30 @@ body{
 
     <div class="hero"></div>
 
-    <!-- ===== MENU LOGO MENUJU MENU BARU ===== -->
-  <div class="links">
+    <!-- ===== MENU TEKS ===== -->
+    <div class="links">
 
-  <a class="logo-link" href="autacs.html" onclick="go(this.href);return false;">
-    <img src="autacs.jpg" alt="AUTACS">
-  </a>
+      <a class="logo-link" href="#" onclick="return false;">
+        <span>Portofolio Pengembangan Drone</span>
+      </a>
 
-  <a class="logo-link" href="aerosight.html" onclick="go(this.href);return false;">
-    <img src="aerosight.jpg" alt="AEROSIGHT">
-  </a>
+      <a class="logo-link" href="autacs.html" onclick="go(this.href);return false;">
+        <span>AUTACS</span>
+      </a>
 
-  <a class="logo-link" href="aerobait.html" onclick="go(this.href);return false;">
-    <img src="aerobait.jpg" alt="AEROBAIT">
-  </a>
+      <a class="logo-link" href="#" onclick="return false;">
+        <span>ISS</span>
+      </a>
 
-  <a class="logo-link" href="kumbang.html" onclick="go(this.href);return false;">
-    <img src="kumbang.jpg" alt="KUMBANG">
-  </a>
+      <a class="logo-link" href="#" onclick="return false;">
+        <span>Weaponized Drone</span>
+      </a>
 
-</div>
+      <a class="logo-link" href="aerobait.html" onclick="go(this.href);return false;">
+        <span>Aerobait</span>
+      </a>
 
-    <!-- ================================ -->
+    </div>
 
     <a class="back-btn" href="index.html" onclick="go(this.href);return false;">← Kembali</a>
 
@@ -276,9 +226,9 @@ body{
 
 <script>
 function go(url){
-  const c = document.getElementById('card');
+  const c=document.getElementById('card');
   c.classList.add('slide-out');
-  setTimeout(()=> location.href=url,180);
+  setTimeout(()=>location.href=url,180);
 }
 </script>
 
