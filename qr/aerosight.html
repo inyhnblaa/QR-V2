@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>AEROSIGHT - Video Dokumentasi Produk</title>
+<title>AEROSIGHT- Video Dokumentasi Produk</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
@@ -128,26 +128,33 @@ iframe{
   border:none;
 }
 
+/* DESKRIPSI */
 .desc-panel{
   margin-top:18px;
-  padding:14px;
+  padding:16px;
   border-radius:18px;
-
   background:rgba(255,255,255,0.35);
-
   backdrop-filter:blur(16px) saturate(160%);
   -webkit-backdrop-filter:blur(16px) saturate(160%);
-
   border:1px solid var(--lg-border);
-
   box-shadow:0 10px 24px rgba(0,0,0,.2);
-
   font-size:15px;
-  line-height:1.6;
-
-  color:#000000;
+  line-height:1.65;
+  color:#000;
 }
 
+.desc-panel p{
+  margin:0 0 14px;
+  text-align:justify;
+}
+
+/* 🔑 AEROSIGHT INLINE TEXT */
+.AEROSIGHT-inline{
+  font-weight:800;
+  color:var(--KUMBANG-blue);
+  letter-spacing:0.5px;
+  white-space:nowrap;
+}
 .back-btn{
   position:absolute;
   left:18px;
@@ -173,7 +180,11 @@ iframe{
   font-weight:600;
   cursor:pointer;
 }
-
+.KUMBANG-inline{
+  max-width:140px;
+  vertical-align:middle;
+  margin-right:10px;
+}
 @keyframes slideIn{
   from{ transform:translateX(20px); opacity:0; }
   to{ transform:translateX(0); opacity:1; }
@@ -216,15 +227,14 @@ iframe{
 
     </div>
 
-    <div class="desc-panel">
+<div class="desc-panel">
 
       <p>
-      <b>AEROSIGHT</b> <em> is Unmanned Aerial Vehicle with Vertical Take-Off and Landing (VTOL) capability designed for efficient surveillance, reconnaissance, and data collection across various terrains and operational conditions.</em>
+      <b>AEROSIGHT</b><em> is a compact, high-performance quadcopter built for fully autonomous missions and outfitted with a stabilized 3-axis gimbal camera for a crisp, reliable imagery.</em>
       </p>
 
       <p>
-      <b>AEROSIGHT</b> adalah pesawat tanpa awak dengan kemampuan Take-Off dan Landing Vertikal (VTOL) yang dirancang untuk pemantauan, pengintaian, dan pengumpulan data secara efisien di berbagai medan dan kondisi operasional.
-
+      <b>AEROSIGHT</b> adalah quadcopter compact berperforma tinggi yang dirancang untuk misi otonom sepenuhnya dan dilengkapi dengan kamera gimbal 3-sumbu yang stabil untuk menghasilkan gambar yang tajam dan andal.
       </p>
 
     </div>
@@ -232,6 +242,8 @@ iframe{
     <a class="back-btn" href="menu-b.html" onclick="go(this.href);return false;">← Kembali</a>
 
   </div>
+</div>
+
 </div>
 
 <script>
