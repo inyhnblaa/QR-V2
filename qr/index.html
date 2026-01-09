@@ -23,6 +23,8 @@
 
   /* 🔑 warna teks hitam */
   --text-black: #000000;
+    --text-grey:#4a4a4a;
+  --autacs-blue:#3666B6;
 }
 
 /* ===== RESET ===== */
@@ -36,8 +38,8 @@ body{
   margin:0;
   font-family:'Inter',sans-serif;
 
-  /* 🔑 warna teks global jadi abu */
-  color: var(--text-grey);
+  /* 🔑 warna teks global jadi hitam */
+  color: var(--text-black);
 
   /* ukuran dasar NORMAL */
   font-size:16px;
@@ -86,7 +88,7 @@ body{
     0 30px 70px rgba(0,0,0,0.40),
     inset 0 1px 1px rgba(255,255,255,.70);
 
-  color: var(--text-grey);
+  color: var(--text-black);
 
   overflow:hidden;
   animation:slideIn .3s ease;
@@ -135,10 +137,12 @@ body{
 .header h3{
   font-size:26px;
   margin:10px 0 8px;
+  color:var(--text-black);
 }
 
 .header .subtitle{
   font-size:22px;
+  color:var(--text-black);
 }
 
 /* logo */
@@ -151,16 +155,11 @@ body{
   background:white;
 }
 
-/* ===== AUTACS TETAP BIRU ===== */
+/* ===== AUTACS LOGO TEXT ===== */
 .autacs{
   font-family:'Amuro',sans-serif;
-
-  /* tetap biru */
-  color:#3361ad:
-
+  color:var(--autacs-blue); /* 🔑 BIRU FIX */
   letter-spacing:2px;
-
-  /* diperbesar */
   font-size:28px;
 }
 
