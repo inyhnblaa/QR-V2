@@ -249,19 +249,19 @@ body{
     <!-- ===== MENU LOGO MENUJU PDF ===== -->
     <div class="links">
 
-      <a class="logo-link" href="brosur/autacs.pdf" target="_blank" rel="noopener noreferrer">
+      <a class="logo-link" href="brosur/autacs.pdf" onclick="openPDF(this.href);return false;">
         <img src="autacs.jpg" alt="AUTACS">
       </a>
 
-      <a class="logo-link" href="brosur/aerosight.pdf"target="_blank" rel="noopener noreferrer">
+      <a class="logo-link" href="brosur/aerosight.pdf" onclick="openPDF(this.href);return false;">
         <img src="aerosight.jpg" alt="AEROSIGHT">
       </a>
 
-      <a class="logo-link" href="brosur/aerobait.pdf" target="_blank" rel="noopener noreferrer">
+      <a class="logo-link" href="brosur/aerobait.pdf" onclick="openPDF(this.href);return false;"">
         <img src="aerobait.jpg" alt="AEROBAIT">
       </a>
 
-      <a class="logo-link" href="brosur/kumbang.pdf" target="_blank" rel="noopener noreferrer">
+      <a class="logo-link" href="brosur/kumbang.pdf" onclick="openPDF(this.href);return false;">
         <img src="kumbang.jpg" alt="KUMBANG">
       </a>
 
@@ -279,6 +279,18 @@ function go(url){
   c.classList.add('slide-out');
   setTimeout(()=> location.href=url,180);
 }
+  <script>
+function go(url){
+  const c = document.getElementById('card');
+  c.classList.add('slide-out');
+  setTimeout(()=> location.href=url,180);
+}
+
+function openPDF(url){
+  window.open(url, '_blank');
+}
+</script>
+  
 </script>
 
 </body>
